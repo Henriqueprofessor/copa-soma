@@ -9429,11 +9429,10 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         </select>
         <label for="modalidade-tabuada">Modalidade</label>
         <select id="modalidade-tabuada">
-            <option value="2-5">Tabuadas do 2 ao 5</option>
-            <option value="6-9">Tabuadas do 6 ao 9</option>
-            <option value="0-10">Completa - Tabuadas do 1 ao 10</option>
+            <option value="1-10">Somas até 10 (sem transporte)</option>
+            <option value="11-20">Somas até 20 (com transporte)</option>
+            <option value="ate-100">Somas de dezenas (até 100)</option>
         </select>
-
         <!-- ▼ NOVO: Consentimento LGPD ▼ -->
         <div class="aviso-privacidade" style="margin-top: 12px; margin-bottom: 4px; background: rgba(34,211,238,0.08); border: 1px dashed rgba(34,211,238,0.3); border-radius: 10px; padding: 12px 14px; text-align: left;">
             <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; margin: 0;">
@@ -23785,11 +23784,10 @@ function abrirBuscarAlunoComMeusDados() {
             subtitulo = "A etapa classificatória não está aberta agora. Você pode treinar à vontade — o treino alimenta seu mapa e certificados.";
         }
 
-        const icones  = { "2-5": "📚", "6-9": "🎯", "0-10": "⭐" };
-        const rotulos = { "2-5": "Tabuadas 2-5", "6-9": "Tabuadas 6-9", "0-10": "Tabuadas 1-10" };
-        
-        const modsParaRenderizar = modUnicaAtiva ? [modUnicaAtiva] : ["2-5", "6-9", "0-10"];
-        const modsBloqueadas = modUnicaAtiva ? ["2-5", "6-9", "0-10"].filter(m => m !== modUnicaAtiva) : [];
+        const icones  = { "1-10": "➕", "11-20": "🧮", "ate-100": "💯" };
+        const rotulos = { "1-10": "Somas até 10", "11-20": "Somas até 20", "ate-100": "Dezenas até 100" };
+        const modsParaRenderizar = modUnicaAtiva ? [modUnicaAtiva] : ["1-10", "11-20", "ate-100"];
+        const modsBloqueadas = modUnicaAtiva ? ["1-10", "11-20", "ate-100"].filter(m => m !== modUnicaAtiva) : [];
 
         // 1. RENDERIZA O ESQUELETO BASE IMEDIATAMENTE
         let linhasBase = "";
