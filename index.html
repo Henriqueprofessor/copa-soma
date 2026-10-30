@@ -11227,22 +11227,21 @@ const firebaseConfig = {
 
     // ▼▼▼ [05.08] Seções do álbum ──────────────────────────────────────────
     const SECOES = [
-        { id: "primeiros_passos", nome: "Primeiros Passos", icone: "📚", descricao: "Suas primeiras conquistas na Copa.",  recompensaCompleta: { estrelas: 5,  badge: "🌱 Iniciado"    } },
-        { id: "velocidade",       nome: "Velocidade",       icone: "⚡", descricao: "Mostre que você é rápido!",           recompensaCompleta: { estrelas: 8,  badge: "💨 Relâmpago"   } },
-        { id: "precisao",         nome: "Precisão",         icone: "🎯", descricao: "Acerte todas e prove seu domínio.",   recompensaCompleta: { estrelas: 5,  badge: "🎯 Olho de Águia"} },
-        { id: "dedicacao",        nome: "Dedicação",        icone: "💪", descricao: "Constância é a chave.",               recompensaCompleta: { estrelas: 5,  badge: "🔥 Constante"   } },
-        { id: "explorador",       nome: "Explorador",       icone: "🧭", descricao: "Explore todas as funcionalidades.",   recompensaCompleta: { estrelas: 5,  badge: "🧭 Explorador"  } },
-        { id: "maestria_mapa",    nome: "Maestria do Mapa", icone: "🗺️", descricao: "Domine cada canto do mapa de tabuadas.", recompensaCompleta: { estrelas: 15, badge: "🗺️ Cartógrafo-Mor" } },
+        { id: "primeiros_passos", nome: "Primeiras Somas",  icone: "📚", descricao: "Suas primeiras conquistas na Copa da Soma.", recompensaCompleta: { estrelas: 5,  badge: "🌱 Iniciado"    } },
+        { id: "velocidade",       nome: "Velocidade",       icone: "⚡", descricao: "Mostre que você soma rápido!",                recompensaCompleta: { estrelas: 8,  badge: "💨 Relâmpago"   } },
+        { id: "precisao",         nome: "Precisão",         icone: "🎯", descricao: "Acerte todas as somas e prove seu domínio.",  recompensaCompleta: { estrelas: 5,  badge: "🎯 Olho de Águia"} },
+        { id: "dedicacao",        nome: "Dedicação",        icone: "💪", descricao: "Constância é a chave.",                     recompensaCompleta: { estrelas: 5,  badge: "🔥 Constante"   } },
+        { id: "explorador",       nome: "Explorador",       icone: "🧭", descricao: "Explore todas as funcionalidades.",          recompensaCompleta: { estrelas: 5,  badge: "🧭 Explorador"  } },
+        { id: "maestria_mapa",    nome: "Maestria do Mapa", icone: "🗺️", descricao: "Domine cada canto do mapa de somas.",        recompensaCompleta: { estrelas: 15, badge: "🗺️ Cartógrafo-Mor" } },
         { id: "corrida_mestre",   nome: "Corrida ao Mestre",icone: "🏁", descricao: "A escada da maestria: cada degrau exige mais velocidade.", recompensaCompleta: { estrelas: 20, badge: "🏁 Linha de Chegada" } },
-        { id: "rumo_final",       nome: "Rumo à Final",     icone: "🏁", descricao: "Metas rumo à classificação.",         recompensaCompleta: { estrelas: 10, badge: "🏆 Classificado" } },
-        // ⚙️ Nova seção: premia consistência — média de pontos por modalidade
+        { id: "rumo_final",       nome: "Rumo à Final",     icone: "🏁", descricao: "Metas rumo à classificação.",               recompensaCompleta: { estrelas: 10, badge: "🏆 Classificado" } },
         { id: "consistencia",     nome: "Consistência",     icone: "🏅", descricao: "Sua média de pontos em cada modalidade ao longo do tempo.", recompensaCompleta: { estrelas: 10, badge: "🏅 Triatleta" } }
     ];
     // ▲▲▲ FIM [05.08]
 
     // ▼▼▼ [05.09] MEDALS · Lista de todas as medalhas ──────────────────────
     const MEDALS = [
-        { id: "primeira_vitoria",   nome: "Primeira Vitória",     icone: "🆕", secao: "primeiros_passos", raridade: "comum",   recompensaEstrelas: 1, ordem: 1, requisito: "Jogar 1 partida completa (oficial ou treino).", descricao: "Você deu o primeiro passo!", dica: "É só jogar uma vez — sem pressão.", condicao: d => d.totalPartidas >= 1 },
+        { id: "primeira_vitoria",   nome: "Primeira Soma",        icone: "🆕", secao: "primeiros_passos", raridade: "comum",   recompensaEstrelas: 1, ordem: 1, requisito: "Jogar 1 partida completa (oficial ou treino).", descricao: "Você deu o primeiro passo!", dica: "É só jogar uma vez — sem pressão.", condicao: d => d.totalPartidas >= 1 },
         { id: "iniciante",          nome: "Iniciante",            icone: "⭐", secao: "primeiros_passos", raridade: "comum",   recompensaEstrelas: 1, ordem: 2, requisito: "Alcançar 500 pontos em uma única partida.", descricao: "Primeiros pontos no placar!", dica: "Acerte as primeiras questões e some pontos.", condicao: d => d.melhorPontuacao >= 500 },
         { id: "dedicado",           nome: "Dedicado",             icone: "📚", secao: "primeiros_passos", raridade: "comum",   recompensaEstrelas: 1, ordem: 3, requisito: "Jogar 5 partidas completas.", descricao: "A prática leva à perfeição.", dica: "Vá acumulando partidas ao longo dos dias.", condicao: d => d.totalPartidas >= 5 },
         { id: "tartaruga_ninja",    nome: "Tartaruga Ninja",      icone: "🐢", secao: "primeiros_passos", raridade: "comum",   recompensaEstrelas: 1, ordem: 4, requisito: "Completar uma partida com menos de 5 acertos.", descricao: "Toda jornada tem começo.", dica: "Toda jornada tem começo. Continue tentando!", condicao: d => d.temPartidaComBaixoAcerto },
@@ -11250,12 +11249,12 @@ const firebaseConfig = {
         { id: "volta_amanha",       nome: "Volta Amanhã",         icone: "🌅", secao: "primeiros_passos", raridade: "incomum", recompensaEstrelas: 2, ordem: 6, requisito: "Jogar em 2 dias diferentes.", descricao: "Constância é o segredo.", dica: "Jogue hoje e volte amanhã para ganhar.", condicao: d => d.diasDistintosJogados >= 2 },
         
         // ⚡ VELOCIDADE (Cadeia de Pré-requisitos)
-        { id: "raio",                nome: "Raio",                 icone: "⚡", secao: "velocidade", raridade: "incomum", recompensaEstrelas: 2, ordem: 1, requisito: "Ter tempo médio abaixo de 2,0s em uma partida.", descricao: "Você é veloz!", dica: "Responda rápido e mantenha o ritmo.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 2.0 },
-        { id: "ventania",            nome: "Ventania",             icone: "💨", secao: "velocidade", raridade: "raro",    recompensaEstrelas: 3, ordem: 2, requisito: "Ter tempo médio abaixo de 1,5s em uma partida.", descricao: "Rápido como o vento!", dica: "Você precisa ser mais rápido que a média.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 1.5 && d._medalhasPersistidas["raio"] },
-        { id: "sem_hesitar",         nome: "Sem Hesitar",          icone: "🎯", secao: "velocidade", raridade: "epico",   recompensaEstrelas: 5, ordem: 3, requisito: "Tempo médio < 1,0s com 5 acertos seguidos.", descricao: "Você não hesita!", dica: "Sequência rápida e perfeita.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 1.0 && d.maiorSequenciaMax >= 5 && d._medalhasPersistidas["ventania"] },
-        { id: "velocidade_relampago",nome: "Velocidade Relâmpago", icone: "🚀", secao: "velocidade", raridade: "raro",    recompensaEstrelas: 3, ordem: 4, requisito: "Acerte 20/20 com tempo médio abaixo de 1,2s.", descricao: "Perfeição e velocidade juntas.", dica: "Perfeição e velocidade juntas — o desafio máximo.", condicao: d => d.partidasCom20Acertos >= 1 && d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito < 1.2 },
+        { id: "raio",                nome: "Raio",                 icone: "⚡", secao: "velocidade", raridade: "incomum", recompensaEstrelas: 2, ordem: 1, requisito: "Ter tempo médio abaixo de 1,5s em uma partida.", descricao: "Você é veloz!", dica: "Responda rápido e mantenha o ritmo.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 1.5 },
+        { id: "ventania",            nome: "Ventania",             icone: "💨", secao: "velocidade", raridade: "raro",    recompensaEstrelas: 3, ordem: 2, requisito: "Ter tempo médio abaixo de 1,0s em uma partida.", descricao: "Rápido como o vento!", dica: "Você precisa ser mais rápido que a média.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 1.0 && d._medalhasPersistidas["raio"] },
+        { id: "sem_hesitar",         nome: "Sem Hesitar",          icone: "🎯", secao: "velocidade", raridade: "epico",   recompensaEstrelas: 5, ordem: 3, requisito: "Tempo médio < 0,8s com 5 acertos seguidos.", descricao: "Você não hesita!", dica: "Sequência rápida e perfeita.", condicao: d => d.melhorTempoMedio !== null && d.melhorTempoMedio < 0.8 && d.maiorSequenciaMax >= 5 && d._medalhasPersistidas["ventania"] },
+        { id: "velocidade_relampago",nome: "Velocidade Relâmpago", icone: "🚀", secao: "velocidade", raridade: "raro",    recompensaEstrelas: 3, ordem: 4, requisito: "Acerte 20/20 com tempo médio abaixo de 0,7s.", descricao: "Perfeição e velocidade juntas.", dica: "Perfeição e velocidade juntas — o desafio máximo.", condicao: d => d.partidasCom20Acertos >= 1 && d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito < 0.7 },
         { id: "rei_chute",           nome: "Rei do Chute",         icone: "🎲", secao: "velocidade", raridade: "incomum", recompensaEstrelas: 2, ordem: 5, requisito: "Acerte 3+ questões em até 0,5s com precisão menor que 80% na partida.", descricao: "Chutou rápido e acertou algumas!", dica: "Responda rápido e não se preocupe em acertar tudo — o foco é a velocidade no chute.", condicao: d => d.temReiChute === true },
-        { id: "rei_pontuacao",       nome: "Rei da Pontuação",     icone: "💎", secao: "velocidade", raridade: "epico",   recompensaEstrelas: 8, ordem: 6, requisito: "Atingir 17.000+ pontos em 2 partidas diferentes.", descricao: "Você reina na pontuação!", dica: "Some o máximo de pontos — rapidez e precisão juntas.", condicao: d => d.partidasCom17k >= 2 },
+        { id: "rei_pontuacao",       nome: "Rei do Transporte",    icone: "💎", secao: "velocidade", raridade: "epico",   recompensaEstrelas: 8, ordem: 6, requisito: "Atingir 17.000+ pontos em 2 partidas diferentes.", descricao: "Você domina as somas com transporte!", dica: "Some o máximo de pontos — rapidez e precisão juntas.", condicao: d => d.partidasCom17k >= 2 },
         
         // 🎯 PRECISÃO (Cadeia de Pré-requisitos)
         { id: "boa_sequencia",      nome: "Boa Sequência",      icone: "📈", secao: "precisao", raridade: "comum",    recompensaEstrelas: 1, ordem: 1, requisito: "Acerte 10 questões consecutivas.", descricao: "Sequência sólida!", dica: "Concentre-se e não erre!", condicao: d => d.maiorSequenciaMax >= 10 },
@@ -11266,8 +11265,8 @@ const firebaseConfig = {
         // 💪 DEDICAÇÃO
         { id: "segunda_chance",  nome: "Segunda Chance",    icone: "🎯", secao: "dedicacao", raridade: "comum",   recompensaEstrelas: 1, ordem: 1, requisito: "Melhore seu recorde na 2ª tentativa da mesma modalidade.", descricao: "Sempre dá pra melhorar!", dica: "Tente de novo — sempre dá pra melhorar!", condicao: d => d.melhorouNaSegundaTentativa },
         { id: "veterano",        nome: "Veterano",          icone: "🎓", secao: "dedicacao", raridade: "incomum", recompensaEstrelas: 2, ordem: 2, requisito: "Jogar 10 partidas completas.", descricao: "Você já é veterano!", dica: "A prática leva à perfeição.", condicao: d => d.totalPartidas >= 10 },
-        { id: "coruja",          nome: "Coruja da Tabuada", icone: "🕰️",secao: "dedicacao", raridade: "incomum", recompensaEstrelas: 2, ordem: 3, requisito: "Jogar entre 22h e 6h.", descricao: "Você estuda quando todos dormem.", dica: "Alguns estudam quando todos dormem.", condicao: d => d.temJogoNoturno },
-        { id: "lenda_tabuada",   nome: "Lenda da Tabuada",  icone: "👑", secao: "dedicacao", raridade: "raro",    recompensaEstrelas: 3, ordem: 4, requisito: "Jogar 20 partidas completas.", descricao: "Você virou uma lenda!", dica: "Você já vai virar lenda da tabuada.", condicao: d => d.totalPartidas >= 20 },
+        { id: "coruja",          nome: "Coruja da Soma",    icone: "🕰️",secao: "dedicacao", raridade: "incomum", recompensaEstrelas: 2, ordem: 3, requisito: "Jogar entre 22h e 6h.", descricao: "Você estuda quando todos dormem.", dica: "Alguns estudam quando todos dormem.", condicao: d => d.temJogoNoturno },
+        { id: "lenda_tabuada",   nome: "Lenda da Soma",     icone: "👑", secao: "dedicacao", raridade: "raro",    recompensaEstrelas: 3, ordem: 4, requisito: "Jogar 20 partidas completas.", descricao: "Você virou uma lenda!", dica: "Você já vai virar lenda da soma.", condicao: d => d.totalPartidas >= 20 },
         { id: "semana_copa",     nome: "Semana na Copa",    icone: "📅", secao: "dedicacao", raridade: "raro",    recompensaEstrelas: 3, ordem: 5, requisito: "Jogar em 5 dias diferentes.", descricao: "Constância de campeão.", dica: "Volte todos os dias — constância é o segredo.", condicao: d => d.diasDistintosJogados >= 5 },
         { id: "volta_por_cima",  nome: "Volta por Cima",    icone: "🌱", secao: "dedicacao", raridade: "raro",    recompensaEstrelas: 3, ordem: 6, requisito: "Após partida com ≤5 acertos, faça ≥15 na próxima.", descricao: "Errar é humano, voltar por cima é campeão.", dica: "Errar é humano. Voltar por cima é campeão.", condicao: d => d.temVoltaPorCima },
         
@@ -11275,24 +11274,24 @@ const firebaseConfig = {
         { id: "colecionador",    nome: "Colecionador",       icone: "🏅", secao: "explorador", raridade: "comum",   recompensaEstrelas: 1, ordem: 1, requisito: "Desbloquear 10 medalhas no álbum.", descricao: "Colecionador nato!", dica: "Colecione medalhas e chegue às 10.", condicao: d => d.conquistasCount >= 10 },
         { id: "maratonista",     nome: "Maratonista",        icone: "🏃", secao: "explorador", raridade: "comum",   recompensaEstrelas: 1, ordem: 2, requisito: "Jogar 3 partidas no mesmo dia.", descricao: "Maratona concluída!", dica: "Sente e jogue 3 partidas no mesmo dia.", condicao: d => d.maxPartidasEmUmDia >= 3 },
         { id: "cartografo",      nome: "Cartógrafo",         icone: "🗺️",secao: "explorador", raridade: "incomum", recompensaEstrelas: 2, ordem: 3, requisito: "Praticar 30 operações diferentes do mapa.", descricao: "Explorador do mapa!", dica: "Explore o mapa e pratique novas operações.", condicao: d => d.operacoesExploradas >= 30 },
-        { id: "poliglota",       nome: "Poliglota",          icone: "🌐", secao: "explorador", raridade: "incomum", recompensaEstrelas: 2, ordem: 4, requisito: "Jogar nas 3 modalidades (2-5, 6-9 e 1-10).", descricao: "Você é versátil!", dica: "Jogue ao menos 1 partida em cada modalidade.", condicao: d => d.modalidadesJogadas >= 3 },
+        { id: "poliglota",       nome: "Poliglota",          icone: "🌐", secao: "explorador", raridade: "incomum", recompensaEstrelas: 2, ordem: 4, requisito: "Jogar nas 3 modalidades (1-10, 11-20 e até 100).", descricao: "Você é versátil!", dica: "Jogue ao menos 1 partida em cada modalidade.", condicao: d => d.modalidadesJogadas >= 3 },
         { id: "treinador_elite", nome: "Treinador de Elite", icone: "💪", secao: "explorador", raridade: "raro",    recompensaEstrelas: 3, ordem: 5, requisito: "Completar 5 treinos focados.", descricao: "Treinador dedicado.", dica: "Use o treino focado 5 vezes.", condicao: d => d.treinosFocados >= 5 },
         
         // 🗺️ MAESTRIA DO MAPA
-        { id: "base_solida",       nome: "Base Sólida",            icone: "🧱", secao: "maestria_mapa", raridade: "incomum",  recompensaEstrelas: 8,  ordem: 1, requisito: "Dominar 100% das tabuadas de 2 a 5 (40 operações ≥90%).", descricao: "Base sólida garantida!", dica: "Jogue o modo 2-5 até todas as células ficarem verdes.", condicao: d => d.baseSolida === true },
-        { id: "mestre_desafios",   nome: "Mestre dos Desafios",    icone: "⚔️", secao: "maestria_mapa", raridade: "raro",     recompensaEstrelas: 10, ordem: 2, requisito: "Dominar 100% das tabuadas de 6 a 9 (40 operações ≥90%).", descricao: "Mestre dos desafios!", dica: "Jogue o modo 6-9 até todas as células ficarem verdes.", condicao: d => d.mestreDesafios === true },
+        { id: "base_solida",       nome: "Base Sólida",            icone: "🧱", secao: "maestria_mapa", raridade: "incomum",  recompensaEstrelas: 8,  ordem: 1, requisito: "Dominar 100% das somas até 10 (40 operações ≥90%).", descricao: "Base sólida garantida!", dica: "Jogue o modo 1-10 até todas as células ficarem verdes.", condicao: d => d.baseSolida === true },
+        { id: "mestre_desafios",   nome: "Mestre dos Desafios",    icone: "⚔️", secao: "maestria_mapa", raridade: "raro",     recompensaEstrelas: 10, ordem: 2, requisito: "Dominar 100% das somas até 20 (40 operações ≥90%).", descricao: "Mestre dos desafios!", dica: "Jogue o modo 11-20 até todas as células ficarem verdes.", condicao: d => d.mestreDesafios === true },
         { id: "mestre_mapa",       nome: "Mestre do Mapa",         icone: "🗺️", secao: "maestria_mapa", raridade: "lendario", recompensaEstrelas: 15, ordem: 3, requisito: "Dominar 100% do mapa (100 operações ≥90%).", descricao: "Maestria total!", dica: "Domine todas as 100 operações com ≥90% de acerto.", condicao: d => d.mapaCompleto === true },
         { id: "guarda_precisao",   nome: "Guardião da Precisão",   icone: "🔬", secao: "maestria_mapa", raridade: "epico",    recompensaEstrelas: 10, ordem: 4, requisito: "100% do mapa com precisão ≥95% em cada operação.", descricao: "Precisão sobre-humana.", dica: "Não basta dominar — é preciso dominar com folga.", condicao: d => d.guardaPrecisao === true },
         { id: "lenda_mapa",        nome: "Lenda do Mapa",          icone: "👑", secao: "maestria_mapa", raridade: "lendario", recompensaEstrelas: 20, ordem: 5, requisito: "Manter 100% do mapa por 3 dias diferentes.", descricao: "Lenda viva!", dica: "Depois de dominar tudo, continue jogando por 3 dias para provar constância.", condicao: d => d.lendaMapa === true },
         
         // 🏁 CORRIDA AO MESTRE (Cadeia de Pré-requisitos)
-        { id: "marcha_ligeira",    nome: "Marcha Ligeira",         icone: "🚶", secao: "corrida_mestre", raridade: "incomum", recompensaEstrelas: 3,  ordem: 1, requisito: "Fazer 19/20 em tempo médio ≤ 2,0s.", descricao: "O primeiro passo da velocidade.", dica: "Acerte quase tudo em ritmo ligeiro.", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 2.0 },
-        { id: "corredor",          nome: "Corredor",               icone: "🏃", secao: "corrida_mestre", raridade: "incomum", recompensaEstrelas: 4,  ordem: 2, requisito: "Fazer 19/20 em tempo médio ≤ 1,8s.", descricao: "Em ritmo de corrida!", dica: "Você está correndo com a tabuada.", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 1.8 && d._medalhasPersistidas["marcha_ligeira"] },
-        { id: "velocista",         nome: "Velocista",              icone: "⚡", secao: "corrida_mestre", raridade: "raro",    recompensaEstrelas: 5,  ordem: 3, requisito: "Fazer 19/20 em tempo médio ≤ 1,6s.", descricao: "Velocidade de atleta!", dica: "Velocidade de atleta — continue assim!", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 1.6 && d._medalhasPersistidas["corredor"] },
-        { id: "trovao",            nome: "Trovão",                 icone: "🌩️",secao: "corrida_mestre", raridade: "raro",    recompensaEstrelas: 6,  ordem: 4, requisito: "Fazer 20/20 em tempo médio ≤ 1,4s.", descricao: "Rápido como um trovão!", dica: "Precisão total + velocidade. Você está no topo.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 1.4 && d._medalhasPersistidas["velocista"] },
-        { id: "furacao",           nome: "Furacão",                icone: "🌀", secao: "corrida_mestre", raridade: "epico",   recompensaEstrelas: 8,  ordem: 5, requisito: "Fazer 20/20 em tempo médio ≤ 1,2s.", descricao: "Imparável!", dica: "Ninguém te segura — você é um furacão!", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 1.2 && d._medalhasPersistidas["trovao"] },
-        { id: "meteoro",           nome: "Meteoro",                icone: "☄️", secao: "corrida_mestre", raridade: "epico",   recompensaEstrelas: 10, ordem: 6, requisito: "Fazer 20/20 em tempo médio ≤ 1,1s.", descricao: "Quase no topo absoluto!", dica: "Você está a um passo do topo absoluto.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 1.1 && d._medalhasPersistidas["furacao"] },
-        { id: "mestre_tabuada",    nome: "Mestre da Tabuada",      icone: "🏆", secao: "corrida_mestre", raridade: "lendario",recompensaEstrelas: 15, ordem: 7, requisito: "Fazer 20/20 em tempo médio ≤ 1,0s.", descricao: "O auge absoluto!", dica: "Precisão perfeita em velocidade sobre-humana. Você é o Mestre.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 1.0 && d._medalhasPersistidas["meteoro"] },
+        { id: "marcha_ligeira",    nome: "Marcha Ligeira",         icone: "🚶", secao: "corrida_mestre", raridade: "incomum", recompensaEstrelas: 3,  ordem: 1, requisito: "Fazer 19/20 em tempo médio ≤ 1,5s.", descricao: "O primeiro passo da velocidade.", dica: "Acerte quase tudo em ritmo ligeiro.", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 1.5 },
+        { id: "corredor",          nome: "Corredor",               icone: "🏃", secao: "corrida_mestre", raridade: "incomum", recompensaEstrelas: 4,  ordem: 2, requisito: "Fazer 19/20 em tempo médio ≤ 1,3s.", descricao: "Em ritmo de corrida!", dica: "Você está correndo com a soma.", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 1.3 && d._medalhasPersistidas["marcha_ligeira"] },
+        { id: "velocista",         nome: "Velocista",              icone: "⚡", secao: "corrida_mestre", raridade: "raro",    recompensaEstrelas: 5,  ordem: 3, requisito: "Fazer 19/20 em tempo médio ≤ 1,1s.", descricao: "Velocidade de atleta!", dica: "Velocidade de atleta — continue assim!", condicao: d => d.melhorTempoMedio19Ou20 !== null && d.melhorTempoMedio19Ou20 <= 1.1 && d._medalhasPersistidas["corredor"] },
+        { id: "trovao",            nome: "Trovão",                 icone: "🌩️",secao: "corrida_mestre", raridade: "raro",    recompensaEstrelas: 6,  ordem: 4, requisito: "Fazer 20/20 em tempo médio ≤ 0,9s.", descricao: "Rápido como um trovão!", dica: "Precisão total + velocidade. Você está no topo.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 0.9 && d._medalhasPersistidas["velocista"] },
+        { id: "furacao",           nome: "Furacão",                icone: "🌀", secao: "corrida_mestre", raridade: "epico",   recompensaEstrelas: 8,  ordem: 5, requisito: "Fazer 20/20 em tempo médio ≤ 0,7s.", descricao: "Imparável!", dica: "Ninguém te segura — você é um furacão!", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 0.7 && d._medalhasPersistidas["trovao"] },
+        { id: "meteoro",           nome: "Meteoro",                icone: "☄️", secao: "corrida_mestre", raridade: "epico",   recompensaEstrelas: 10, ordem: 6, requisito: "Fazer 20/20 em tempo médio ≤ 0,6s.", descricao: "Quase no topo absoluto!", dica: "Você está a um passo do topo absoluto.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 0.6 && d._medalhasPersistidas["furacao"] },
+        { id: "mestre_tabuada",    nome: "Mestre da Soma",         icone: "🏆", secao: "corrida_mestre", raridade: "lendario",recompensaEstrelas: 15, ordem: 7, requisito: "Fazer 20/20 em tempo médio ≤ 0,5s.", descricao: "O auge absoluto!", dica: "Precisão perfeita em velocidade sobre-humana. Você é o Mestre.", condicao: d => d.melhorTempoMedioPerfeito !== null && d.melhorTempoMedioPerfeito <= 0.5 && d._medalhasPersistidas["meteoro"] },
         
         // 🏁 RUMO À FINAL
         { id: "na_disputa",         nome: "Na Disputa",         icone: "🎯", secao: "rumo_final", raridade: "incomum", recompensaEstrelas: 2, ordem: 1, requisito: "Entrar no Top 6 da turma em qualquer modalidade.", descricao: "Você está na disputa!", dica: "Suba no ranking da sua turma.", condicao: d => d.melhorPosicao !== null && d.melhorPosicao <= 6 },
@@ -12694,17 +12693,17 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // Níveis de certificado — por MODALIDADE
     const CERT_NIVEIS = {
         prata: {
-            id: "prata", nome: "Mestre da Tabuada", icone: "🥈",
+            id: "prata", nome: "Mestre da Soma", icone: "🥈",
             coberturaPct: 85, minTentativas: 5, minTaxa: 0.80,
             maxTempoMediano: null,
             medalhaId: "cert_prata", estrelas: 20, raridade: "raro",
             cor: "prata",
-            descricao: "Você demonstrou domínio consistente da maior parte da tabuada."
+            descricao: "Você demonstrou domínio consistente da maior parte das somas."
         },
         ouro: {
-            id: "ouro", nome: "Lenda da Tabuada", icone: "🥇",
+            id: "ouro", nome: "Lenda da Soma", icone: "🥇",
             coberturaPct: 95, minTentativas: 8, minTaxa: 0.90,
-            maxTempoMediano: { "2-5": 2.0, "6-9": 2.5, "0-10": 3.0 },
+            maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
             medalhaId: "cert_ouro", estrelas: 40, raridade: "epico",
             cor: "ouro",
             descricao: "Você atingiu velocidade e precisão de campeão."
@@ -12712,10 +12711,10 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         lendaria: {
             id: "lendaria", nome: "Maestria Total", icone: "💎",
             coberturaPct: 100, minTentativas: 10, minTaxa: 0.90,
-            maxTempoMediano: { "2-5": 2.0, "6-9": 2.5, "0-10": 3.0 },
+            maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
             medalhaId: "cert_lendaria", estrelas: 60, raridade: "lendario",
             cor: "lendaria",
-            descricao: "Domínio absoluto e comprovado de todas as tabuadas."
+            descricao: "Domínio absoluto e comprovado de todas as somas."
         }
     };
     const CERT_ORDEM = ["lendaria", "ouro", "prata"]; // do mais alto pro mais baixo
@@ -14404,9 +14403,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         for (const m of medalhasOrdenadas) {
             if (persistidas[m.id]) continue;
 
-            // ⚠️ A MÁGICA ACONTECE AQUI:
             // A ordem da medalha dita quantas partidas o jogador precisa ter no histórico.
-            // Ex: Ordem 3 (Dedicado) só pode ser ganha a partir da 3ª partida (totalPartidas >= 3).
             const partidasMinimas = m.ordem || 1;
             if (dados.totalPartidas < partidasMinimas) continue; // Trava o desbloqueio
 
@@ -14422,7 +14419,6 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
 
             if (bateuRequisito) {
                 desbloqueadasFiltradas.push(m);
-                // (A trava de seções que causava o acúmulo foi removida)
             }
         }
 
@@ -14435,10 +14431,10 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         dedicado:            { campo: "totalPartidas",            alvo: 5,     unidade: "partidas" },
         volta_amanha:        { campo: "diasDistintosJogados",     alvo: 2,     unidade: "dias" },
         rei_chute:           { campo: "temposRapidosMax",         alvo: 3,     unidade: "respostas rápidas" },
-        raio:                { campo: "melhorTempoMedio",         alvo: 2.0,   unidade: "s", invertido: true, casa: 2 },
-        velocidade_relampago:{ campo: "melhorTempoMedioPerfeito", alvo: 1.2,   unidade: "s", invertido: true, casa: 2 },
-        ventania:            { campo: "melhorTempoMedio",         alvo: 1.5,   unidade: "s", invertido: true, casa: 2 },
-        sem_hesitar:         { campo: "melhorTempoMedio",         alvo: 1.0,   unidade: "s", invertido: true, casa: 2 },
+        raio:                { campo: "melhorTempoMedio",         alvo: 1.5,   unidade: "s", invertido: true, casa: 2 },
+        velocidade_relampago:{ campo: "melhorTempoMedioPerfeito", alvo: 0.7,   unidade: "s", invertido: true, casa: 2 },
+        ventania:            { campo: "melhorTempoMedio",         alvo: 1.0,   unidade: "s", invertido: true, casa: 2 },
+        sem_hesitar:         { campo: "melhorTempoMedio",         alvo: 0.8,   unidade: "s", invertido: true, casa: 2 },
         rei_pontuacao:       { campo: "melhorPontuacao",          alvo: 17000, unidade: "pontos" },
         boa_sequencia:       { campo: "maiorSequenciaMax",        alvo: 10,    unidade: "acertos seguidos" },
         dominio_total:       { campo: "partidasCom20Acertos",     alvo: 1,     unidade: "partida perfeita" },
@@ -14452,18 +14448,18 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         cartografo:          { campo: "operacoesExploradas",      alvo: 30,    unidade: "operações" },
         poliglota:           { campo: "modalidadesJogadas",       alvo: 3,     unidade: "modalidades" },
         treinador_elite:     { campo: "treinosFocados",           alvo: 5,     unidade: "treinos" },
-        base_solida:         { campo: "operacoesDominadas25",     alvo: 40,    unidade: "operações (2-5)" },
-        mestre_desafios:     { campo: "operacoesDominadas69",     alvo: 40,    unidade: "operações (6-9)" },
+        base_solida:         { campo: "operacoesDominadas25",     alvo: 40,    unidade: "operações (1-10)" },
+        mestre_desafios:     { campo: "operacoesDominadas69",     alvo: 40,    unidade: "operações (11-20)" },
         mestre_mapa:         { campo: "operacoesDominadas",       alvo: 100,   unidade: "operações dominadas" },
         guarda_precisao:     { campo: "operacoesPrecisao95",      alvo: 100,   unidade: "operações ≥95%" },
         lenda_mapa:          { campo: "diasMapa100",              alvo: 3,     unidade: "dias no 100%" },
-        marcha_ligeira:      { campo: "melhorTempoMedio19Ou20",   alvo: 2.0,   unidade: "s", invertido: true, casa: 2 },
-        corredor:            { campo: "melhorTempoMedio19Ou20",   alvo: 1.8,   unidade: "s", invertido: true, casa: 2 },
-        velocista:           { campo: "melhorTempoMedio19Ou20",   alvo: 1.6,   unidade: "s", invertido: true, casa: 2 },
-        trovao:              { campo: "melhorTempoMedioPerfeito", alvo: 1.4,   unidade: "s", invertido: true, casa: 2 },
-        furacao:             { campo: "melhorTempoMedioPerfeito", alvo: 1.2,   unidade: "s", invertido: true, casa: 2 },
-        meteoro:             { campo: "melhorTempoMedioPerfeito", alvo: 1.1,   unidade: "s", invertido: true, casa: 2 },
-        mestre_tabuada:      { campo: "melhorTempoMedioPerfeito", alvo: 1.0,   unidade: "s", invertido: true, casa: 2 },
+        marcha_ligeira:      { campo: "melhorTempoMedio19Ou20",   alvo: 1.5,   unidade: "s", invertido: true, casa: 2 },
+        corredor:            { campo: "melhorTempoMedio19Ou20",   alvo: 1.3,   unidade: "s", invertido: true, casa: 2 },
+        velocista:           { campo: "melhorTempoMedio19Ou20",   alvo: 1.1,   unidade: "s", invertido: true, casa: 2 },
+        trovao:              { campo: "melhorTempoMedioPerfeito", alvo: 0.9,   unidade: "s", invertido: true, casa: 2 },
+        furacao:             { campo: "melhorTempoMedioPerfeito", alvo: 0.7,   unidade: "s", invertido: true, casa: 2 },
+        meteoro:             { campo: "melhorTempoMedioPerfeito", alvo: 0.6,   unidade: "s", invertido: true, casa: 2 },
+        mestre_tabuada:      { campo: "melhorTempoMedioPerfeito", alvo: 0.5,   unidade: "s", invertido: true, casa: 2 },
         na_disputa:          { campo: "melhorPosicao",            alvo: 6,     unidade: "posições", invertido: true },
         subiu_ranking:       { campo: "melhorPosicao",            alvo: 4,     unidade: "posições", invertido: true },
         vaga_garantida:      { campo: "melhorPosicao",            alvo: 4,     unidade: "posições", invertido: true },
@@ -24048,14 +24044,29 @@ function abrirBuscarAlunoComMeusDados() {
 
     function analisarTabuadasDoAluno(mapaGlobal) {
         const resumo = {};
-        [2, 3, 4, 5, 6, 7, 8, 9].forEach(tab => {
-            let dominadas = 0; let praticadas = 0; let total = 10;
-            for (let b = 1; b <= 10; b++) {
-                const h = normalizarHistoricoOperacao(mapaGlobal[`${tab}x${b}`]);
-                if (h.length > 0) praticadas++;
-                if (dominadaParaNivel(h, { minTentativas: MAPA_MIN_TENT_PADRAO, minTaxa: 0.9 })) dominadas++;
+        const fatoresUnicos = new Set();
+        Object.keys(mapaGlobal).forEach(k => {
+            const fA = Number(k.split('x')[0]);
+            if (fA) fatoresUnicos.add(fA);
+        });
+        
+        if (fatoresUnicos.size === 0) {
+            [1,2,3,4,5,6,7,8,9].forEach(f => fatoresUnicos.add(f));
+        }
+
+        Array.from(fatoresUnicos).sort((a,b)=>a-b).forEach(fA => {
+            let dominadas = 0; let praticadas = 0; let total = 0;
+            Object.keys(mapaGlobal).forEach(k => {
+                if (k.startsWith(`${fA}x`)) {
+                    total++;
+                    const h = normalizarHistoricoOperacao(mapaGlobal[k]);
+                    if (h.length > 0) praticadas++;
+                    if (dominadaParaNivel(h, { minTentativas: MAPA_MIN_TENT_PADRAO, minTaxa: 0.9 })) dominadas++;
+                }
+            });
+            if (total > 0) {
+                resumo[fA] = { dominadas, praticadas, total, pct: Math.round((dominadas / total) * 100) };
             }
-            resumo[tab] = { dominadas, praticadas, total, pct: Math.round((dominadas / total) * 100) };
         });
         return resumo;
     }
@@ -24069,7 +24080,7 @@ function abrirBuscarAlunoComMeusDados() {
                 if (h.length === 0) return;
                 const s = statsDaOperacao(h);
                 if (s.taxa < 0.7) {
-                    problemas.push({ op: `${a}x${b}`, fA: a, fB: b, taxa: s.taxa, tentativas: s.tentativas, acertos: s.acertos });
+                    problemas.push({ op: `${a}+${b}`, fA: a, fB: b, taxa: s.taxa, tentativas: s.tentativas, acertos: s.acertos });
                 }
             });
         });
@@ -24156,12 +24167,12 @@ function abrirBuscarAlunoComMeusDados() {
         const usos = (dados && dados.usosTreino) || {};
         const posPrecisao = (dados && dados.posicaoPrecisao) || null;
 
-        const rotulos = { "2-5": "Tabuadas 2-5", "6-9": "Tabuadas 6-9", "0-10": "Tabuadas 1-10" };
-        const icones  = { "2-5": "📚", "6-9": "🎯", "0-10": "⭐" };
+        const rotulos = { "1-10": "Somas até 10", "11-20": "Somas até 20", "ate-100": "Somas de Dezenas" };
+        const icones  = { "1-10": "➕", "11-20": "🧮", "ate-100": "💯" };
 
         if (modoEventoAtual !== "olimpiadas") {
             L.push("🏆 COMPETITIVO:");
-            for (const mod of ["2-5", "6-9", "0-10"]) {
+            for (const mod of ["1-10", "11-20", "ate-100"]) {
                 const info = pos[mod] || {};
                 const pt = info.turma; const pg = info.geral; const gap = info.gap;
                 const ptTxt = pt ? `${pt.posicao}º/${pt.total} na turma` : "sem partida";
@@ -24187,14 +24198,14 @@ function abrirBuscarAlunoComMeusDados() {
         L.push("");
         const dominadas = Number(p.operacoesDominadas) || 0;
         const pct = Math.round((dominadas / 100) * 100);
-        L.push(`🗺️ MAPA DE TABUADAS: ${dominadas}/100 dominadas (${pct}%)`);
+        L.push(`🗺️ MAPA DE SOMAS: ${dominadas}/100 dominadas (${pct}%)`);
 
         const fortes = Object.entries(porTab).filter(([, d]) => d.pct >= 80).map(([t]) => t);
         const fracas = Object.entries(porTab).filter(([, d]) => d.pct < 70).sort((a, b) => a[1].pct - b[1].pct).slice(0, 4);
-        if (fortes.length) L.push(`  ✅ Fortes: ${fortes.map(t => `Tab ${t} (${porTab[t].pct}%)`).join(", ")}`);
+        if (fortes.length) L.push(`  ✅ Fortes: ${fortes.map(t => `Parcela ${t} (${porTab[t].pct}%)`).join(", ")}`);
         if (fracas.length) {
             L.push(`  ⚠️ FRACAS (prioridade de treino):`);
-            fracas.forEach(([t, d]) => L.push(`     • Tabuada do ${t}: ${d.pct}% (${d.dominadas}/${d.total})`));
+            fracas.forEach(([t, d]) => L.push(`     • Parcela ${t}: ${d.pct}% (${d.dominadas}/${d.total})`));
         }
         if (probs.length) {
             L.push(`  🔴 Operações mais problemáticas:`);
@@ -24206,9 +24217,9 @@ function abrirBuscarAlunoComMeusDados() {
         const m25  = Number(p.media25)  || 0;
         const m69  = Number(p.media69)  || 0;
         const m010 = Number(p.media010) || 0;
-        L.push(`  • 📚 2-5:  ${m25  > 0 ? Math.round(m25).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
-        L.push(`  • 🎯 6-9:  ${m69  > 0 ? Math.round(m69).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
-        L.push(`  • ⭐ 1-10: ${m010 > 0 ? Math.round(m010).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
+        L.push(`  • ➕ 1-10:  ${m25  > 0 ? Math.round(m25).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
+        L.push(`  • 🧮 11-20: ${m69  > 0 ? Math.round(m69).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
+        L.push(`  • 💯 até 100: ${m010 > 0 ? Math.round(m010).toLocaleString("pt-BR") + " pts" : "sem partidas oficiais"}`);
         const jogou3 = [m25, m69, m010].filter(v => v > 0).length;
         if (jogou3 === 3) {
             const mediaCombinada = (m25 + m69 + m010) / 3;
@@ -24238,7 +24249,7 @@ function abrirBuscarAlunoComMeusDados() {
 
         L.push("");
         const certsList = [];
-        for (const mod of ["2-5", "6-9", "0-10"]) {
+        for (const mod of ["1-10", "11-20", "ate-100"]) {
             const pMod = certs[mod] || {};
             for (const nivel of ["lendaria", "ouro", "prata"]) {
                 if (pMod[nivel] && CERT_NIVEIS[nivel]) certsList.push(`${CERT_NIVEIS[nivel].icone} ${CERT_NIVEIS[nivel].nome} · ${rotulos[mod]}`);
@@ -24256,13 +24267,13 @@ function abrirBuscarAlunoComMeusDados() {
 
     function identificarProximoCertificado(dados) {
         const certs = (dados && dados.certificados) || {};
-        const mods = ["2-5", "6-9", "0-10"];
+        const mods = ["1-10", "11-20", "ate-100"];
         const niveis = ["prata", "ouro", "lendaria"];
         for (const mod of mods) {
             const pMod = certs[mod] || {};
             for (const nivel of niveis) {
                 if (pMod[nivel]) continue;
-                const rotulos = { "2-5": "Tabuadas 2-5", "6-9": "Tabuadas 6-9", "0-10": "Tabuadas 1-10" };
+                const rotulos = { "1-10": "Somas até 10", "11-20": "Somas até 20", "ate-100": "Somas de Dezenas" };
                 const cfg = CERT_NIVEIS[nivel];
                 const coberturaAtual = pctCoberturaPorMod(dados, mod);
                 const coberturaNecessaria = cfg.coberturaPct;
@@ -24279,7 +24290,7 @@ function abrirBuscarAlunoComMeusDados() {
         const fatores = MODALIDADES[mod]?.fatores || [];
         let dominadas = 0;
         fatores.forEach(t => { dominadas += (porTab[t]?.dominadas || 0); });
-        const total = fatores.length * 10;
+        const total = fatores.length * (MODALIDADES[mod]?.isDezenas ? 10 : 10); // 10 itens por parcela
         return total > 0 ? Math.round((dominadas / total) * 100) : 0;
     }
 
@@ -24307,11 +24318,11 @@ function abrirBuscarAlunoComMeusDados() {
         const pendentes = 100 - pctDominio;
 
         if (totalPartidas === 0) return { modoId: "inteligente", nome: "Treino Inteligente", icone: "🧠", motivo: "você ainda não jogou nenhuma partida oficial — o Treino Inteligente escolhe as operações certas para começar.", quando: "primeira sessão" };
-        if (pctDominio >= 90 && temposMedio > 2.0) return { modoId: "progressivo", nome: "Progressivo", icone: "⏱️", motivo: `você domina ${pctDominio}% do mapa mas seu melhor tempo médio é ${temposMedio.toFixed(2)}s — o Progressivo aperta o cronômetro conforme você acerta.`, quando: "domínio + velocidade" };
+        if (pctDominio >= 90 && temposMedio > 1.5) return { modoId: "progressivo", nome: "Progressivo", icone: "⏱️", motivo: `você domina ${pctDominio}% do mapa mas seu melhor tempo médio é ${temposMedio.toFixed(2)}s — o Progressivo aperta o cronômetro conforme você acerta.`, quando: "domínio + velocidade" };
         if (pctDominio >= 95) return { modoId: "progressivo", nome: "Progressivo", icone: "⏱️", motivo: `você já domina ${pctDominio}% do mapa — o próximo passo é velocidade.`, quando: "domínio + velocidade" };
         
         const fracas = Object.entries(porTab).filter(([, d]) => d.pct < 30).sort((a, b) => a[1].pct - b[1].pct);
-        if (fracas.length > 0) return { modoId: "chunking", nome: "Chunking", icone: "🧱", motivo: `a tabuada do ${fracas[0][0]} está em ${fracas[0][1].pct}% — o Chunking treina uma tabuada inteira de uma vez.`, quando: "tabuada fraca" };
+        if (fracas.length > 0) return { modoId: "chunking", nome: "Chunking", icone: "🧱", motivo: `a parcela ${fracas[0][0]} está em ${fracas[0][1].pct}% — o Chunking treina uma parcela inteira de uma vez.`, quando: "parcela fraca" };
         
         if (pendentes >= 40) return { modoId: "inteligente", nome: "Treino Inteligente", icone: "🧠", motivo: `você tem ${pendentes}% do mapa em aberto. O Treino Inteligente ataca as operações mais urgentes primeiro.`, quando: "muitas pendências" };
         
@@ -24319,7 +24330,7 @@ function abrirBuscarAlunoComMeusDados() {
         if (muitoRuins.length >= 3) return { modoId: "reverso", nome: "Treino Reverso", icone: "🔄", motivo: `você tem ${muitoRuins.length} operações com menos de 50% de acerto. O Reverso ajuda a fixar de verdade.`, quando: "erros sistemáticos" };
         
         const medias = probs.filter(o => o.taxa >= 0.5 && o.taxa < 0.75);
-        if (medias.length >= 3) return { modoId: "decomposicao", nome: "Decomposição", icone: "🧩", motivo: `você tem ${medias.length} operações entre 50% e 75%. A Decomposição ensina a montar o resultado em duas partes.`, quando: "consolidar raciocínio" };
+        if (medias.length >= 3) return { modoId: "decomposicao", nome: "Decomposição", icone: "🧩", motivo: `você tem ${medias.length} operações entre 50% e 75%. A Decomposição ensina a ponte para 10.`, quando: "consolidar raciocínio" };
         if (pctDominio >= 60 && pctDominio < 95 && totalPartidas < 15) return { modoId: "espelho", nome: "Espelho", icone: "🪞", motivo: "você está em bom ritmo. O Espelho ajuda você a checar o que já sabe de cor.", quando: "autoavaliação" };
         
         return { modoId: "inteligente", nome: "Treino Inteligente", icone: "🧠", motivo: "o Treino Inteligente escolhe as operações que você mais precisa a cada sessão.", quando: "recomendado para mim" };
@@ -24339,11 +24350,11 @@ function abrirBuscarAlunoComMeusDados() {
         const nomeLimpo = temNome ? String(nome).trim() : "";
         const turmaLimpa = temTurma ? String(turma).trim() : "";
         const primeiroNome = temNome ? nomeLimpo.split(" ")[0] : "";
-        const nomePublico = temNome ? obterNomePublico(nomeLimpo) : "Anônimo"; // <--- PROTEÇÃO LGPD
+        const nomePublico = temNome ? obterNomePublico(nomeLimpo) : "Anônimo";
 
         let identificacao = "";
-        if (temNome && temTurma) identificacao = `O atleta se chama ${nomePublico} (turma ${turmaLimpa}).`; // <--- USA NOME PÚBLICO
-        else if (temNome) identificacao = `O atleta se chama ${nomePublico}.`; // <--- USA NOME PÚBLICO
+        if (temNome && temTurma) identificacao = `O atleta se chama ${nomePublico} (turma ${turmaLimpa}).`;
+        else if (temNome) identificacao = `O atleta se chama ${nomePublico}.`;
         else identificacao = `O atleta ainda não se identificou. Use tratamento genérico.`;
 
         const saudacao = temNome ? `Olá, ${primeiroNome}! Sou seu Coach da Copa da Soma. 🏆` : `Olá! Sou seu Coach da Copa da Soma. 🏆`;
@@ -24378,7 +24389,7 @@ function abrirBuscarAlunoComMeusDados() {
 
         let modoEventoBloco = "";
         if (modoEventoAtual === "olimpiadas") {
-            modoEventoBloco = `\n⚠️ O EVENTO ATUAL É O MODO OLIMPÍADAS ⚠️\nO foco da competição neste momento são as CORRIDAS DE TABUADA. As partidas oficiais de 20 perguntas estão pausadas ou fora de foco. Os alunos estão competindo por velocidade (Corridas por Tempo e por Distância). Se o aluno perguntar sobre ranking, foque no ranking das corridas. Se ele perguntar sobre como melhorar, sugira treinos de fluência e corridas.\n`;
+            modoEventoBloco = `\n⚠️ O EVENTO ATUAL É O MODO OLIMPÍADAS ⚠️\nO foco da competição neste momento são as CORRIDAS DE SOMA. As partidas oficiais de 20 perguntas estão pausadas ou fora de foco. Se o aluno perguntar sobre ranking, foque no ranking das corridas.\n`;
         } else {
             modoEventoBloco = `\n🏆 O EVENTO ATUAL É A CLASSIFICATÓRIA DA COPA 🏆\nO foco são as partidas oficiais de 20 perguntas e a busca pelo Top 4 da turma. As corridas estão desativadas.\n`;
         }
@@ -24387,19 +24398,19 @@ function abrirBuscarAlunoComMeusDados() {
             ? modalidadeClassificatoriaUnicaAtiva() : null;
         let modoUnicoBloco = "";
         if (modUnicaAtiva && modoEventoAtual !== "olimpiadas") {
-            modoUnicoBloco = `\n🎯 MODO CLASSIFICATÓRIA ÚNICA ATIVO 🎯\nA etapa oficial está focada em APENAS UMA modalidade: ${MODALIDADES[modUnicaAtiva].nome}.\nAs outras duas modalidades estão disponíveis APENAS PARA TREINO — não contam para o ranking oficial, para as medalhas da etapa nem para a Final.\n\nCOMO REAGIR:\n• Se o aluno perguntar "por que não posso jogar X?", explique que é uma decisão pedagógica do professor e que ele pode treinar X livremente pelo botão Treinar, sem pressão de ranking.\n• Se perguntar sobre ranking oficial, foque SEMPRE na modalidade ativa (${MODALIDADES[modUnicaAtiva].nome}).\n• Se perguntar sobre as medalhas "Poliglota", "Classificado Triplo" ou "Lenda da Média", explique que elas dependem de jogar as 3 modalidades e ficam SUSPENSAS durante este modo — voltarão quando o professor mudar para "Normal".\n• Se o aluno quiser treinar nas outras modalidades para evoluir no MAPA (o mapa continua valendo nas 3!), incentive — o mapa é global.\n\n`;
+            modoUnicoBloco = `\n🎯 MODO CLASSIFICATÓRIA ÚNICA ATIVO 🎯\nA etapa oficial está focada em APENAS UMA modalidade: ${MODALIDADES[modUnicaAtiva].nome}.\nAs outras duas modalidades estão disponíveis APENAS PARA TREINO — não contam para o ranking oficial, para as medalhas da etapa nem para a Final.\n\nCOMO REAGIR:\n• Se o aluno perguntar "por que não posso jogar X?", explique que é uma decisão pedagógica do professor e que ele pode treinar X livremente pelo botão Treinar, sem pressão de ranking.\n• Se perguntar sobre ranking oficial, foque SEMPRE na modalidade ativa (${MODALIDADES[modUnicaAtiva].nome}).\n\n`;
         }
 
         let blocoVotacao = "";
         if (dadosPerfil && dadosPerfil.votacaoInfo && dadosPerfil.votacaoInfo.aberta) {
             if (dadosPerfil.votacaoInfo.tipo === "duracao_etapa") {
-                blocoVotacao = `\n🗳️ VOTAÇÃO ATIVA (DECISIVA): A votação aberta DEFINIRÁ A DURAÇÃO DA ETAPA (7 ou 14 dias). Se o aluno for elegível (10 partidas + 30% do mapa), incentive-o a votar e explique que o voto dele importa para o prazo final.\n`;
+                blocoVotacao = `\n🗳️ VOTAÇÃO ATIVA (DECISIVA): A votação aberta DEFINIRÁ A DURAÇÃO DA ETAPA (7 ou 14 dias). Se o aluno for elegível (10 partidas + 30% do mapa), incentive-o a votar.\n`;
             } else {
-                blocoVotacao = `\n🗳️ PESQUISA ATIVA (NÃO DECISIVA): Há uma pesquisa de opinião aberta. Ela serve apenas para coleta de dados e NÃO ALTERA a data de encerramento do evento. Explique isso caso o aluno pergunte.\n`;
+                blocoVotacao = `\n🗳️ PESQUISA ATIVA (NÃO DECISIVA): Há uma pesquisa de opinião aberta. Ela serve apenas para coleta de dados e NÃO ALTERA a data de encerramento do evento.\n`;
             }
         }
 
-        return `Você é o COACH PESSOAL da "Copa da Soma CEIB 2026" — uma competição de tabuada entre alunos do Colégio Estadual Ismael Branco.
+        return `Você é o COACH PESSOAL da "Copa da Soma CEIB 2026" — uma competição de soma entre alunos do Colégio Estadual Ismael Branco.
 
 Sua função NÃO é só tirar dúvidas. Você atua como um TREINADOR de atleta:
 diagnostica pontos fortes e fracos, prescreve treinos específicos, define metas
@@ -24425,21 +24436,21 @@ O MENU DEVE SER SEMPRE ESTE:
 1️⃣ 📊 Análise completa do meu desempenho
 2️⃣ 🎯 Plano de treino personalizado
 3️⃣ 💡 Tirar uma dúvida específica (regra ou cálculo)
-4️⃣ 🔥 Focar nas minhas operações mais fracas
+4️⃣ 🔥 Focar nas minhas somas mais fracas
 5️⃣ 🏆 Como chegar ao Top 4 da minha turma
 6️⃣ ⚡ Como melhorar minha velocidade
 7️⃣ 🎓 Como conquistar o próximo certificado
 8️⃣ 💬 Outro assunto
 9️⃣ 🏅 Como subir minha média geral
 🔟 🧠 Qual treino devo fazer agora?
-1️⃣1️⃣ 🏁 Para que serve a Corrida de Tabuada?
+1️⃣1️⃣ 🏁 Para que serve a Corrida de Soma?
 1️⃣2️⃣ 🎯 Como melhorar minha precisão? (Média de acertos)
 
 ═══ PLAYBOOK — COMO RESPONDER A CADA OPÇÃO ═══
 
 1️⃣ ANÁLISE COMPLETA:
    Apresente um "relatório de atleta": posições nas 3 modalidades (se for classificatória),
-   % do mapa, tabuadas fortes/fracas, velocidade, sequência, MÉDIA GERAL por modalidade.
+   % do mapa, parcelas fortes/fracas, velocidade, sequência, MÉDIA GERAL por modalidade.
 
 2️⃣ PLANO DE TREINO:
    Prescreva um plano de 3 passos concretos. Cite o botão real do app: "🎯 Focar agora" ou "Treino Inteligente".
@@ -24447,14 +24458,14 @@ O MENU DEVE SER SEMPRE ESTE:
 3️⃣ DÚVIDA ESPECÍFICA:
    Responda direto, curto e claro, usando o CONTEXTO abaixo. Se for sobre a votação, use o bloco de votação informado.
 
-4️⃣ OPERAÇÕES FRACAS:
-   Liste as 5 piores operações do bloco "Operações mais problemáticas" do perfil.
+4️⃣ SOMAS FRACAS:
+   Liste as 5 piores operações do bloco "Operações mais problemáticas" do perfil. Use exemplos como "7+8" e explique a ponte para 10.
 
 5️⃣ TOP 4:
    Use os gaps do bloco COMPETITIVO. Diga a posição atual, quanto falta de pontos.
 
 6️⃣ VELOCIDADE:
-   Compare o melhor tempo médio do aluno com as metas dos certificados. Sugira a Corrida de Tabuada.
+   Compare o melhor tempo médio do aluno com as metas dos certificados. Sugira a Corrida de Soma.
 
 7️⃣ PRÓXIMO CERTIFICADO:
    Use o bloco "PRÓXIMOS ALVOS" no topo. Diga o nome do certificado, o que falta e o caminho mais rápido.
@@ -24468,7 +24479,7 @@ O MENU DEVE SER SEMPRE ESTE:
 🔟 QUAL TREINO DEVO FAZER AGORA:
    Use o bloco "🏋️ TREINO RECOMENDADO AGORA" do perfil. Diga o modo, o porquê e onde encontrar.
 
-1️⃣1️⃣ PARA QUE SERVE A CORRIDA DE TABUADA:
+1️⃣1️⃣ PARA QUE SERVE A CORRIDA DE SOMA:
    Explique com entusiasmo que a corrida é um modo focado em FLUÊNCIA.
 
 1️⃣2️⃣ COMO MELHORAR MINHA PRECISÃO:
@@ -24476,7 +24487,7 @@ O MENU DEVE SER SEMPRE ESTE:
 
 ═══ TOM E ESTILO ═══
 • Fale como um treinador motivador, MAS com clareza de médico.
-• Use frases curtas. Exemplos: "Você está a 3 operações do Ouro." "Seu ponto forte é claro: Tabuada do 2."
+• Use frases curtas. Exemplos: "Você está a 3 somas do Ouro." "Seu ponto forte é claro: Somas até 10."
 • Sempre CITE NÚMEROS REAIS do perfil. Nunca invente.
 • Celebre pequenas vitórias: "47% do mapa dominado — você está no caminho."
 • Fale como se o aluno tivesse 12 anos. Nada de jargão técnico.
@@ -24485,9 +24496,9 @@ O MENU DEVE SER SEMPRE ESTE:
 (use como fonte para responder dúvidas sobre regras)
 
 ▸ ESTRUTURA BÁSICA
-• Cada partida tem 20 perguntas de multiplicação, com 10 segundos por questão. Quanto mais rápido acertar, mais pontos ganha.
-• 3 modalidades: Tabuadas 2-5, Tabuadas 6-9, Tabuadas 1-10.
-• Modo Classificatória (conta no ranking) e Modo Treino (NÃO conta no ranking, mas alimenta o Mapa de Tabuadas e os certificados).
+• Cada partida tem 20 perguntas de SOMA, com 10 segundos por questão. Quanto mais rápido acertar, mais pontos ganha.
+• 3 modalidades: Somas até 10, Somas até 20 (com transporte) e Somas de Dezenas (até 100).
+• Modo Classificatória (conta no ranking) e Modo Treino (NÃO conta no ranking, mas alimenta o Mapa de Somas e os certificados).
 • Classificação: os 4 melhores de cada turma/modalidade avançam para a Final. Critérios de desempate: pontos → acertos → menor tempo médio dos acertos → maior sequência → data.
 
 ▸ TEMPO ESGOTADO E ✕ ENCERRAR TENTATIVA
@@ -24498,7 +24509,7 @@ O MENU DEVE SER SEMPRE ESTE:
     → NÃO conta para medalhas, Hall da Fama nem Álbum.
 • Fechar o navegador durante a partida = nada é salvo (perde tudo).
 
-▸ MAPA DE TABUADAS
+▸ MAPA DE SOMAS
 • 100 operações com cores por domínio recente (últimas 10 respostas): ⚪ sem prática · 🔴 reforçar · 🟡 em treino · 🔵 quase lá · 🟢 dominada (≥90% de acerto com 5+ tentativas).
 • Treinos e parciais alimentam o mapa. Mas só partidas completas contam para medalhas.
 
@@ -24506,7 +24517,7 @@ O MENU DEVE SER SEMPRE ESTE:
 • 🥈 Prata → 85% do mapa, 5+ tentativas, 80% de acerto
 • 🥇 Ouro → 95% do mapa, 8+ tentativas, 90% + velocidade
 • 💎 Lendária → 100% do mapa, 10+ tentativas, 90% + velocidade
-• Velocidades ideais: 2-5 → 2,0s · 6-9 → 2,5s · 1-10 → 3,0s
+• Velocidades ideais para SOMA: até 10 → 1,0s · até 20 → 1,5s · dezenas → 2,5s
 
 ▸ MÉDIA GERAL (PONTOS E ACERTOS)
 • A Média de Pontos é a média das partidas oficiais. Para entrar, precisa de 5 partidas em cada modalidade.
@@ -24515,13 +24526,13 @@ O MENU DEVE SER SEMPRE ESTE:
 
 ▸ TREINOS DISPONÍVEIS (6 modos)
 • 🧠 Treino Inteligente: o app escolhe as operações mais urgentes.
-• 🔄 Treino Reverso: "3 × ? = 21" — descobre o número que falta.
-• 🧩 Decomposição: "7 × 8 = 7 × 5 + 7 × ?" — monta em duas partes.
+• 🔄 Treino Reverso: "3 + ? = 10" — descobre a parcela que falta.
+• 🧩 Decomposição: "7 + 8 = 7 + 3 + ?" — usa a ponte para 10.
 • 🪞 Espelho: você pensa, revela e diz se sabia (🟢) ou não (🔴).
-• 🧱 Chunking: treina UMA tabuada isolada.
+• 🧱 Chunking: treina uma parcela fixa (ex: só +7).
 • ⏱️ Progressivo: timer que cai (10s → 8s → 6s → 4s).
 
-▸ CORRIDAS DE TABUADA
+▸ CORRIDAS DE SOMA
 • Modo focado em fluência (Tempo ou Distância). Tem ranking próprio (mínimo 80% de precisão). Alimenta o mapa e certificados, mas NÃO conta para o ranking das 20 perguntas.
 
 ▸ VOTAÇÃO
@@ -24576,7 +24587,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         if (badge) {
             if (temNome && temTurma) {
                 badge.classList.remove("vazio");
-                const nomePublico = obterNomePublico(nome); // <--- PROTEÇÃO LGPD
+                const nomePublico = obterNomePublico(nome);
                 const partes = [`🎓 <strong>${escaparHtml(nomePublico)}</strong>`];
                 partes.push(`<span class="sep">·</span> Turma <strong>${escaparHtml(turma)}</strong>`);
                 if (dadosPerfil && dadosPerfil.perfil) {
@@ -24601,7 +24612,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
                 badge.innerHTML = partes.join(" ");
             } else if (temNome) {
                 badge.classList.remove("vazio");
-                badge.innerHTML = `🎓 Coach de <strong>${escaparHtml(obterNomePublico(nome))}</strong>`; // <--- PROTEÇÃO LGPD
+                badge.innerHTML = `🎓 Coach de <strong>${escaparHtml(obterNomePublico(nome))}</strong>`;
             } else {
                 badge.classList.add("vazio");
                 badge.innerHTML = `⚠️ Identifique-se para o coach personalizar`;
@@ -26333,35 +26344,22 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     // ▲▲▲ FIM [19.05]
 
     // ▼▼▼ [19.06] Motor Aprender + Modos + Mini-menu ──── INÍCIO ───
-    // v10.5.7 · Arquitetura por modo + Chunking.
-    // Modos implementados: 🔄 Reverso · 🧩 Decomposição · 🪞 Espelho ·
-    //                      🧱 Chunking (input, tabuada isolada).
-    // O Progressivo é motor separado (bloco [19.07]).
-    //
-    // v10.5.7b · Correção pedagógica do pista1 (Estratégia).
-    //
-    // v10.7.2 · Correções acumuladas:
-    //   Item 1 — Decomposição com fator 1 descartada.
-    //   Item 2 — Sorteio ponderado SEM REPETIÇÃO.
-    //   Item 4 — Feedback visual imediato antes das leituras de rede.
-    //   Item 5 — Validação estrita do campo de resposta (só dígitos).
-    //
-    // v10.9.1 · Hotfix: O modo "Treino Inteligente" da lista agora 
-    // aponta para a função correta (iniciarTreinoInteligenteDoMenu).
-
     const STORAGE_MENU_TREINO_USOS = "copa_menu_treino_usos";
 
     function _gerarPistaDobraOuSoma(fA, fB) {
-        if (fB === 1) return `Todo número vezes 1 é ele mesmo: <strong>${fA}</strong>.`;
-        if (fB === 2) return `Dobrar é só somar <strong>${fA} + ${fA}</strong>.`;
-        if (fB === 5) return `Pense em <strong>${fA} × 10</strong> e divida por 2.`;
-        if (fB === 9) return `Pense em <strong>${fA} × 10</strong> e subtraia ${fA}.`;
-        if (fB === 10) return `É só colocar um zero no final de <strong>${fA}</strong>.`;
-        if (fB % 2 === 0) {
-            const metade = fB / 2;
-            return `Pense em <strong>${fA} × ${metade}</strong> e dobre.`;
+        const soma = fA + fB;
+        const maior = Math.max(fA, fB);
+        const menor = Math.min(fA, fB);
+        const completar = 10 - maior;
+        const resto = menor - completar;
+        
+        if (soma <= 10) {
+            return `Conte a partir do maior: ${maior} + ${menor} = <strong>${soma}</strong>.`;
+        } else if (completar > 0 && resto > 0) {
+            return `Ponte para 10: ${maior} + ${completar} = 10. Sobram ${resto}. Então 10 + ${resto} = <strong>${soma}</strong>.`;
+        } else {
+            return `${fA} + ${fB} = <strong>${soma}</strong>.`;
         }
-        return `Pense em <strong>${fA} × ${fB - 1}</strong> e some ${fA}.`;
     }
 
     const MODOS_TREINO = [
@@ -26371,19 +26369,19 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
           emBreve: false },
         { id: "reverso", icone: "🔄", nome: "Treino Reverso",
           desc: "Descubra o número que falta na conta",
-          exemplo: "3 × ? = 21",
+          exemplo: "3 + ? = 10",
           emBreve: false },
         { id: "decomposicao", icone: "🧩", nome: "Decomposição",
-          desc: "Aprenda a derivar o resultado pela soma",
-          exemplo: "7×8 = 7×5 + ?",
+          desc: "Aprenda a derivar o resultado pela ponte 10",
+          exemplo: "7+8 = 7+3+?", // <--- CORREÇÃO AQUI
           emBreve: false },
         { id: "espelho", icone: "🪞", nome: "Espelho",
           desc: "Veja, pense e diga se sabia de cor",
           exemplo: "🟢 sabia · 🔴 errei",
           emBreve: false },
         { id: "chunking", icone: "🧱", nome: "Chunking",
-          desc: "Treine uma tabuada só — bloco por bloco",
-          exemplo: "só tabuada do 7",
+          desc: "Treine uma parcela só — bloco por bloco",
+          exemplo: "só parcela 7",
           emBreve: false },
         { id: "progressivo", icone: "⏱️", nome: "Progressivo",
           desc: "O tempo cai conforme sua precisão sobe",
@@ -26537,12 +26535,10 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const mod = menuTreinoModAtual;
         if (!mod) { fecharMenuTreino(); return; }
 
-        // ▼ v10.9.1 · Correção do modo Inteligente na lista
         if (modoId === "inteligente") {
             iniciarTreinoInteligenteDoMenu();
             return;
         }
-        // ▲
 
         registrarUsoMenuTreino(modoId);
 
@@ -26575,9 +26571,9 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         const tabuadas = MODALIDADES[mod].fatores || [];
         const botoes = tabuadas.map(t => `
-            <button type="button" class="menu-chunking-tabuada" onclick="escolherTabuadaChunking(${t})" aria-label="Treinar tabuada do ${t}">
+            <button type="button" class="menu-chunking-tabuada" onclick="escolherTabuadaChunking(${t})" aria-label="Treinar parcela ${t}">
                 <span class="num">${t}</span>
-                <span class="lbl">tabuada</span>
+                <span class="lbl">parcela</span>
             </button>
         `).join("");
 
@@ -26585,8 +26581,8 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const tot = menuTreinoDados.total || 0;
 
         corpo.innerHTML = `
-            <div class="menu-treino-secao">🧱 Escolher tabuada</div>
-            <p class="menu-chunking-desc">Cada sessão treina <strong>10 contas</strong> da tabuada escolhida. Ideal para focar em uma tabuada de cada vez.</p>
+            <div class="menu-treino-secao">🧱 Escolher parcela fixa</div>
+            <p class="menu-chunking-desc">Cada sessão treina <strong>10 somas</strong> usando a parcela escolhida. Ideal para focar em uma parcela de cada vez.</p>
             <div class="menu-chunking-grid">${botoes}</div>
             <div class="menu-treino-rodape">
                 <button type="button" onclick="renderizarMenuTreino('${mod}', ${p}, ${tot})">← Voltar</button>
@@ -26602,7 +26598,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const mod = menuTreinoModAtual;
         if (!mod || !MODALIDADES[mod]) return;
         if (!MODALIDADES[mod].fatores.includes(tabuada)) {
-            notificar("Esta tabuada não pertence à modalidade atual.", "aviso");
+            notificar("Esta parcela não pertence à modalidade atual.", "aviso");
             return;
         }
         fecharMenuTreino();
@@ -26621,7 +26617,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         return n === 1 ? "1 objeto" : `${n} objetos`;
     }
 
-    // v10.7.2 · Helpers (itens 1 e 2 da análise).
     function _filtrarOperacoesValidasPorModo(modoId, ops) {
         if (!Array.isArray(ops)) return [];
         if (modoId === "decomposicao") {
@@ -26655,55 +26650,47 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             gerarPergunta(base) {
                 const { fA, fB } = base;
                 const ocultar = Math.random() < 0.5 ? "fB" : "fA";
-                const produto = fA * fB;
+                const soma = fA + fB;
                 const respostaCorreta = ocultar === "fB" ? fB : fA;
                 const enunciadoHtml = ocultar === "fB"
-                    ? `${fA} × <span class="incognita">?</span> = ${produto}`
-                    : `<span class="incognita">?</span> × ${fB} = ${produto}`;
-                return { fA, fB, ocultar, produto, respostaCorreta, enunciadoHtml };
+                    ? `${fA} + <span class="incognita">?</span> = ${soma}`
+                    : `<span class="incognita">?</span> + ${fB} = ${soma}`;
+                return { fA, fB, ocultar, soma, respostaCorreta, enunciadoHtml };
             },
 
             pista1(p) {
-                const { fA, fB, produto, ocultar } = p;
+                const { fA, fB, soma, ocultar } = p;
                 if (ocultar === "fB") {
-                    return `Quantas vezes <strong>${fA}</strong> cabe em <strong>${produto}</strong>?<br><small style="opacity:0.85;">Dica de cálculo: ${_gerarPistaDobraOuSoma(fA, fB).replace(/<\/?strong>/g, "")}</small>`;
+                    return `Quanto falta somar a <strong>${fA}</strong> para chegar em <strong>${soma}</strong>?<br><small style="opacity:0.85;">Pense em ${soma} - ${fA}.</small>`;
                 }
-                return `Quantas vezes <strong>${fB}</strong> cabe em <strong>${produto}</strong>?<br><small style="opacity:0.85;">Dica de cálculo: ${_gerarPistaDobraOuSoma(fB, fA).replace(/<\/?strong>/g, "")}</small>`;
+                return `Quanto falta somar a <strong>${fB}</strong> para chegar em <strong>${soma}</strong>?<br><small style="opacity:0.85;">Pense em ${soma} - ${fB}.</small>`;
             },
 
             pista2(p) {
                 const { fA, fB, ocultar } = p;
                 if (ocultar === "fB") {
-                    const metade = Math.max(1, Math.floor(fB / 2));
-                    const resto = fB - metade;
-                    return `${fA} × ${fB} = <strong>${fA} × ${metade} + ${fA} × ${resto}</strong> = ?`;
+                    return `Use a ponte para 10: <br>${fA} + ___ = 10. Depois some o resto.`;
                 }
-                const metade = Math.max(1, Math.floor(fA / 2));
-                const resto = fA - metade;
-                return `${fA} × ${fB} = <strong>${metade} × ${fB} + ${resto} × ${fB}</strong> = ?`;
+                return `Use a ponte para 10: <br>___ + ${fB} = 10. Depois some o resto.`;
             },
 
             pista3(p) {
-                const { fA, fB } = p;
-                const total = fA * fB;
-                return `Imagine ${fA} grupos de ${fB} ${fB === 1 ? "objeto" : "objetos"}:<br>${"🔵".repeat(Math.min(fA, 10))} × ${"🟡".repeat(Math.min(fB, 10))} = <strong>${_pluralObjetos(total)}</strong> no total.`;
+                const { fA, fB, soma } = p;
+                return `Imagine uma reta numérica:<br>Comece no <strong>${Math.max(fA,fB)}</strong> e conte mais <strong>${Math.min(fA,fB)}</strong> passos até chegar em <strong>${soma}</strong>.`;
             },
 
             revelacao(p) {
-                const { fA, fB, ocultar } = p;
-                const produto = fA * fB;
+                const { fA, fB, ocultar, soma } = p;
                 if (ocultar === "fB") {
-                    const metade = Math.max(1, Math.floor(fB / 2));
-                    return `<strong>${fA} × ${fB} = ${produto}</strong>. Como ${fA} × ${metade} = ${fA * metade}, basta dobrar: ${fA * metade} + ${fA * (fB - metade)} = ${produto}.`;
+                    return `<strong>${fA} + ${fB} = ${soma}</strong>. A resposta é <strong>${fB}</strong>.`;
                 }
-                const metade = Math.max(1, Math.floor(fA / 2));
-                return `<strong>${fA} × ${fB} = ${produto}</strong>. Como ${metade} × ${fB} = ${metade * fB}, basta somar: ${metade * fB} + ${(fA - metade) * fB} = ${produto}.`;
+                return `<strong>${fA} + ${fB} = ${soma}</strong>. A resposta é <strong>${fA}</strong>.`;
             }
         },
 
         decomposicao: {
             id: "decomposicao",
-            nome: "Decomposição",
+            nome: "Decomposição (Ponte 10)",
             icone: "🧩",
             tipo: "input",
             tamanhoSessaoPadrao: 5,
@@ -26711,34 +26698,48 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
             gerarPergunta(base) {
                 const { fA, fB } = base;
-                const fBseguro = (fB === 1) ? 2 : fB;
-                const fC = _escolherAncoraDecomposicao(fBseguro);
-                const resto = fBseguro - fC;
-                const produto = fA * fBseguro;
-                const respostaCorreta = resto;
-                const enunciadoHtml = `${fA} × ${fBseguro} = ${fA} × ${fC} + ${fA} × <span class="incognita">?</span>`;
-                return { fA, fB: fBseguro, fC, resto, produto, respostaCorreta, enunciadoHtml };
+                const soma = fA + fB;
+                
+                if (soma <= 10) {
+                    return {
+                        fA, fB, soma,
+                        respostaCorreta: fB,
+                        enunciadoHtml: `${fA} + <span class="incognita">?</span> = ${soma}`
+                    };
+                }
+
+                const maior = Math.max(fA, fB);
+                const menor = Math.min(fA, fB);
+                const completar = 10 - maior;
+                const resto = menor - completar;
+                
+                return {
+                    fA, fB, maior, menor, completar, resto, soma,
+                    respostaCorreta: resto,
+                    enunciadoHtml: `${maior} + ${menor} = ${maior} + ${completar} + <span class="incognita">?</span>`
+                };
             },
 
             pista1(p) {
-                const { fB, fC } = p;
-                return `Conte de <strong>${fC}</strong> até <strong>${fB}</strong>: quantos passos você dá?`;
+                if (p.soma <= 10) return `Some <strong>${p.fA}</strong> e <strong>${p.fB}</strong>.`;
+                return `Para fazer a ponte para 10: quanto falta somar a <strong>${p.maior}</strong> para chegar em 10?`;
             },
 
             pista2(p) {
-                const { fA, fB, fC } = p;
-                return `${fA} × ${fB} = ${fA} × ${fC} + ${fA} × <strong>___</strong>`;
+                if (p.soma <= 10) return `É só juntar as duas quantidades.`;
+                return `<strong>${p.maior}</strong> + <strong>${p.completar}</strong> = 10.<br>Agora sobra <strong>${p.resto}</strong> do outro número.`;
             },
 
             pista3(p) {
-                const { fA, fC, resto } = p;
-                const parcial = fA * fC;
-                return `Sabemos que <strong>${fA} × ${fC} = ${parcial}</strong>. Agora é só somar ${fA} <strong>${resto}</strong> ${resto === 1 ? "vez" : "vezes"}.`;
+                if (p.soma <= 10) return `Conte nos dedos se precisar!`;
+                return `10 + ${p.resto} = ?`;
             },
 
             revelacao(p) {
-                const { fA, fB, fC, resto, produto } = p;
-                return `<strong>${fA} × ${fB} = ${fA} × ${fC} + ${fA} × ${resto} = ${fA * fC} + ${fA * resto} = ${produto}</strong>. A resposta é <strong>${resto}</strong>.`;
+                if (p.soma <= 10) {
+                    return `<strong>${p.fA} + ${p.fB} = ${p.soma}</strong>.`;
+                }
+                return `<strong>${p.fA} + ${p.fB} = ${p.maior} + ${p.completar} + ${p.resto} = 10 + ${p.resto} = ${p.soma}</strong>. A resposta é <strong>${p.resto}</strong>.`;
             }
         },
 
@@ -26752,18 +26753,18 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
             gerarPergunta(base) {
                 const { fA, fB } = base;
-                const produto = fA * fB;
+                const soma = fA + fB;
                 return {
-                    fA, fB, produto,
-                    respostaCorreta: produto,
-                    enunciadoHtml: `${fA} × ${fB} = <span class="incognita">?</span>`
+                    fA, fB, soma,
+                    respostaCorreta: soma,
+                    enunciadoHtml: `${fA} + ${fB} = <span class="incognita">?</span>`
                 };
             }
         },
 
         chunking: {
             id: "chunking",
-            nome: "Chunking",
+            nome: "Chunking (Parcela Fixa)",
             icone: "🧱",
             tipo: "input",
             tamanhoSessaoPadrao: 10,
@@ -26771,39 +26772,29 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
             gerarPergunta(base) {
                 const { fA, fB } = base;
-                const produto = fA * fB;
+                const soma = fA + fB;
                 return {
-                    fA, fB, produto,
-                    respostaCorreta: produto,
-                    enunciadoHtml: `${fA} × ${fB} = <span class="incognita">?</span>`
+                    fA, fB, soma,
+                    respostaCorreta: soma,
+                    enunciadoHtml: `${fA} + ${fB} = <span class="incognita">?</span>`
                 };
             },
 
             pista1(p) {
                 const { fA, fB } = p;
-                return _gerarPistaDobraOuSoma(fA, fB);
+                if (fA > fB) {
+                    return `Você está treinando somar <strong>${fA}</strong>. Comece no ${fA} e conte mais ${fB}.`;
+                }
+                return `Você está treinando somar <strong>${fA}</strong>. Comece no ${fA} e some mais ${fB}.`;
             },
             pista2(p) {
-                const { fA, fB } = p;
-                const metade = Math.max(1, Math.floor(fB / 2));
-                const resto = fB - metade;
-                return `${fA} × ${fB} = <strong>${fA} × ${metade} + ${fA} × ${resto}</strong> = ?`;
+                return `Se fosse na tabuada, seria a mesma sequência: ${p.fA} + 1, ${p.fA} + 2... Agora é só somar ${p.fB}.`;
             },
             pista3(p) {
-                const { fA, fB } = p;
-                const total = fA * fB;
-                return `Imagine ${fA} grupos de ${fB} ${fB === 1 ? "objeto" : "objetos"}:<br>${"🔵".repeat(Math.min(fA, 10))} × ${"🟡".repeat(Math.min(fB, 10))} = <strong>${_pluralObjetos(total)}</strong> no total.`;
+                return `Pense em dinheiro: ${p.fA} reais + ${p.fB} reais. Quanto dá no total?`;
             },
             revelacao(p) {
-                const { fA, fB } = p;
-                const produto = fA * fB;
-                if (fB === 1) return `<strong>${fA} × 1 = ${fA}</strong>. Todo número vezes 1 é ele mesmo.`;
-                if (fB === 2) return `<strong>${fA} × 2 = ${produto}</strong>. É só somar: ${fA} + ${fA} = ${produto}.`;
-                if (fB === 5) return `<strong>${fA} × 5 = ${produto}</strong>. Como ${fA} × 10 = ${fA * 10}, basta dividir por 2: ${fA * 10} ÷ 2 = ${produto}.`;
-                if (fB === 9) return `<strong>${fA} × 9 = ${produto}</strong>. Como ${fA} × 10 = ${fA * 10}, basta subtrair ${fA}: ${fA * 10} - ${fA} = ${produto}.`;
-                if (fB === 10) return `<strong>${fA} × 10 = ${produto}</strong>. É só colocar um zero no final de ${fA}.`;
-                const metade = Math.max(1, Math.floor(fB / 2));
-                return `<strong>${fA} × ${fB} = ${produto}</strong>. Como ${fA} × ${metade} = ${fA * metade}, basta somar: ${fA * metade} + ${fA * (fB - metade)} = ${produto}.`;
+                return `<strong>${p.fA} + ${p.fB} = ${p.soma}</strong>.`;
             }
         }
     };
@@ -26840,8 +26831,10 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         if (!operacoesFoco.length) {
             const fatores = MODALIDADES[mod].fatores;
+            const maxB = MODALIDADES[mod]?.isDezenas ? 100 : 10;
+            const stepB = MODALIDADES[mod]?.isDezenas ? 10 : 1;
             for (const fA of fatores) {
-                for (let fB = 1; fB <= 10; fB++) operacoesFoco.push({ fA, fB, peso: 1 });
+                for (let fB = stepB; fB <= maxB; fB += stepB) operacoesFoco.push({ fA, fB, peso: 1 });
             }
             operacoesFoco = _filtrarOperacoesValidasPorModo(modoId, operacoesFoco);
         }
@@ -26882,7 +26875,10 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         if (!nome || !turma) { mostrarTela("tela-single"); return; }
 
         const ops = [];
-        for (let fB = 1; fB <= 10; fB++) ops.push({ fA: tabuada, fB });
+        const maxB = MODALIDADES[mod]?.isDezenas ? 100 : 10;
+        const stepB = MODALIDADES[mod]?.isDezenas ? 10 : 1;
+        
+        for (let fB = stepB; fB <= maxB; fB += stepB) ops.push({ fA: tabuada, fB });
         for (let i = ops.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [ops[i], ops[j]] = [ops[j], ops[i]];
@@ -26935,7 +26931,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const atual = e.indiceAtual + 1;
         const modNome = MODALIDADES[e.mod]?.nome || e.mod;
         const classeConta = e.cfg.classeConta ? ` ${e.cfg.classeConta}` : "";
-        const rotuloProgresso = e.modoId === "chunking" ? `Conta ${atual} de ${total} · Tabuada do ${e.tabuadaFixa}` : `Conta ${atual} de ${total}`;
+        const rotuloProgresso = e.modoId === "chunking" ? `Conta ${atual} de ${total} · Parcela ${e.tabuadaFixa}` : `Conta ${atual} de ${total}`;
 
         const blocos = e.sessaoOps.map((_, i) => {
             if (i < e.resultados.length) {
@@ -26999,7 +26995,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         }).join("");
 
         const contaTxt = e.revelada
-            ? `${p.fA} × ${p.fB} = <span style="color:#6ee7b7;">${p.produto}</span>`
+            ? `${p.fA} + ${p.fB} = <span style="color:#6ee7b7;">${p.soma}</span>`
             : p.enunciadoHtml;
 
         const classeConta = (e.revelada ? " revelada" : "") + (e.cfg.classeConta ? " " + e.cfg.classeConta : "");
@@ -27109,9 +27105,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         }
     }
 
-    // v10.7.2 · Item 5: validação estrita — aceita APENAS dígitos.
-    // Antes, parseInt("56abc") = 56 silenciosamente. Agora, entrada
-    // com qualquer caractere não-numérico treme e não é enviada.
     function confirmarRespostaAprender() {
         const e = aprenderEstado;
         if (!e || e.respondido) return;
@@ -27121,7 +27114,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         const raw = String(input.value || "").trim();
 
-        // ─── v10.7.2 · Validação estrita: só dígitos ───
         if (!/^\d+$/.test(raw)) {
             input.classList.add("errado");
             setTimeout(() => input.classList.remove("errado"), 400);
@@ -27131,7 +27123,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         }
 
         const valor = parseInt(raw, 10);
-        if (!Number.isFinite(valor) || valor <= 0 || valor > 100) {
+        if (!Number.isFinite(valor) || valor < 0 || valor > 200) {
             input.classList.add("errado");
             setTimeout(() => input.classList.remove("errado"), 400);
             return;
@@ -27371,7 +27363,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             const itens = e.aRevisar.slice(0, 6).map(r => `
                 <li>
                     <span class="emoji">🎯</span>
-                    <span class="op">${r.fA} × ${r.fB}</span>
+                    <span class="op">${r.fA} + ${r.fB}</span>
                     <span>precisa de mais prática</span>
                 </li>`).join("");
             listaRevisarHtml = `<div class="aprender-resumo-lista">
