@@ -11697,13 +11697,17 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     async function obterDadosEtapa(forcar = false) {
         if (!forcar && etapaEstadoCache && (Date.now() - etapaEstadoCache._ts) < 30000) return etapaEstadoCache;
         try {
-            const snap = await database.ref(CAMINHO_ETAPA).once("value");
+            // Adiciona um limite de 3 segundos para não travar a tela
+            const snap = await Promise.race([
+                database.ref(CAMINHO_ETAPA).once("value"),
+                new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 3000))
+            ]);
             const d = snap.val() || {};
             const cache = { ...d, _ts: Date.now() };
             etapaEstadoCache = cache;
             return cache;
         } catch(e) {
-            console.warn("Falha ao ler etapa:", e);
+            console.warn("Falha ao ler etapa (timeout ou erro):", e);
             return { _ts: Date.now() };
         }
     }
