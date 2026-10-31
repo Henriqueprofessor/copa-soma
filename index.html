@@ -9329,10 +9329,10 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
     <div id="tela-mais" class="card hidden">
         <h2>⚙️ Mais Opções</h2>
         <div class="mais-grid">
-            <button id="btn-menu-corrida" onclick="abrirCorrida()" class="botao-corrida" aria-label="Abrir o modo Corridas de Tabuada">
+            <button id="btn-menu-corrida" onclick="abrirCorrida()" class="botao-corrida" aria-label="Abrir o modo Corridas de Soma">
                 <span class="icone">🏁</span>
                 <span>
-                    Corridas de Tabuada
+                    Corridas de Soma
                     <small class="subtitulo-botao">100m, 200m ou Maratona (1 a 5 min)</small>
                 </span>
             </button>
@@ -9354,7 +9354,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             </button>
             <button onclick="abrirBuscarAluno()" class="botao-secundario">
                 <span class="icone">🗺️</span>
-                <span>Mapa de Tabuadas &amp; Conquistas</span>
+                <span>Mapa de Somas &amp; Conquistas</span>
             </button>
             <button onclick="abrirComoFunciona()" class="botao-secundario">
                 <span class="icone">ℹ️</span>
@@ -9369,7 +9369,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             </button>
             <button onclick="abrirChangelog()" class="botao-secundario">
                 <span class="icone">📋</span>
-                <span>Novidades <span id="mais-versao-atual" style="font-size:11px;opacity:.7;font-weight:600;">· v10.14.0</span></span>
+                <span>Novidades <span id="mais-versao-atual" style="font-size:11px;opacity:.7;font-weight:600;">· v1.0.0</span></span>
             </button>
             <button onclick="mostrarTela('tela-inicial')" class="botao-verde" style="grid-column: 1 / -1;">
                 <span class="icone">🏠</span>
@@ -9542,10 +9542,10 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         </div>
 
         <select id="filtro-modalidade" onchange="renderizarRanking()">
-            <option value="2-5">Tabuadas 2-5</option>
-            <option value="6-9">Tabuadas 6-9</option>
-            <option value="0-10">Completa 1-10</option>
-        </select>
+    <option value="1-10">Somas até 10</option>
+    <option value="11-20">Somas até 20</option>
+    <option value="ate-100">Dezenas até 100</option>
+</select>
 
         <select id="filtro-turma" onchange="onMudancaTurmaFiltro()" aria-label="Escolha a turma para visualizar">
             <option value="901">901</option><option value="1001">1001</option><option value="1002">1002</option>
@@ -9613,7 +9613,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
 
     <!-- ▼▼▼ [03.09] TELA PESQUISAR ALUNO — MAPA DE TABUADAS & CONQUISTAS ─── INÍCIO ─── -->
     <div id="tela-perfil" class="card hidden">
-        <h2>🗺️ Mapa de Tabuadas &amp; Conquistas</h2>
+        <h2>🗺️ Mapa de Somas &amp; Conquistas</h2>
         <p class="subtitulo" style="text-align:left;">Digite o nome e a turma para ver o perfil completo do aluno: estatísticas, medalhas conquistadas, progresso e mapa de tabuadas.</p>
 
         <div id="perfil-busca-form">
@@ -9715,12 +9715,12 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 <div class="desempenho-destaque-titulo"><span class="em">🏅</span> Seu destaque</div>
                 <div class="desempenho-loading">⏳ Calculando seu destaque…</div>
             </div>
-            <div class="desempenho-filtros">
-                <button class="desempenho-filtro-btn ativa" data-mod="todas" onclick="mudarModalidadeDesempenho('todas')">📚 Todas</button>
-                <button class="desempenho-filtro-btn" data-mod="2-5" onclick="mudarModalidadeDesempenho('2-5')">Tabuadas 2-5</button>
-                <button class="desempenho-filtro-btn" data-mod="6-9" onclick="mudarModalidadeDesempenho('6-9')">Tabuadas 6-9</button>
-                <button class="desempenho-filtro-btn" data-mod="0-10" onclick="mudarModalidadeDesempenho('0-10')">Tabuadas 1-10</button>
-            </div>
+<div class="desempenho-filtros">
+    <button class="desempenho-filtro-btn ativa" data-mod="todas" onclick="mudarModalidadeDesempenho('todas')">📚 Todas</button>
+    <button class="desempenho-filtro-btn" data-mod="1-10" onclick="mudarModalidadeDesempenho('1-10')">Somas até 10</button>
+    <button class="desempenho-filtro-btn" data-mod="11-20" onclick="mudarModalidadeDesempenho('11-20')">Somas até 20</button>
+    <button class="desempenho-filtro-btn" data-mod="ate-100" onclick="mudarModalidadeDesempenho('ate-100')">Dezenas até 100</button>
+</div>
             <h3 class="desempenho-secao-titulo">📈 Estatísticas</h3>
             <div id="desempenho-stats" class="desempenho-stats-grid"></div>
             <h3 class="desempenho-secao-titulo" style="margin-top:24px;">📈 Evolução</h3>
@@ -9762,7 +9762,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             <span class="album-capa-medalha">🏆</span>
             <span class="album-capa-linha"></span>
             <h1 class="album-capa-titulo">ÁLBUM DE CONQUISTAS</h1>
-            <p class="album-capa-sub">Copa Tabuada CEIB 2026</p>
+            <p class="album-capa-sub">Copa da Soma CEIB 2026</p>
             <div class="album-capa-info" id="album-capa-info">
                 <span class="rot">👤 Aluno</span><span class="val" id="album-capa-nome">—</span>
                 <span class="rot">🏫 Turma</span><span class="val" id="album-capa-turma">—</span>
@@ -10046,7 +10046,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
     </div>
     <!-- ▲▲▲ FIM [03.14] -->
 
-    <!-- ▼▼▼ [03.15] TELA CORRIDA DE TABUADA ──────────── INÍCIO ─── -->
+    <!-- ▼▼▼ [03.15] TELA CORRIDA DE SOMA ──────────── INÍCIO ─── -->
     <div id="tela-corrida" class="card hidden" style="background:transparent;box-shadow:none;padding:0;">
 
         <!-- ═══════════════════════════════════════════════════════════════
@@ -10057,35 +10057,35 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 <div class="corrida-cabecalho-esq">
                     <button class="corrida-btn-sair" onclick="mostrarTela('tela-mais')">← Voltar</button>
                     <div class="card-titulo-com-ajuda" style="margin:0;">
-                        <h2 class="corrida-titulo-tela" style="margin:0;">🏁 Corridas de Tabuada</h2>
+                        <h2 class="corrida-titulo-tela" style="margin:0;">🏁 Corridas de Soma</h2>
                         <button type="button"
                                 id="btn-como-funciona-corrida"
                                 class="btn-como-funciona-inline"
                                 onclick="abrirModalComoFuncionaCorrida()"
                                 aria-haspopup="dialog"
                                 aria-controls="modal-explicacao-corrida"
-                                aria-label="Como funciona a Corrida de Tabuada"
+                                aria-label="Como funciona a Corrida de Soma"
                                 title="Como funciona?">?</button>
                     </div>
                 </div>
             </div>
-            <p class="corrida-subtitulo">Escolha a modalidade e o tipo de corrida. Responda o máximo de contas ou termine no menor tempo possível.</p>
+            <p class="corrida-subtitulo">Escolha a modalidade e o tipo de corrida. Responda o máximo de somas ou termine no menor tempo possível.</p>
 
             <!-- Modalidade -->
             <div class="corrida-selecao-secao">
                 <div class="corrida-selecao-rotulo">📚 Modalidade</div>
                 <div class="corrida-selecao-mods" role="radiogroup" aria-label="Escolha da modalidade">
-                    <button type="button" class="corrida-mod-btn" data-mod="2-5" onclick="selecionarModCorrida('2-5')" aria-pressed="false">
-                        📚 Tabuadas 2-5
-                        <small>40 operações</small>
+                    <button type="button" class="corrida-mod-btn" data-mod="1-10" onclick="selecionarModCorrida('1-10')" aria-pressed="false">
+                        ➕ Somas até 10
+                        <small>sem transporte</small>
                     </button>
-                    <button type="button" class="corrida-mod-btn" data-mod="6-9" onclick="selecionarModCorrida('6-9')" aria-pressed="false">
-                        🎯 Tabuadas 6-9
-                        <small>40 operações</small>
+                    <button type="button" class="corrida-mod-btn" data-mod="11-20" onclick="selecionarModCorrida('11-20')" aria-pressed="false">
+                        🧮 Somas até 20
+                        <small>com transporte</small>
                     </button>
-                    <button type="button" class="corrida-mod-btn ativa" data-mod="0-10" onclick="selecionarModCorrida('0-10')" aria-pressed="true">
-                        ⭐ Tabuadas 1-10
-                        <small>100 operações</small>
+                    <button type="button" class="corrida-mod-btn ativa" data-mod="ate-100" onclick="selecionarModCorrida('ate-100')" aria-pressed="true">
+                        💯 Dezenas até 100
+                        <small>somas de dezenas</small>
                     </button>
                 </div>
             </div>
@@ -10100,7 +10100,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             <div class="corrida-selecao-dists" id="corrida-dists-tempo">
                 <div class="corrida-dist-card dist-100">
                     <span class="corrida-dist-icone" aria-hidden="true">🏃</span>
-                    <div class="corrida-dist-nome">100m Tabuada</div>
+                    <div class="corrida-dist-nome">100m Soma</div>
                     <p class="corrida-dist-desc">Sprint rápido. Termina no 3º erro.</p>
                     <div class="corrida-dist-detalhes">
                         <span class="corrida-dist-chip">⏱️ 1 minuto</span>
@@ -10111,7 +10111,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 </div>
                 <div class="corrida-dist-card dist-200">
                     <span class="corrida-dist-icone" aria-hidden="true">🏃‍♂️</span>
-                    <div class="corrida-dist-nome">200m Tabuada</div>
+                    <div class="corrida-dist-nome">200m Soma</div>
                     <p class="corrida-dist-desc">Meia distância. Termina no 6º erro.</p>
                     <div class="corrida-dist-detalhes">
                         <span class="corrida-dist-chip">⏱️ 2 minutos</span>
@@ -10138,7 +10138,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 <div class="corrida-dist-card dist-100">
                     <span class="corrida-dist-icone" aria-hidden="true">🎯</span>
                     <div class="corrida-dist-nome">Sprint 10</div>
-                    <p class="corrida-dist-desc">Responda 10 contas. Errar adiciona tempo.</p>
+                    <p class="corrida-dist-desc">Responda 10 somas. Errar adiciona tempo.</p>
                     <div class="corrida-dist-detalhes">
                         <span class="corrida-dist-chip">🔢 10 perguntas</span>
                         <span class="corrida-dist-chip">⏱️ +3s por erro</span>
@@ -10149,7 +10149,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 <div class="corrida-dist-card dist-200">
                     <span class="corrida-dist-icone" aria-hidden="true">🎯</span>
                     <div class="corrida-dist-nome">Meia 20</div>
-                    <p class="corrida-dist-desc">Responda 20 contas. Errar adiciona tempo.</p>
+                    <p class="corrida-dist-desc">Responda 20 somas. Errar adiciona tempo.</p>
                     <div class="corrida-dist-detalhes">
                         <span class="corrida-dist-chip">🔢 20 perguntas</span>
                         <span class="corrida-dist-chip">⏱️ +3s por erro</span>
@@ -10160,7 +10160,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 <div class="corrida-dist-card dist-maratona">
                     <span class="corrida-dist-icone" aria-hidden="true">🎯</span>
                     <div class="corrida-dist-nome">Ultra 50</div>
-                    <p class="corrida-dist-desc">Responda 50 contas. Errar adiciona tempo.</p>
+                    <p class="corrida-dist-desc">Responda 50 somas. Errar adiciona tempo.</p>
                     <div class="corrida-dist-detalhes">
                         <span class="corrida-dist-chip">🔢 50 perguntas</span>
                         <span class="corrida-dist-chip">⏱️ +3s por erro</span>
@@ -10170,7 +10170,6 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                 </div>
             </div>
 
-            <!-- NOVO BOTÃO DE VOLTAR INFERIOR -->
             <button class="corrida-btn-secundario" style="margin-top: 24px; width: 100%; padding: 13px 16px; border-radius: 10px; font-weight: 800; font-size: 14px;" onclick="mostrarTela('tela-mais')">← Voltar para o menu</button>
         </div>
 
@@ -10197,7 +10196,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             </div>
 
             <div class="corrida-jogo-card">
-                <div class="corrida-conta" id="corrida-conta">× = ?</div>
+                <div class="corrida-conta" id="corrida-conta">+ = ?</div>
                 <div class="corrida-opcoes" id="corrida-opcoes">
                     <button type="button" class="corrida-opcao" onclick="responderCorrida(this)"></button>
                     <button type="button" class="corrida-opcao" onclick="responderCorrida(this)"></button>
@@ -10271,13 +10270,13 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         <div class="modal-card info-modal-card" onclick="event.stopPropagation()">
             <div class="modal-header"><h3>📖 Como funciona a Copa</h3><button class="modal-close" onclick="fecharComoFunciona()" aria-label="Fechar">✕</button></div>
             <div class="info-lista-wrap">
-                <div class="info-secao"><span class="info-icone">🏆</span><div class="info-conteudo"><h4 class="info-titulo">Bem-vindo à Copa da Soma!</h4><p class="info-texto">É uma competição entre os alunos do colégio. Você responde <strong>20 perguntas de multiplicação</strong> o mais rápido que conseguir e entra no ranking da sua turma.</p></div></div>
+                <div class="info-secao"><span class="info-icone">➕</span><div class="info-conteudo"><h4 class="info-titulo">Bem-vindo à Copa da Soma!</h4><p class="info-texto">É uma competição entre os alunos do colégio. Você responde <strong>20 perguntas de soma</strong> o mais rápido que conseguir e entra no ranking da sua turma.</p></div></div>
                 <div class="info-secao"><span class="info-icone">🚨</span><div class="info-conteudo"><h4 class="info-titulo">Regra do nome: sem abreviações</h4><p class="info-texto">Ao entrar, escreva seu <strong>nome completo e sem abreviações</strong> (nome + sobrenome). Não use ponto, apelido ou apenas a inicial.</p><ul class="info-lista"><li>✅ <strong>Maria Eduarda Silva</strong></li><li>✅ <strong>João Pedro Souza</strong></li><li>❌ <em>Maria E. S.</em></li><li>❌ <em>João P.</em></li><li>❌ <em>Jotinha</em></li></ul><div class="info-destaque vermelho">🚨 <strong>Atenção:</strong> se você se classificar com o nome abreviado ou fora do padrão, poderá ser <strong>desclassificado</strong> da Copa. O nome precisa conferir com a chamada oficial da turma.</div></div></div>
                 <div class="info-secao"><span class="info-icone">🎯</span><div class="info-conteudo"><h4 class="info-titulo">Classificatória × Final</h4><p class="info-texto">Você está na <strong>Etapa Classificatória</strong>. A duração dela será <strong>decidida pelos próprios alunos</strong>: os que cumprirem o critério de participação votam entre <em>7 dias</em> (encerrando na primeira semana) ou <em>14 dias</em> (estendendo por mais uma semana). Enquanto a votação não fecha, o prazo é provisório.</p><p class="info-texto">Os melhores participantes de cada turma se classificam para a <strong>Final</strong>, onde estarão os prêmios.</p><div class="info-destaque azul">📌 Ao final da etapa, os nomes dos classificados serão publicados em um <strong>painel no mural da escola</strong>.</div></div></div>
-                <div class="info-secao"><span class="info-icone">📚</span><div class="info-conteudo"><h4 class="info-titulo">Três modalidades para jogar</h4><p class="info-texto">Você pode jogar quantas vezes quiser, em qualquer uma destas modalidades:</p><ul class="info-lista"><li>Tabuadas do <strong>2 ao 5</strong></li><li>Tabuadas do <strong>6 ao 9</strong></li><li>Tabuadas <strong>completas (1 ao 10)</strong></li></ul><div class="info-destaque azul">💡 Só o <strong>seu melhor resultado</strong> em cada modalidade conta. Pode tentar várias vezes até acertar!</div></div></div>
-                <div class="info-secao"><span class="info-icone">🎮</span><div class="info-conteudo"><h4 class="info-titulo">Como é cada partida</h4><ul class="info-lista"><li>São <strong>20 perguntas</strong> de multiplicação</li><li>Você tem até <strong>10 segundos</strong> por questão</li><li>Quanto <strong>mais rápido acertar</strong>, mais pontos ganha</li><li>Acertos seguidos rendem <strong>bônus especiais</strong> 🔥</li></ul></div></div>
-                <div class="info-secao"><span class="info-icone">🎓</span><div class="info-conteudo"><h4 class="info-titulo">Certificados de Maestria</h4><p class="info-texto">Você pode conquistar <strong>3 certificados</strong> conforme domina mais operações da tabuada:</p><ul class="info-lista"><li>🥈 <strong>Mestre da Tabuada (Prata)</strong> — 85% do mapa dominado, 5 tentativas por operação, 80% de acerto recente</li><li>🥇 <strong>Lenda da Tabuada (Ouro)</strong> — 95% do mapa, 8 tentativas, 90% de acerto e velocidade</li><li>💎 <strong>Maestria Total (Lendária)</strong> — 100% do mapa, 10 tentativas, 90% + velocidade comprovada</li></ul><div class="info-destaque verde">🏆 O certificado fica <strong>salvo durante a competição atual</strong> no seu Álbum, mesmo se você parar de jogar. É uma conquista sua nesta Copa!</div></div></div>
-                <div class="info-secao"><span class="info-icone">🎯</span><div class="info-conteudo"><h4 class="info-titulo">Treine à vontade!</h4><p class="info-texto">Existem <strong>6 modos de treino</strong> que ajudam você a evoluir no mapa e nos certificados:</p><ul class="info-lista"><li>🧠 <strong>Inteligente</strong> — o app escolhe as operações que você mais precisa</li><li>🔄 <strong>Reverso</strong> — descobre o número que falta na conta (ex: <em>3 × ? = 21</em>)</li><li>🧩 <strong>Decomposição</strong> — monta o resultado em duas partes</li><li>🪞 <strong>Espelho</strong> — autoavaliação honesta: <em>sabia de cor</em> ou <em>precisei pensar?</em></li><li>🧱 <strong>Chunking</strong> — treina uma tabuada isolada (ex: só a do 7)</li><li>⏱️ <strong>Progressivo</strong> — o tempo cai conforme sua precisão sobe</li></ul><p class="info-texto">Treinar <strong>não conta para o ranking</strong>, mas <strong>conta para</strong>:</p><ul class="info-lista"><li>✅ Mapa de tabuadas (todas as cores)</li><li>✅ Certificados (🥈 Prata · 🥇 Ouro · 💎 Lendária)</li><li>✅ Medalhas do Álbum</li></ul><button class="btn-abrir-guia-treino" onclick="fecharComoFunciona(); abrirGuiaTreino();">📚 Ver guia completo de treino →</button></div></div>
+                <div class="info-secao"><span class="info-icone">📚</span><div class="info-conteudo"><h4 class="info-titulo">Três modalidades para jogar</h4><p class="info-texto">Você pode jogar quantas vezes quiser, em qualquer uma destas modalidades:</p><ul class="info-lista"><li><strong>Somas até 10</strong> (sem transporte)</li><li><strong>Somas até 20</strong> (com transporte)</li><li><strong>Somas de dezenas</strong> (até 100)</li></ul><div class="info-destaque azul">💡 Só o <strong>seu melhor resultado</strong> em cada modalidade conta. Pode tentar várias vezes até acertar!</div></div></div>
+                <div class="info-secao"><span class="info-icone">🎮</span><div class="info-conteudo"><h4 class="info-titulo">Como é cada partida</h4><ul class="info-lista"><li>São <strong>20 perguntas</strong> de soma</li><li>Você tem até <strong>10 segundos</strong> por questão</li><li>Quanto <strong>mais rápido acertar</strong>, mais pontos ganha</li><li>Acertos seguidos rendem <strong>bônus especiais</strong> 🔥</li></ul></div></div>
+                <div class="info-secao"><span class="info-icone">🎓</span><div class="info-conteudo"><h4 class="info-titulo">Certificados de Maestria</h4><p class="info-texto">Você pode conquistar <strong>3 certificados</strong> conforme domina mais operações da soma:</p><ul class="info-lista"><li>🥈 <strong>Mestre da Soma (Prata)</strong> — 85% do mapa dominado, 5 tentativas por operação, 80% de acerto recente</li><li>🥇 <strong>Lenda da Soma (Ouro)</strong> — 95% do mapa, 8 tentativas, 90% de acerto e velocidade</li><li>💎 <strong>Maestria Total (Lendária)</strong> — 100% do mapa, 10 tentativas, 90% + velocidade comprovada</li></ul><div class="info-destaque verde">🏆 O certificado fica <strong>salvo durante a competição atual</strong> no seu Álbum, mesmo se você parar de jogar. É uma conquista sua nesta Copa!</div></div></div>
+                <div class="info-secao"><span class="info-icone">🎯</span><div class="info-conteudo"><h4 class="info-titulo">Treine à vontade!</h4><p class="info-texto">Existem <strong>6 modos de treino</strong> que ajudam você a evoluir no mapa e nos certificados:</p><ul class="info-lista"><li>🧠 <strong>Inteligente</strong> — o app escolhe as operações que você mais precisa</li><li>🔄 <strong>Reverso</strong> — descobre o número que falta na conta (ex: <em>3 + ? = 10</em>)</li><li>🧩 <strong>Decomposição</strong> — usa a ponte para 10 (ex: 7+8 = 7+3+?)</li><li>🪞 <strong>Espelho</strong> — autoavaliação honesta: <em>sabia de cor</em> ou <em>precisei pensar?</em></li><li>🧱 <strong>Chunking</strong> — treina uma parcela fixa (ex: só +7)</li><li>⏱️ <strong>Progressivo</strong> — o tempo cai conforme sua precisão sobe</li></ul><p class="info-texto">Treinar <strong>não conta para o ranking</strong>, mas <strong>conta para</strong>:</p><ul class="info-lista"><li>✅ Mapa de somas (todas as cores)</li><li>✅ Certificados (🥈 Prata · 🥇 Ouro · 💎 Lendária)</li><li>✅ Medalhas do Álbum</li></ul><button class="btn-abrir-guia-treino" onclick="fecharComoFunciona(); abrirGuiaTreino();">📚 Ver guia completo de treino →</button></div></div>
                 <div class="info-secao"><span class="info-icone">📱</span><div class="info-conteudo"><h4 class="info-titulo">Use sempre o mesmo celular</h4><p class="info-texto">Seu nome fica vinculado ao aparelho para evitar que outras pessoas usem o seu nome. Se você trocar de celular e ficar <strong>2 dias sem acessar</strong>, o app libera automaticamente. Antes disso, é só pedir ajuda ao professor.</p></div></div>
                 <div class="info-secao"><span class="info-icone">💬</span><div class="info-conteudo"><h4 class="info-titulo">Fale com o professor</h4><p class="info-texto">Precisou de ajuda e não consegue encontrar o professor na escola? Use o botão <strong>💬 Falar com o professor</strong> na tela inicial. <strong>É obrigatório estar identificado</strong> (nome completo + turma) para usar o canal.</p><div class="info-destaque azul">⏱️ Você pode enviar uma mensagem a cada <strong>5 minutos</strong>. O professor responde e você vê a resposta na mesma conversa.</div></div></div>
                 <div class="info-secao"><span class="info-icone">💡</span><div class="info-conteudo"><h4 class="info-titulo">Dicas rápidas</h4><ul class="info-lista"><li>Não precisa ter pressa para começar — jogue quando estiver concentrado</li><li>Cada tentativa oficial é registrada, mas só a melhor vale</li><li>Fique de olho no ranking — sua posição pode mudar até o último dia</li></ul></div></div>
@@ -10287,7 +10286,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                     <span class="info-icone">👨‍👩‍👧</span>
                     <div class="info-conteudo">
                         <h4 class="info-titulo">Aviso aos Pais e Responsáveis</h4>
-                        <p class="info-texto">Este aplicativo é uma ferramenta educacional do <strong>Colégio Estadual Ismael Branco</strong>. Nossa missão é tornar o aprendizado da tabuada mais leve e motivador para os alunos.</p>
+                        <p class="info-texto">Este aplicativo é uma ferramenta educacional do <strong>Colégio Estadual Ismael Branco</strong>. Nossa missão é tornar o aprendizado da soma mais leve e motivador para os alunos.</p>
                         <ul class="info-lista">
                             <li><strong>O que coletamos:</strong> Apenas Nome Completo, Turma e o Desempenho no jogo.</li>
                             <li><strong>O que NÃO coletamos:</strong> E-mails, telefones, localização, fotos ou senhas pessoais.</li>
@@ -10326,34 +10325,14 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
 
         <div class="changelog-lista">
             <div class="changelog-item">
-                <span class="changelog-versao atual" id="changelog-versao-atual">v10.14.0 · atual</span>
+                <span class="changelog-versao atual" id="changelog-versao-atual">v1.0.0 · atual</span>
+                <h4 class="changelog-titulo">🚀 Lançamento da Copa da Soma</h4>
+                <p class="changelog-descricao">Bem-vindo à nova era da matemática! O aplicativo foi totalmente adaptado para focar na <strong>soma</strong>. Agora temos modalidades como "Somas até 10", "Somas até 20" (com transporte) e "Dezenas até 100". O mapa, as medalhas e os treinos foram reescritos para ajudar você a dominar a adição de forma divertida e competitiva.</p>
+            </div>
+            <div class="changelog-item">
+                <span class="changelog-versao" id="changelog-versao-anterior-v1018">v10.14.0 (Copa da Tabuada)</span>
                 <h4 class="changelog-titulo">🛡️ Privacidade e Proteção de Dados (LGPD)</h4>
                 <p class="changelog-descricao">O aplicativo foi atualizado para garantir a segurança e a privacidade dos seus dados. Agora, é obrigatório aceitar o Termo de Uso no cadastro. Para proteger sua identidade, os rankings globais e o Hall da Fama passaram a exibir seu nome de forma abreviada (ex: "Maria S."). Além disso, implementamos travas de segurança para que nenhum aluno consiga visualizar o desempenho ou as mensagens de outro colega.</p>
-            </div>
-            <div class="changelog-item">
-                <span class="changelog-versao" id="changelog-versao-anterior-v1018">v10.13.24</span>
-                <h4 class="changelog-titulo">🎬 Splash de Posição + Sincronização de Versão</h4>
-                <p class="changelog-descricao">Ao final de cada partida oficial, agora você vê uma <strong>tela animada revelando sua posição na turma</strong> — com confetes para o Top 4. Corrigimos um bug em que a função de exibição não era encontrada, garantindo que a tela de posição funcione sempre. Também sincronizamos a versão exibida no menu "Mais" com a versão real do app.</p>
-            </div>
-            <div class="changelog-item">
-                <span class="changelog-versao" id="changelog-versao-anterior-v1018">v10.13.18</span>
-                <h4 class="changelog-titulo">🚀 Otimização de Velocidade e Tela Mais Limpa</h4>
-                <p class="changelog-descricao">O aplicativo agora abre <strong>muito mais rápido</strong>, mesmo em conexões 4G lentas! Reduzimos em até 70% o consumo de dados do Firebase. Além disso, a tela de "Minhas Posições" foi repaginada: no Modo Classificatória Única, o foco agora é 100% na modalidade oficial, e as outras modalidades aparecem como botões discretos de treino no rodapé. Tudo para deixar seu jogo mais fluido e bonito!</p>
-            </div>
-            <div class="changelog-item">
-                <span class="changelog-versao" id="changelog-versao-anterior-v1013">v10.13.0</span>
-                <h4 class="changelog-titulo">🎯 Modo Classificatória Única</h4>
-                <p class="changelog-descricao">Agora o professor pode <strong>focar a etapa oficial em uma única modalidade</strong> — Tabuadas 2-5, 6-9 ou 1-10. Quando ativado, o botão "Jogar" das outras modalidades fica bloqueado na Home (só o Treinar funciona), o Ranking oficial mostra apenas a modalidade ativa e algumas medalhas que dependem das três modalidades ficam ocultas até o modo voltar ao normal. As corridas de tabuada continuam funcionando normalmente. Perfeito para eventos temáticos (ex: "Semana da Tabuada do 7") ou para testar uma modalidade isolada.</p>
-            </div>
-            <div class="changelog-item">
-                <span class="changelog-versao" id="changelog-versao-anterior-v1011">v10.11.0</span>
-                <h4 class="changelog-titulo">🎯 Modos de Evento, Abas no Painel e Atualização Global</h4>
-                <p class="changelog-descricao">O aplicativo agora está pronto para 3 modos diferentes de competição: <strong>Só Classificatória</strong>, <strong>Só Olimpíadas</strong> e <strong>Ambos</strong>. Se você escolher Só Olimpíadas, o app esconde tudo o que é das partidas de 20 perguntas e foca 100% nas corridas. O painel do professor foi dividido em <strong>Abas</strong> para ficar mais rápido de usar. Além disso, adicionamos um botão de <strong>Forçar Atualização</strong> no painel: se você mudar algo, pode recarregar a tela de todos os alunos conectados com um clique. Também adicionamos um contador regressivo na tela inicial para as últimas 24 horas do evento e melhoramos a votação para respeitar a data final.</p>
-            </div>
-            <div class="changelog-item">
-                <span class="changelog-versao" id="changelog-versao-anterior-v1010">v10.10.2</span>
-                <h4 class="changelog-titulo">🏟️ Modo Olimpíadas + Corridas por Distância</h4>
-                <p class="changelog-descricao">O app agora está pronto para múltiplos eventos! Adicionamos a modalidade <strong>Corrida por Distância</strong> (Sprint 10, Meia 20 e Ultra 50), onde o aluno precisa terminar as perguntas no menor tempo e cada erro soma +3 segundos. Além disso, o professor pode ativar o <strong>Modo Olimpíadas</strong> no painel, que esconde as partidas de 20 perguntas da tela inicial e foca 100% nas corridas, alterando até o comportamento do seu Coach. Tudo isso mantendo o Modo Classificatória original intacto para quando precisar.</p>
             </div>
         </div>
     </div>
@@ -10560,7 +10539,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
                     <div class="guia-treino-card-icone">🔀</div>
                     <div>
                         <div class="guia-treino-card-titulo">Treino com Variações <small>Foco total</small></div>
-                        <p class="guia-treino-card-desc">Treina <strong>7×8</strong> junto com <strong>8×7</strong> e outras formas do mesmo produto. Ajuda a memorizar o <strong>resultado</strong>, não a resposta mecânica.</p>
+                        <p class="guia-treino-card-desc">Treina <strong>7+8</strong> junto com <strong>8+7</strong> e outras formas do mesmo resultado. Ajuda a memorizar a <strong>soma</strong>, não a resposta mecânica.</p>
                     </div>
                 </div>
 
@@ -11105,9 +11084,9 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
     // [05] JS-CFG · Constantes e configuração global
     // ═══════════════════════════════════════════════════════════════════════
 
-    // ▼▼▼ [05.01] Versão e chaves de storage ───────────────────────────────
-    // v10.14.0 · LGPD Compliance (Consentimento, pseudonimização, bloqueio de busca)
-    const APP_VERSION = "1.0.0";
+// ▼▼▼ [05.01] Versão e chaves de storage ───────────────────────────────
+// v1.0.0 · Lançamento oficial · LGPD Compliance (Consentimento, pseudonimização, bloqueio de busca)
+const APP_VERSION = "1.0.0";
 const STORAGE_TURMA_ALUNO = "turmaAlunoAtual";
 const STORAGE_NOME_ALUNO = "nomeAlunoAtual";
 
@@ -11124,7 +11103,7 @@ function verificarVersao() {
     }
 }
 verificarVersao();
-	// ▲▲▲ FIM [05.01]
+// ▲▲▲ FIM [05.01]
 
     // ▼▼▼ [05.02] Firebase e caminhos ──────────────────────────────────────
 const firebaseConfig = {
@@ -12289,23 +12268,13 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
     // ▲▲▲ FIM [07.08.bis]
 
-    // ▼▼▼ [07.08.ter] Modal "Como funciona · Mapa de Tabuadas" ────────
-    // v10.6.x · Explicação pedagógica do Mapa de Tabuadas.
-    // Cobre: o que é, as 6 cores, o que significa "todas as partidas"
-    // × "uma partida", como usar para treinar, e a ligação com os
-    // certificados. Reutiliza as classes genéricas de modal ([02.73]).
-    //
-    // O botão que abre este modal é injetado dentro do
-    // #modal-mapa-completo por renderizarModalMapaCompleto() (ver
-    // [07.08.bis]). Quando o modal explicativo fecha, o modal do
-    // mapa continua aberto por baixo.
-
+    // ▼▼▼ [07.08.ter] Modal "Como funciona · Mapa de Somas" ────────
     function construirConteudoComoFuncionaMapa() {
         return `
-            <div class="mapa-desc-titulo"><span aria-hidden="true">🗺️</span> Como funciona o Mapa de Tabuadas</div>
+            <div class="mapa-desc-titulo"><span aria-hidden="true">🗺️</span> Como funciona o Mapa de Somas</div>
 
             <div class="mapa-desc-subtitulo">📊 O que é</div>
-            <p>O Mapa de Tabuadas é a sua <strong>visão completa das 100 operações</strong> (1×1 até 10×10). Cada célula é uma operação, e a <strong>cor da célula diz o quanto você domina ela</strong>, com base nas suas <strong>últimas 10 respostas</strong>. Não é uma média histórica — é o seu domínio <strong>recente</strong>.</p>
+            <p>O Mapa de Somas é a sua <strong>visão completa das 100 operações</strong>. Cada célula é uma operação, e a <strong>cor da célula diz o quanto você domina ela</strong>, com base nas suas <strong>últimas 10 respostas</strong>. Não é uma média histórica — é o seu domínio <strong>recente</strong>.</p>
 
             <div class="mapa-desc-subtitulo">🎨 As 6 cores</div>
             <div class="mapa-desc-cores">
@@ -12346,19 +12315,20 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
 
             <div class="mapa-desc-subtitulo">🗂️ As 3 abas de modalidade</div>
             <ul>
-                <li><strong>🌐 Todas</strong> — as 100 operações (1×1 até 10×10).</li>
-                <li><strong>📚 2-5</strong> — só as tabuadas do 2 ao 5.</li>
-                <li><strong>🎯 6-9</strong> — só as tabuadas do 6 ao 9.</li>
+                <li><strong>🌐 Todas</strong> — as 100 operações (somas de 1+1 até 100+100).</li>
+                <li><strong>➕ 1-10</strong> — só as somas até 10.</li>
+                <li><strong>🧮 11-20</strong> — só as somas até 20 (com transporte).</li>
+                <li><strong>💯 até 100</strong> — as somas de dezenas.</li>
             </ul>
-            <p><strong>Importante:</strong> a cor de cada célula é sempre a mesma em qualquer aba — o mapa é <strong>global</strong>. Jogar a modalidade 2-5 também alimenta a aba "Todas".</p>
+            <p><strong>Importante:</strong> a cor de cada célula é sempre a mesma em qualquer aba — o mapa é <strong>global</strong>. Jogar a modalidade 1-10 também alimenta a aba "Todas".</p>
 
             <div class="mapa-desc-subtitulo">👆 Toque em uma célula</div>
             <p>Ao tocar numa célula, você vê:</p>
             <ul>
                 <li>Quantos acertos na janela recente</li>
                 <li>Seu tempo mediano dos acertos</li>
-                <li>Uma <strong>dica de decomposição</strong> para aquela operação</li>
-                <li>As <strong>variações equivalentes</strong> (7×8, 8×7, etc.)</li>
+                <li>Uma <strong>dica de ponte para 10</strong> para aquela operação</li>
+                <li>As <strong>variações equivalentes</strong> (7+8, 8+7, etc.)</li>
                 <li>Botão para <strong>treinar com variações</strong></li>
             </ul>
 
@@ -12369,14 +12339,14 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 <li>🥇 <strong>Ouro</strong> — 95% do mapa + velocidade</li>
                 <li>💎 <strong>Lendária</strong> — 100% do mapa + velocidade</li>
             </ul>
-            <p>Cada modalidade tem seu próprio cálculo de cobertura. Dominar o mapa na aba "2-5" conta para o certificado de 2-5, e assim por diante.</p>
+            <p>Cada modalidade tem seu próprio cálculo de cobertura. Dominar o mapa na aba "1-10" conta para o certificado de 1-10, e assim por diante.</p>
 
             <div class="mapa-desc-subtitulo">🧠 Como treinar com o mapa</div>
             <p>O botão <strong>"🔀 Treinar operações pendentes com variações"</strong> (aparece quando você tem 3+ operações pendentes) monta uma sessão de treino focada nas suas piores operações <strong>e suas variações</strong>. Ótimo para virar vermelhas em verdes rapidinho.</p>
 
             <div class="mapa-desc-dica"><strong>💡 Dica:</strong> o objetivo final é <strong>deixar todas as células verdes</strong>. Comece pelas vermelhas (piores), use o treino inteligente da Home e as pistas dos treinos Aprender. As verdes vão aparecendo — e com elas, os certificados.</div>
 
-            <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">🗺️ 100 operações · o mapa mostra o seu domínio real.</span>
+            <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">🗺️ Mapa de Somas · o seu domínio real.</span>
         `;
     }
 
@@ -12396,14 +12366,11 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         const modal = document.getElementById("modal-explicacao-mapa");
         if (!modal) return;
         modal.classList.add("hidden");
-        // Só libera o scroll se NÃO houver outro modal aberto por baixo
-        // (ex: se o modal do mapa completo ainda estiver visível).
         const mapModal = document.getElementById("modal-mapa-completo");
         const mapAberto = mapModal && !mapModal.classList.contains("hidden");
         document.body.style.overflow = mapAberto ? "hidden" : "";
     }
 
-    // Fechar com tecla ESC (instalado uma única vez)
     if (!window._modalExplicacaoMapaEscInstalado) {
         window._modalExplicacaoMapaEscInstalado = true;
         document.addEventListener("keydown", function (e) {
@@ -12417,17 +12384,12 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // ▲▲▲ FIM [07.08.ter]
 
     // ▼▼▼ [07.08.quater] Modal "Como funciona · Mapa (Home)" ──────────
-    // v10.7.1 · Explicação pedagógica do card "Seu Mapa de Tabuadas"
-    // da Home. Versão resumida do modal do mapa completo — pensada
-    // para quem está começando e ainda não abriu o mapa detalhado.
-    // Reutiliza .home-descricao ([02.76]).
-
     function construirConteudoComoFuncionaMapaHome() {
         return `
-            <div class="home-desc-titulo"><span aria-hidden="true">🗺️</span> Como funciona o Mapa de Tabuadas</div>
+            <div class="home-desc-titulo"><span aria-hidden="true">🗺️</span> Como funciona o Mapa de Somas</div>
 
             <div class="home-desc-subtitulo">📊 O que é</div>
-            <p>O Mapa de Tabuadas mostra o seu <strong>domínio das 100 operações</strong> (1×1 até 10×10). Cada célula é uma operação, e a <strong>cor da célula diz o quanto você domina ela</strong> — com base nas suas últimas respostas. Não é uma média histórica: é o seu domínio <strong>recente</strong>.</p>
+            <p>O Mapa de Somas mostra o seu <strong>domínio das 100 operações</strong>. Cada célula é uma operação de soma, e a <strong>cor da célula diz o quanto você domina ela</strong> — com base nas suas últimas respostas. Não é uma média histórica: é o seu domínio <strong>recente</strong>.</p>
 
             <div class="home-desc-subtitulo">🎨 As 6 cores</div>
             <div class="home-desc-mapa-cores">
@@ -12445,9 +12407,9 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <div class="home-desc-subtitulo">🎯 O que os chips mostram</div>
             <p>Os três chips abaixo da barra mostram quantas operações você já domina em cada modalidade:</p>
             <ul>
-                <li>📚 <strong>2-5</strong> — operações das tabuadas 2, 3, 4 e 5</li>
-                <li>🎯 <strong>6-9</strong> — operações das tabuadas 6, 7, 8 e 9</li>
-                <li>⭐ <strong>1-10</strong> — todas as 100 operações</li>
+                <li>➕ <strong>1-10</strong> — operações de soma até 10</li>
+                <li>🧮 <strong>11-20</strong> — operações de soma até 20</li>
+                <li>💯 <strong>até 100</strong> — operações de dezenas</li>
             </ul>
             <p><strong>Importante:</strong> jogar uma modalidade também preenche as outras. O mapa é <strong>global</strong>.</p>
 
@@ -12458,12 +12420,12 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <ul>
                 <li><strong>🎯 Foco Absoluto</strong> — aparece quando faltam ≤5 operações. O treino mira 92% nessas pendentes.</li>
                 <li><strong>🧠 Treinar as X pendentes</strong> — aparece quando faltam 6 ou mais. Abre o Treino Inteligente.</li>
-                <li><strong>🗺️ Ver mapa completo →</strong> — abre o modal do mapa com abas por modalidade, detalhes por operação e dicas de decomposição.</li>
+                <li><strong>🗺️ Ver mapa completo →</strong> — abre o modal do mapa com abas por modalidade, detalhes por operação e dicas de ponte para 10.</li>
             </ul>
 
             <div class="home-desc-dica"><strong>💡 Dica:</strong> o objetivo é <strong>deixar todas as células verdes</strong>. Comece pelas vermelhas (piores), use o Foco Absoluto quando estiver perto do fim, e vá conquistando os certificados de maestria no caminho.</div>
 
-            <span class="home-desc-selo">🗺️ 100 operações · o mapa mostra o seu domínio real.</span>
+            <span class="home-desc-selo">🗺️ Mapa de Somas · o seu domínio real.</span>
         `;
     }
 
@@ -12483,7 +12445,6 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         const modal = document.getElementById("modal-explicacao-mapa-home");
         if (!modal) return;
         modal.classList.add("hidden");
-        // Só libera o scroll se NÃO houver outro modal do mapa aberto por baixo
         const mapModal = document.getElementById("modal-mapa-completo");
         const mapAberto = mapModal && !mapModal.classList.contains("hidden");
         document.body.style.overflow = mapAberto ? "hidden" : "";
@@ -13481,6 +13442,20 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // ▲▲▲ FIM [10.04]
 
     // ▼▼▼ [10.05] Cards no Desempenho + Álbum ──────────────────────────
+    // v1.0.1 · Usa MODALIDADES[mod].nome em vez de checar "2-5"/"6-9"/"0-10" (IDs antigos).
+    function _rotuloCurtoMod(mod) {
+        if (mod === "1-10")    return "Somas até 10";
+        if (mod === "11-20")   return "Somas até 20";
+        if (mod === "ate-100") return "Dezenas até 100";
+        return MODALIDADES[mod]?.nome || mod;
+    }
+    function _rotuloCompactoMod(mod) {
+        if (mod === "1-10")    return "1-10";
+        if (mod === "11-20")   return "11-20";
+        if (mod === "ate-100") return "até 100";
+        return mod;
+    }
+
     async function renderizarCertificadosDesempenho(nome, turma, modalidadeFiltro = "todas") {
         const container = document.getElementById("desempenho-certificados-container");
         if (!container) return;
@@ -13506,13 +13481,12 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 const conquistado = !!(persistidos[mod] && persistidos[mod][nivel]);
                 const dados = conquistado ? persistidos[mod][nivel] : null;
 
-                // Mostra só se conquistado ou se o aluno já iniciou progresso
                 if (!conquistado && prog.dominadas === 0) continue;
                 total++;
 
                 const pct = prog.exigido > 0 ? Math.min(100, (prog.dominadas / prog.exigido) * 100) : 0;
                 const cls = conquistado ? "conquistado" : "";
-                const nomeMod = mod === "2-5" ? "Tab 2-5" : mod === "6-9" ? "Tab 6-9" : "Tab 1-10";
+                const nomeMod = _rotuloCompactoMod(mod);
 
                 const btn = conquistado
                     ? `<button class="cert-btn" onclick="abrirCertificadoNivel('${escaparHtml(nome).replace(/'/g,"\\'")}','${turma}','${mod}','${nivel}')">🖨️ Ver / Imprimir</button>`
@@ -13554,10 +13528,10 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         const pills = [];
         for (const mod of Object.keys(MODALIDADES)) {
             const pMod = persistidos[mod] || {};
-            for (const nivel of CERT_ORDEM) { // lendaria, ouro, prata
+            for (const nivel of CERT_ORDEM) {
                 if (!pMod[nivel]) continue;
                 const cfg = CERT_NIVEIS[nivel];
-                const nomeMod = mod === "2-5" ? "Tab 2-5" : mod === "6-9" ? "Tab 6-9" : "Tab 1-10";
+                const nomeMod = _rotuloCompactoMod(mod);
                 pills.push(`<span class="album-cert-pill ${cfg.cor}" title="${escaparHtml(cfg.nome)} · ${escaparHtml(MODALIDADES[mod].nome)}">${cfg.icone} ${cfg.nome} <small>${nomeMod}</small></span>`);
             }
         }
@@ -13568,6 +13542,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // ▲▲▲ FIM [10.05]
 
     // ▼▼▼ [10.06] Modal de impressão por nível ────────────────────────
+    // v1.0.1 · Usa cfg.nome de CERT_NIVEIS (em vez de hardcoded) e nome completo da modalidade.
     function gerarNumeroCertificadoNivel(nome, turma, mod, nivel, isoData) {
         const str = `${normalizarNome(nome)}|${turma}|${mod}|${nivel}|${(isoData || "").slice(0,10)}`;
         let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
@@ -13607,15 +13582,13 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             corFundo = "linear-gradient(160deg, #fef9e7 0%, #fdf2d0 55%, #fbecb8 100%)";
         }
 
-        // Aplica só as propriedades visuais — preserva padding/border-style do CSS original
         container.style.background = corFundo;
         container.style.borderColor = corBorda;
         container.style.color = corTexto;
 
         const medalhasArr = nivel === "prata" ? ["🥈","🥈","🥈"] : nivel === "ouro" ? ["🥇","🥇","🥇"] : ["💎","✨","💎"];
-        const subtituloNivel = nivel === "lendaria" ? "Maestria Total em Tabuadas" :
-                               nivel === "ouro"    ? "Lenda da Tabuada"           :
-                                                     "Mestre da Tabuada";
+        // ⚠️ Subtítulo do certificado usa cfg.nome ("Mestre da Soma", "Lenda da Soma", "Maestria Total")
+        const subtituloNivel = cfg.nome;
 
         container.innerHTML = `
             <div class="cert-brasao" aria-hidden="true">🏛️</div>
@@ -13626,7 +13599,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <p class="cert-texto-intro">Certificamos que</p>
             <div class="cert-nome" style="color:${corTexto};">${escaparHtml(nome)}</div>
             <p class="cert-texto">da turma <strong>${escaparHtml(turma)}</strong></p>
-            <p class="cert-texto-corpo">demonstrou <strong>${escaparHtml(cfg.nome)}</strong> na modalidade <strong>${escaparHtml(nomeMod)}</strong>, dominando <strong>${dados.dominadasNoMomento || "—"}</strong> operações com pelo menos <strong>${Math.round(cfg.minTaxa * 100)}%</strong> de acerto recente em cada uma.</p>
+            <p class="cert-texto-corpo">atingiu o nível <strong>${escaparHtml(cfg.nome)}</strong> na modalidade <strong>${escaparHtml(nomeMod)}</strong>, dominando <strong>${dados.dominadasNoMomento || "—"}</strong> operações com pelo menos <strong>${Math.round(cfg.minTaxa * 100)}%</strong> de acerto recente em cada uma.</p>
             <div class="cert-medalhas" aria-hidden="true">${medalhasArr.map(e => `<span>${e}</span>`).join("")}</div>
             <div class="cert-stats" style="color:${accent};">
                 <span>📚 <strong>${dados.dominadasNoMomento || "—"}</strong> operações dominadas</span>
@@ -13960,33 +13933,23 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // ▲▲▲ FIM [10.07]
 
     // ▼▼▼ [10.08] Modal "Como funciona · Meu Progresso" ──────────────
-    // v10.6.x · Explicação pedagógica da tela de certificados.
-    // Cobre: o que é a tela, os 3 níveis por modalidade, requisitos
-    // de velocidade, o que é o "Próximo Objetivo", o que a timeline
-    // mostra e por que os certificados não se perdem.
-    // Reutiliza as classes genéricas do modal ([02.73]).
-    // v10.7.2 · Nova sub-seção "Domínio × Fluência" esclarecendo que
-    // os treinos Aprender (Reverso, Decomposição, Espelho, Chunking)
-    // desenvolvem domínio mas NÃO comprovam velocidade — que os
-    // certificados Ouro/Lendária exigem.
-
     function construirConteudoComoFuncionaProgresso() {
         return `
             <div class="progresso-desc-titulo"><span aria-hidden="true">📈</span> Como funciona o Meu Progresso</div>
 
             <div class="progresso-desc-subtitulo">📊 O que é</div>
-            <p>Esta tela mostra sua <strong>jornada em direção aos certificados de maestria</strong>. Diferente dos rankings, aqui você não compete com ninguém — a meta é <strong>dominar as operações</strong> da tabuada. É o "raio-x" do seu aprendizado.</p>
+            <p>Esta tela mostra sua <strong>jornada em direção aos certificados de maestria</strong>. Diferente dos rankings, aqui você não compete com ninguém — a meta é <strong>dominar as operações</strong> da soma. É o "raio-x" do seu aprendizado.</p>
 
             <div class="progresso-desc-subtitulo">🎓 Os 3 níveis de certificado (por modalidade)</div>
-            <p>Você pode conquistar <strong>3 certificados em CADA uma das 3 modalidades</strong> (2-5, 6-9 e 1-10). Total de <strong>9 certificados possíveis</strong>:</p>
+            <p>Você pode conquistar <strong>3 certificados em CADA uma das 3 modalidades</strong> (1-10, 11-20 e até 100). Total de <strong>9 certificados possíveis</strong>:</p>
 
             <div class="progresso-desc-niveis">
                 <div class="progresso-desc-nivel prata">
-                    <strong><span class="progresso-desc-emoji">🥈</span> Mestre da Tabuada (Prata)</strong>
+                    <strong><span class="progresso-desc-emoji">🥈</span> Mestre da Soma (Prata)</strong>
                     <strong>85% do mapa</strong> dominado, <strong>5+ tentativas</strong> por operação, <strong>80% de acerto</strong> recente.
                 </div>
                 <div class="progresso-desc-nivel ouro">
-                    <strong><span class="progresso-desc-emoji">🥇</span> Lenda da Tabuada (Ouro)</strong>
+                    <strong><span class="progresso-desc-emoji">🥇</span> Lenda da Soma (Ouro)</strong>
                     <strong>95% do mapa</strong>, <strong>8+ tentativas</strong>, <strong>90% de acerto</strong> + exigência de velocidade.
                 </div>
                 <div class="progresso-desc-nivel lendaria">
@@ -13998,9 +13961,9 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <div class="progresso-desc-subtitulo">⚡ Exigência de velocidade</div>
             <p>A partir do Ouro, além de dominar o mapa, você precisa responder <strong>dentro de um tempo médio</strong> em cada operação. As metas variam por modalidade:</p>
             <ul>
-                <li>📚 <strong>Tabuadas 2-5</strong> → tempo médio ≤ <strong>2,0s</strong></li>
-                <li>🎯 <strong>Tabuadas 6-9</strong> → tempo médio ≤ <strong>2,5s</strong></li>
-                <li>⭐ <strong>Tabuadas 1-10</strong> → tempo médio ≤ <strong>3,0s</strong></li>
+                <li>➕ <strong>Somas até 10</strong> → tempo médio ≤ <strong>1,0s</strong></li>
+                <li>🧮 <strong>Somas até 20</strong> → tempo médio ≤ <strong>1,5s</strong></li>
+                <li>💯 <strong>Dezenas até 100</strong> → tempo médio ≤ <strong>2,5s</strong></li>
             </ul>
 
             <div class="progresso-desc-subtitulo">🎯 Domínio × Fluência — não confunda</div>
@@ -14017,7 +13980,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <div class="progresso-desc-subtitulo">📊 O que é o "Próximo Objetivo"</div>
             <p>No topo da tela, aparece um alerta dourado apontando <strong>o certificado mais próximo de ser conquistado</strong>. Ele mostra:</p>
             <ul>
-                <li>Qual certificado está mais perto (ex: "🥇 Ouro · Tabuadas 6-9")</li>
+                <li>Qual certificado está mais perto (ex: "🥇 Ouro · Somas até 20")</li>
                 <li>Quantas operações faltam</li>
                 <li>Ou se o problema é <strong>só velocidade</strong> ("falta acelerar")</li>
                 <li>Uma barra com o seu progresso atual</li>
@@ -14047,7 +14010,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
 
             <div class="progresso-desc-dica"><strong>💡 Dica:</strong> foque nos certificados mais próximos. Normalmente é mais fácil conquistar o <strong>Ouro em uma modalidade</strong> do que a Lendária em todas. Use o alerta de "Próximo Objetivo" como bússola.</div>
 
-            <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">🎯 9 certificados possíveis · domine as tabuadas e conquiste todos.</span>
+            <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">🎯 9 certificados possíveis · domine as somas e conquiste todos.</span>
         `;
     }
 
@@ -14070,7 +14033,6 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         document.body.style.overflow = "";
     }
 
-    // Fechar com tecla ESC (instalado uma única vez)
     if (!window._modalExplicacaoProgressoEscInstalado) {
         window._modalExplicacaoProgressoEscInstalado = true;
         document.addEventListener("keydown", function (e) {
@@ -14323,30 +14285,32 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             if ((Number(p.pontos) || 0) >= 17000) partidasCom17k++;
         });
 
-        const somaPorMod = { "2-5": { total: 0, soma: 0 }, "6-9": { total: 0, soma: 0 }, "0-10": { total: 0, soma: 0 } };
+        // ⚠️ CORRIGIDO: usa as modalidades da SOMA ("1-10", "11-20", "ate-100").
+        // Os campos retornados mantêm os nomes legados media25/media69/media010/qtd25/qtd69/qtd010
+        // para não quebrar rankings, coach IA e medalhas que os consomem.
+        const somaPorMod = {
+            "1-10":    { total: 0, soma: 0 },
+            "11-20":   { total: 0, soma: 0 },
+            "ate-100": { total: 0, soma: 0 }
+        };
         todasPartidas.forEach(p => {
             const m = p.modalidade;
             if (!somaPorMod[m]) return;
             somaPorMod[m].total++;
             somaPorMod[m].soma += Number(p.pontos) || 0;
         });
-        const media25  = somaPorMod["2-5"].total  > 0 ? somaPorMod["2-5"].soma  / somaPorMod["2-5"].total  : 0;
-        const media69  = somaPorMod["6-9"].total  > 0 ? somaPorMod["6-9"].soma  / somaPorMod["6-9"].total  : 0;
-        const media010 = somaPorMod["0-10"].total > 0 ? somaPorMod["0-10"].soma / somaPorMod["0-10"].total : 0;
-        const mediaMaxima = Math.max(media25, media69, media010);
+        const media110    = somaPorMod["1-10"].total    > 0 ? somaPorMod["1-10"].soma    / somaPorMod["1-10"].total    : 0;
+        const media1120   = somaPorMod["11-20"].total   > 0 ? somaPorMod["11-20"].soma   / somaPorMod["11-20"].total   : 0;
+        const mediaAte100 = somaPorMod["ate-100"].total > 0 ? somaPorMod["ate-100"].soma / somaPorMod["ate-100"].total : 0;
+        const mediaMaxima = Math.max(media110, media1120, mediaAte100);
         
         // Descobre quantas partidas tem a modalidade que deu a maior média
         let partidasNaModComMaiorMedia = 0;
         if (mediaMaxima > 0) {
-            if (mediaMaxima === media25) partidasNaModComMaiorMedia = somaPorMod["2-5"].total;
-            else if (mediaMaxima === media69) partidasNaModComMaiorMedia = somaPorMod["6-9"].total;
-            else if (mediaMaxima === media010) partidasNaModComMaiorMedia = somaPorMod["0-10"].total;
-
-            // Se houver empate na média, pega a modalidade com MAIS partidas (mais segura)
             const modsEmpatadas = [];
-            if (Math.abs(media25 - mediaMaxima) < 0.01) modsEmpatadas.push("2-5");
-            if (Math.abs(media69 - mediaMaxima) < 0.01) modsEmpatadas.push("6-9");
-            if (Math.abs(media010 - mediaMaxima) < 0.01) modsEmpatadas.push("0-10");
+            if (Math.abs(media110 - mediaMaxima) < 0.01) modsEmpatadas.push("1-10");
+            if (Math.abs(media1120 - mediaMaxima) < 0.01) modsEmpatadas.push("11-20");
+            if (Math.abs(mediaAte100 - mediaMaxima) < 0.01) modsEmpatadas.push("ate-100");
             let maxPartidas = 0;
             modsEmpatadas.forEach(m => {
                 if (somaPorMod[m].total > maxPartidas) maxPartidas = somaPorMod[m].total;
@@ -14354,7 +14318,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             partidasNaModComMaiorMedia = maxPartidas;
         }
 
-        const modalidadesCom17k = [media25, media69, media010].filter(v => v >= MEDIA_META_TODAS).length;
+        const modalidadesCom17k = [media110, media1120, mediaAte100].filter(v => v >= MEDIA_META_TODAS).length;
         const todasMedias17k = modalidadesCom17k === 3;
 
         return {
@@ -14369,11 +14333,21 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             posicoes, melhorPosicao, modalidadesTop4, subiuRanking, diasNoTop4,
             operacoesDominadas, operacoesDominadas25, operacoesDominadas69, operacoesPrecisao95,
             baseSolida, mestreDesafios, mapaCompleto, guardaPrecisao, lendaMapa, diasMapa100: dias100.length,
-            media25, media69, media010, mediaMaxima, modalidadesCom17K: modalidadesCom17k, modalidadesCom17k, todasMedias17k,
-            partidasNaModComMaiorMedia, partidasCom17k,
-            qtd25: somaPorMod["2-5"].total,
-            qtd69: somaPorMod["6-9"].total,
-            qtd010: somaPorMod["0-10"].total,
+            // ── Médias por modalidade (nomes legados preservados; valores são das somas)
+            media25: media110,        // legado → média em "1-10"
+            media69: media1120,       // legado → média em "11-20"
+            media010: mediaAte100,    // legado → média em "ate-100"
+            media110, media1120, mediaAte100,
+            mediaMaxima,
+            modalidadesCom17K: modalidadesCom17k,
+            modalidadesCom17k,
+            todasMedias17k,
+            partidasNaModComMaiorMedia,
+            partidasCom17k,
+            // Contagens por modalidade (nomes legados preservados)
+            qtd25: somaPorMod["1-10"].total,      // legado → partidas em "1-10"
+            qtd69: somaPorMod["11-20"].total,     // legado → partidas em "11-20"
+            qtd010: somaPorMod["ate-100"].total,  // legado → partidas em "ate-100"
             _medalhasPersistidas: medalhasPersistidas
         };
     }
@@ -15415,7 +15389,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <div class="album-desc-titulo"><span aria-hidden="true">🏅</span> Como funciona o Álbum</div>
 
             <div class="album-desc-subtitulo">📊 O que é</div>
-            <p>O Álbum de Conquistas é onde ficam guardadas <strong>todas as medalhas</strong> que você conquistou na Copa. Diferente do ranking, aqui não competimos — cada medalha é <strong>sua, dentro desta competição</strong>. Uma vez colada, não sai mais até a próxima Copa começar.</p>
+            <p>O Álbum de Conquistas é onde ficam guardadas <strong>todas as medalhas</strong> que você conquistou na Copa da Soma. Diferente do ranking, aqui não competimos — cada medalha é <strong>sua, dentro desta competição</strong>. Uma vez colada, não sai mais até a próxima Copa começar.</p>
 
             <div class="album-desc-subtitulo">🎯 Como conseguir medalhas</div>
             <p>Toque em qualquer medalha para ver o <strong>requisito exato</strong> e o seu progresso. As conquistas vêm de várias frentes:</p>
@@ -15425,7 +15399,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 <li><strong>Velocidade</strong> — tempos médios cada vez menores</li>
                 <li><strong>Dedicação</strong> — jogar em dias diferentes, voltar após uma partida ruim</li>
                 <li><strong>Explorar o app</strong> — jogar as 3 modalidades, fazer treinos focados</li>
-                <li><strong>Dominar o mapa</strong> — deixar todas as operações verdes</li>
+                <li><strong>Dominar o mapa</strong> — deixar todas as operações de soma verdes</li>
                 <li><strong>Rumo à Final</strong> — chegar ao Top 4 da sua turma</li>
                 <li><strong>Consistência</strong> — manter média alta em cada modalidade</li>
             </ul>
@@ -15461,7 +15435,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             </div>
 
             <div class="album-desc-subtitulo">🎓 Certificados de Maestria</div>
-            <p>Separados das medalhas, você pode conquistar <strong>3 certificados em CADA modalidade</strong> (2-5, 6-9 e 1-10):</p>
+            <p>Separados das medalhas, você pode conquistar <strong>3 certificados em CADA modalidade</strong> (1-10, 11-20 e até 100):</p>
             <ul>
                 <li>🥈 <strong>Prata</strong> — 85% do mapa, 5+ tentativas por operação, 80% de acerto</li>
                 <li>🥇 <strong>Ouro</strong> — 95% do mapa, 8+ tentativas, 90% de acerto + velocidade</li>
@@ -15484,7 +15458,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <ul>
                 <li><strong>Status</strong> — todas, coladas ou faltantes</li>
                 <li><strong>Raridade</strong> — comum, incomum, raro, épico ou lendário</li>
-                <li><strong>Seção</strong> — Primeiros Passos, Velocidade, Precisão...</li>
+                <li><strong>Seção</strong> — Primeiras Somas, Velocidade, Precisão...</li>
                 <li><strong>Ordem</strong> — padrão, coladas primeiro ou recentes primeiro</li>
             </ul>
 
@@ -15493,7 +15467,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">🎯 Suas conquistas ficam salvas no seu Álbum durante a competição atual.</span>
         `;
     }
-
+    
     function abrirModalComoFuncionaAlbum() {
         const modal = document.getElementById("modal-explicacao-album");
         const corpo = document.getElementById("modal-explicacao-album-corpo");
@@ -16146,12 +16120,9 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
 
 
     // ▼▼▼ [13.03.bis] Médias Gerais — ranking combinado (3 modalidades) ───
-    // v10.13.0 · P-B4 (Pacote 3) — Modo Classificatória Única
-    //   Quando a flag está setada, o ranking de Média considera SÓ a modalidade
-    //   ativa. O critério "5 partidas em cada uma das 3" vira "5 partidas na ativa".
-    //   A estrutura de retorno é preservada (media25/media69/media010/mediaGeral)
-    //   para não quebrar renderizadores legados — campos das outras modalidades
-    //   ficam zerados.
+    // v1.0.1 · Corrige o uso dos IDs das modalidades de soma ("1-10", "11-20", "ate-100").
+    // Os campos retornados mantêm os nomes legados media25/media69/media010/qtd25/qtd69/qtd010
+    // para compatibilidade com renderizadores em [13.06] e com o Coach IA [18.08].
     async function obterRankingMediaGeralCombinada(turma = null) {
         const modUnica = (typeof modalidadeClassificatoriaUnicaAtiva === "function")
             ? modalidadeClassificatoriaUnicaAtiva()
@@ -16162,12 +16133,12 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             const montarRegistro = (nome, turmaAluno, totalPartidas, mediaGeral) => ({
                 nome, turma: turmaAluno,
                 totalPartidas,
-                qtd25:  modUnica === "2-5"  ? totalPartidas : 0,
-                qtd69:  modUnica === "6-9"  ? totalPartidas : 0,
-                qtd010: modUnica === "0-10" ? totalPartidas : 0,
-                media25:  modUnica === "2-5"  ? mediaGeral : 0,
-                media69:  modUnica === "6-9"  ? mediaGeral : 0,
-                media010: modUnica === "0-10" ? mediaGeral : 0,
+                qtd25:  modUnica === "1-10"    ? totalPartidas : 0,
+                qtd69:  modUnica === "11-20"   ? totalPartidas : 0,
+                qtd010: modUnica === "ate-100" ? totalPartidas : 0,
+                media25:  modUnica === "1-10"    ? mediaGeral : 0,
+                media69:  modUnica === "11-20"   ? mediaGeral : 0,
+                media010: modUnica === "ate-100" ? mediaGeral : 0,
                 mediaGeral,
                 _modUnica: modUnica
             });
@@ -16215,11 +16186,12 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 .sort((x, y) => y.mediaGeral - x.mediaGeral || y.totalPartidas - x.totalPartidas);
         }
 
-        // ═════════ MODO NORMAL (código original) ═════════
+        // ═════════ MODO NORMAL ═════════
+        const MODS_SOMA = ["1-10", "11-20", "ate-100"];
+
         if (await otimizacaoV109Ativa()) {
             try {
-                const mods = ["2-5", "6-9", "0-10"];
-                const snapshots = await Promise.all(mods.map(mod => {
+                const snapshots = await Promise.all(MODS_SOMA.map(mod => {
                     const ref = database.ref(`${CAMINHO_RANKING_RESUMO}/media/${mod}`);
                     if (turma) {
                         return ref.orderByChild("turma").equalTo(turma).once("value");
@@ -16228,41 +16200,42 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 }));
 
                 const porAluno = new Map();
-                for (let i = 0; i < mods.length; i++) {
-                    const mod = mods[i];
+                for (let i = 0; i < MODS_SOMA.length; i++) {
+                    const mod = MODS_SOMA[i];
                     const dadosMod = snapshots[i].val() || {};
                     Object.entries(dadosMod).forEach(([alunoKey, dados]) => {
                         if (!dados || !dados.nome) return;
                         if (turma && dados.turma !== turma) return;
-                        const k = alunoKey;
-                        if (!porAluno.has(k)) {
-                            porAluno.set(k, {
+                        if (!porAluno.has(alunoKey)) {
+                            porAluno.set(alunoKey, {
                                 nome: dados.nome,
                                 turma: dados.turma,
-                                porMod: { "2-5": { t: 0, s: 0 }, "6-9": { t: 0, s: 0 }, "0-10": { t: 0, s: 0 } }
+                                porMod: { "1-10": { t: 0, s: 0 }, "11-20": { t: 0, s: 0 }, "ate-100": { t: 0, s: 0 } }
                             });
                         }
-                        const a = porAluno.get(k);
+                        const a = porAluno.get(alunoKey);
                         a.porMod[mod].t = Number(dados.partidasOficiais) || 0;
                         a.porMod[mod].s = Number(dados.somaPontos) || 0;
                     });
                 }
 
                 const resultado = Array.from(porAluno.values())
-                    .filter(a => ["2-5", "6-9", "0-10"].every(m => a.porMod[m].t >= MEDIA_MIN_PARTIDAS))
+                    .filter(a => MODS_SOMA.every(m => a.porMod[m].t >= MEDIA_MIN_PARTIDAS))
                     .map(a => {
-                        const m25 = a.porMod["2-5"].s / a.porMod["2-5"].t;
-                        const m69 = a.porMod["6-9"].s / a.porMod["6-9"].t;
-                        const m010 = a.porMod["0-10"].s / a.porMod["0-10"].t;
-                        const total = a.porMod["2-5"].t + a.porMod["6-9"].t + a.porMod["0-10"].t;
+                        const m110    = a.porMod["1-10"].s    / a.porMod["1-10"].t;
+                        const m1120   = a.porMod["11-20"].s   / a.porMod["11-20"].t;
+                        const mAte100 = a.porMod["ate-100"].s / a.porMod["ate-100"].t;
+                        const total   = a.porMod["1-10"].t + a.porMod["11-20"].t + a.porMod["ate-100"].t;
                         return {
                             nome: a.nome, turma: a.turma,
                             totalPartidas: total,
-                            qtd25: a.porMod["2-5"].t,
-                            qtd69: a.porMod["6-9"].t,
-                            qtd010: a.porMod["0-10"].t,
-                            media25: m25, media69: m69, media010: m010,
-                            mediaGeral: (m25 + m69 + m010) / 3
+                            // Nomes legados mapeados para somas
+                            qtd25:  a.porMod["1-10"].t,
+                            qtd69:  a.porMod["11-20"].t,
+                            qtd010: a.porMod["ate-100"].t,
+                            media25: m110, media69: m1120, media010: mAte100,
+                            media110: m110, media1120: m1120, mediaAte100: mAte100,
+                            mediaGeral: (m110 + m1120 + mAte100) / 3
                         };
                     })
                     .sort((x, y) => y.mediaGeral - x.mediaGeral || y.totalPartidas - x.totalPartidas);
@@ -16273,7 +16246,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             }
         }
 
-        // ─── Fallback legacy (código original) ───
+        // ─── Fallback legacy ───
         const partidas = await obterPartidas();
         const filtro = turma ? partidas.filter(p => p.turma === turma) : partidas;
         const porAluno = new Map();
@@ -16284,7 +16257,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 porAluno.set(k, {
                     nome: p.nome,
                     turma: p.turma,
-                    porMod: { "2-5": { t: 0, s: 0 }, "6-9": { t: 0, s: 0 }, "0-10": { t: 0, s: 0 } }
+                    porMod: { "1-10": { t: 0, s: 0 }, "11-20": { t: 0, s: 0 }, "ate-100": { t: 0, s: 0 } }
                 });
             }
             const a = porAluno.get(k);
@@ -16295,20 +16268,21 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
         });
 
         return Array.from(porAluno.values())
-            .filter(a => ["2-5","6-9","0-10"].every(m => a.porMod[m].t >= MEDIA_MIN_PARTIDAS))
+            .filter(a => MODS_SOMA.every(m => a.porMod[m].t >= MEDIA_MIN_PARTIDAS))
             .map(a => {
-                const m25  = a.porMod["2-5"].s  / a.porMod["2-5"].t;
-                const m69  = a.porMod["6-9"].s  / a.porMod["6-9"].t;
-                const m010 = a.porMod["0-10"].s / a.porMod["0-10"].t;
-                const total = a.porMod["2-5"].t + a.porMod["6-9"].t + a.porMod["0-10"].t;
+                const m110    = a.porMod["1-10"].s    / a.porMod["1-10"].t;
+                const m1120   = a.porMod["11-20"].s   / a.porMod["11-20"].t;
+                const mAte100 = a.porMod["ate-100"].s / a.porMod["ate-100"].t;
+                const total   = a.porMod["1-10"].t + a.porMod["11-20"].t + a.porMod["ate-100"].t;
                 return {
                     nome: a.nome, turma: a.turma,
                     totalPartidas: total,
-                    qtd25: a.porMod["2-5"].t,
-                    qtd69: a.porMod["6-9"].t,
-                    qtd010: a.porMod["0-10"].t,
-                    media25: m25, media69: m69, media010: m010,
-                    mediaGeral: (m25 + m69 + m010) / 3
+                    qtd25:  a.porMod["1-10"].t,
+                    qtd69:  a.porMod["11-20"].t,
+                    qtd010: a.porMod["ate-100"].t,
+                    media25: m110, media69: m1120, media010: mAte100,
+                    media110: m110, media1120: m1120, mediaAte100: mAte100,
+                    mediaGeral: (m110 + m1120 + mAte100) / 3
                 };
             })
             .sort((x, y) => y.mediaGeral - x.mediaGeral || y.totalPartidas - x.totalPartidas);
@@ -16815,7 +16789,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             mostrarSkeletonRanking(8);
             atualizarHintTurmaAluno();
 
-            let mod = document.getElementById("filtro-modalidade")?.value || "0-10";
+            let mod = document.getElementById("filtro-modalidade")?.value || "1-10";
             const modUnicaAtiva = (typeof modalidadeClassificatoriaUnicaAtiva === "function")
                 ? modalidadeClassificatoriaUnicaAtiva()
                 : null;
@@ -16992,7 +16966,8 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
     // ▲▲▲ FIM [13.06]
 
-    // ▼▼▼ [13.06.bis] Métricas do comparativo entre turmas ───────────
+    // ▼▼▼ [13.06.bis] Métricas do comparativo entre turmas + Ranking de Precisão ───
+    // v1.0.1 · Corrige uso dos IDs de modalidade da soma.
     async function calcularMetricasComparativo(mod, apenasCompletas) {
         if (await otimizacaoV109Ativa()) {
             try {
@@ -17057,7 +17032,9 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
 
     // Adicionado: Cálculo do Ranking de Precisão (Média de Acertos)
+    // v1.0.1 · Corrige uso dos IDs de modalidade da soma; evita TypeError.
     async function obterRankingMediaAcertos(turma = null) {
+        const MODS_SOMA = ["1-10", "11-20", "ate-100"];
         const stats = {};
         
         // ⚠️ OTIMIZAÇÃO: Se ativa, lê do resumo (rápido e leve) em vez de baixar todas as partidas
@@ -17065,9 +17042,8 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             try {
                 const snapBest = await database.ref(`${CAMINHO_RANKING_RESUMO}/media`).once("value");
                 const dadosMedia = snapBest.val() || {};
-                const mods = ["2-5", "6-9", "0-10"];
                 
-                for (const mod of mods) {
+                for (const mod of MODS_SOMA) {
                     const alunosMod = dadosMedia[mod] || {};
                     Object.values(alunosMod).forEach(m => {
                         if (!m || !m.nome) return;
@@ -17075,10 +17051,18 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                         
                         const k = `${normalizarNome(m.nome)}|${m.turma}`;
                         if (!stats[k]) {
-                            stats[k] = { nome: m.nome, turma: m.turma, mods: { "2-5": { acertos: 0, partidas: 0 }, "6-9": { acertos: 0, partidas: 0 }, "0-10": { acertos: 0, partidas: 0 } }, totalAcertos: 0, totalPartidas: 0 };
+                            stats[k] = {
+                                nome: m.nome, turma: m.turma,
+                                mods: {
+                                    "1-10":    { acertos: 0, partidas: 0 },
+                                    "11-20":   { acertos: 0, partidas: 0 },
+                                    "ate-100": { acertos: 0, partidas: 0 }
+                                },
+                                totalAcertos: 0, totalPartidas: 0
+                            };
                         }
                         
-                        const acertos = Number(m.somaAcertos) || 0; // Lê o campo novo
+                        const acertos = Number(m.somaAcertos) || 0;
                         const qtd = Number(m.partidasOficiais) || 0;
                         
                         stats[k].mods[mod].acertos += acertos;
@@ -17101,11 +17085,21 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
                 
                 const k = `${normalizarNome(p.nome)}|${p.turma}`;
                 if (!stats[k]) {
-                    stats[k] = { nome: p.nome, turma: p.turma, mods: { "2-5": { acertos: 0, partidas: 0 }, "6-9": { acertos: 0, partidas: 0 }, "0-10": { acertos: 0, partidas: 0 } }, totalAcertos: 0, totalPartidas: 0 };
+                    stats[k] = {
+                        nome: p.nome, turma: p.turma,
+                        mods: {
+                            "1-10":    { acertos: 0, partidas: 0 },
+                            "11-20":   { acertos: 0, partidas: 0 },
+                            "ate-100": { acertos: 0, partidas: 0 }
+                        },
+                        totalAcertos: 0, totalPartidas: 0
+                    };
                 }
                 const acertos = Number(p.acertos) || 0;
-                stats[k].mods[p.modalidade].acertos += acertos;
-                stats[k].mods[p.modalidade].partidas += 1;
+                if (stats[k].mods[p.modalidade]) {
+                    stats[k].mods[p.modalidade].acertos += acertos;
+                    stats[k].mods[p.modalidade].partidas += 1;
+                }
                 stats[k].totalAcertos += acertos;
                 stats[k].totalPartidas += 1;
             });
@@ -17119,20 +17113,23 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             if (modUnicaAtiva) {
                 elegivel = s.mods[modUnicaAtiva].partidas >= 10;
             } else {
-                elegivel = (s.mods["2-5"].partidas >= 10 && s.mods["6-9"].partidas >= 10 && s.mods["0-10"].partidas >= 10);
+                elegivel = (s.mods["1-10"].partidas >= 10 && s.mods["11-20"].partidas >= 10 && s.mods["ate-100"].partidas >= 10);
             }
 
             if (elegivel) {
                 lista.push({
                     nome: s.nome, turma: s.turma,
-                    media25: s.mods["2-5"].partidas > 0 ? s.mods["2-5"].acertos / s.mods["2-5"].partidas : 0,
-                    media69: s.mods["6-9"].partidas > 0 ? s.mods["6-9"].acertos / s.mods["6-9"].partidas : 0,
-                    media010: s.mods["0-10"].partidas > 0 ? s.mods["0-10"].acertos / s.mods["0-10"].partidas : 0,
+                    media25:  s.mods["1-10"].partidas    > 0 ? s.mods["1-10"].acertos    / s.mods["1-10"].partidas    : 0,
+                    media69:  s.mods["11-20"].partidas   > 0 ? s.mods["11-20"].acertos   / s.mods["11-20"].partidas   : 0,
+                    media010: s.mods["ate-100"].partidas > 0 ? s.mods["ate-100"].acertos / s.mods["ate-100"].partidas : 0,
+                    media110:    s.mods["1-10"].partidas    > 0 ? s.mods["1-10"].acertos    / s.mods["1-10"].partidas    : 0,
+                    media1120:   s.mods["11-20"].partidas   > 0 ? s.mods["11-20"].acertos   / s.mods["11-20"].partidas   : 0,
+                    mediaAte100: s.mods["ate-100"].partidas > 0 ? s.mods["ate-100"].acertos / s.mods["ate-100"].partidas : 0,
                     mediaGeral: s.totalPartidas > 0 ? s.totalAcertos / s.totalPartidas : 0,
                     totalPartidas: s.totalPartidas,
-                    qtd25: s.mods["2-5"].partidas,
-                    qtd69: s.mods["6-9"].partidas,
-                    qtd010: s.mods["0-10"].partidas
+                    qtd25:  s.mods["1-10"].partidas,
+                    qtd69:  s.mods["11-20"].partidas,
+                    qtd010: s.mods["ate-100"].partidas
                 });
             }
         });
@@ -18188,7 +18185,7 @@ function abrirBuscarAlunoComMeusDados() {
                 else if (mediaTurma && melhorMediaAluno > mediaTurma) msg = "💪 Você está abaixo da média — com treino vai superar!";
                 else msg = "🏆 Chance de bater seu próprio recorde!";
             } else msg = "🎯 Primeira partida! Vamos criar sua melhor média!";
-            div.innerHTML = `<div class="preparacao-grid"><div class="prep-card"><span class="prep-rotulo">👤 Aluno</span><span class="prep-valor">${escaparHtml(nome)}</span></div><div class="prep-card"><span class="prep-rotulo">🏫 Turma</span><span class="prep-valor">${turma}</span></div><div class="prep-card"><span class="prep-rotulo">📚 Modalidade</span><span class="prep-valor">${MODALIDADES[modalidadeAtual].nome}</span></div><div class="prep-card"><span class="prep-rotulo">⏱️ Formato</span><span class="prep-valor">20 questões · 10s cada</span></div></div><div class="prep-bloco"><h4>📋 Como funciona?</h4><ul><li><strong>20 perguntas</strong> de multiplicação.</li><li>Até <strong>10 segundos</strong> por questão.</li><li>Respostas rápidas valem <strong>mais pontos</strong>.</li><li>Apenas o seu <strong>melhor resultado</strong> entra na classificação.</li></ul></div><div class="prep-bloco"><h4>📊 Suas referências</h4><div class="prep-referencias-linha"><div><span class="prep-rotulo">Seu melhor tempo médio dos acertos</span><span class="prep-valor-pequeno">${melhorMediaAluno ? melhorMediaAluno.toFixed(2)+"s" : "---"}</span></div><div><span class="prep-rotulo">Tempo médio dos acertos da turma</span><span class="prep-valor-pequeno">${mediaTurma ? mediaTurma.toFixed(2)+"s" : "---"}</span></div></div></div>${focoTreinoTabuadas.length ? `<div class="prep-foco"><strong>🎯 Foco recomendado</strong><br>${descreverFocoTreino()}</div>` : ""}<div class="prep-motivacao" style="margin-top:14px;">${msg}</div><div style="background:#fff8e1;border:1px solid #ffe082;border-left:4px solid #ffc107;border-radius:10px;padding:12px 16px;text-align:left;font-size:13px;line-height:1.6;color:#6d4c41;margin-top:14px;">⚠️ <strong>Lembrete:</strong> seu nome cadastrado é <strong>${escaparHtml(nome)}</strong>. Se você se classificar e o nome não conferir com a chamada oficial, poderá ser <strong>desclassificado</strong>. Qualquer correção, procure o professor <em>antes</em> do fim da etapa.</div>`;
+            div.innerHTML = `<div class="preparacao-grid"><div class="prep-card"><span class="prep-rotulo">👤 Aluno</span><span class="prep-valor">${escaparHtml(nome)}</span></div><div class="prep-card"><span class="prep-rotulo">🏫 Turma</span><span class="prep-valor">${turma}</span></div><div class="prep-card"><span class="prep-rotulo">📚 Modalidade</span><span class="prep-valor">${MODALIDADES[modalidadeAtual].nome}</span></div><div class="prep-card"><span class="prep-rotulo">⏱️ Formato</span><span class="prep-valor">20 questões · 10s cada</span></div></div><div class="prep-bloco"><h4>📋 Como funciona?</h4><ul><li><strong>20 perguntas</strong> de soma.</li>...<li>Até <strong>10 segundos</strong> por questão.</li><li>Respostas rápidas valem <strong>mais pontos</strong>.</li><li>Apenas o seu <strong>melhor resultado</strong> entra na classificação.</li></ul></div><div class="prep-bloco"><h4>📊 Suas referências</h4><div class="prep-referencias-linha"><div><span class="prep-rotulo">Seu melhor tempo médio dos acertos</span><span class="prep-valor-pequeno">${melhorMediaAluno ? melhorMediaAluno.toFixed(2)+"s" : "---"}</span></div><div><span class="prep-rotulo">Tempo médio dos acertos da turma</span><span class="prep-valor-pequeno">${mediaTurma ? mediaTurma.toFixed(2)+"s" : "---"}</span></div></div></div>${focoTreinoTabuadas.length ? `<div class="prep-foco"><strong>🎯 Foco recomendado</strong><br>${descreverFocoTreino()}</div>` : ""}<div class="prep-motivacao" style="margin-top:14px;">${msg}</div><div style="background:#fff8e1;border:1px solid #ffe082;border-left:4px solid #ffc107;border-radius:10px;padding:12px 16px;text-align:left;font-size:13px;line-height:1.6;color:#6d4c41;margin-top:14px;">⚠️ <strong>Lembrete:</strong> seu nome cadastrado é <strong>${escaparHtml(nome)}</strong>. Se você se classificar e o nome não conferir com a chamada oficial, poderá ser <strong>desclassificado</strong>. Qualquer correção, procure o professor <em>antes</em> do fim da etapa.</div>`;
             mostrarTela("tela-preparacao");
             window._pendingGame = { nome, turma, modalidade: modalidadeAtual, treino: false };
         } else {
@@ -20411,12 +20408,6 @@ function abrirBuscarAlunoComMeusDados() {
     // ▲▲▲ FIM [16.08]
 
     // ▼▼▼ [16.09] Modal "Como funciona · Desempenho" ────────────────
-    // v10.6.x · Explicação pedagógica da tela de Desempenho.
-    // Cobre: formulário de busca, filtros, destaque, estatísticas,
-    // gráfico, comparativo com a turma, evolução no ranking e
-    // histórico completo. Reutiliza as classes genéricas de modal
-    // ([02.73]).
-
     function construirConteudoComoFuncionaDesempenho() {
         return `
             <div class="desempenho-desc-titulo"><span aria-hidden="true">📊</span> Como funciona o Desempenho</div>
@@ -20431,7 +20422,7 @@ function abrirBuscarAlunoComMeusDados() {
             <p>Botões que filtram todas as seções abaixo para uma modalidade específica:</p>
             <ul>
                 <li><strong>📚 Todas</strong> — soma o desempenho nas 3 modalidades</li>
-                <li><strong>2-5</strong> · <strong>6-9</strong> · <strong>1-10</strong> — foca em uma modalidade só</li>
+                <li><strong>1-10</strong> · <strong>11-20</strong> · <strong>até 100</strong> — foca em uma modalidade só</li>
             </ul>
 
             <div class="desempenho-desc-subtitulo">🏅 Seu destaque</div>
@@ -20473,7 +20464,7 @@ function abrirBuscarAlunoComMeusDados() {
             <div class="desempenho-desc-subtitulo">🎓 Certificados resumidos</div>
             <p>No topo da tela, você vê os <strong>3 certificados de cada modalidade</strong> em miniatura. Se um está conquistado, aparece com selo verde e data. Se ainda está em progresso, aparece com barra de progresso. O botão <strong>"📈 Ver progresso detalhado"</strong> leva para a tela completa de Meu Progresso.</p>
 
-            <div class="desempenho-desc-dica"><strong>💡 Dica:</strong> use os filtros de modalidade para focar onde você quer melhorar. Se seu tempo médio em 6-9 está alto, filtre só por 6-9 e veja o gráfico — você enxerga exatamente o que precisa treinar.</div>
+            <div class="desempenho-desc-dica"><strong>💡 Dica:</strong> use os filtros de modalidade para focar onde você quer melhorar. Se seu tempo médio em 11-20 está alto, filtre só por 11-20 e veja o gráfico — você enxerga exatamente o que precisa treinar.</div>
 
             <span style="display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.35);border-radius:10px;padding:3px 10px;margin-top:10px;font-size:11.5px;font-weight:800;color:#a5f3fc;letter-spacing:.3px;">📊 Estatísticas completas · todas as partidas oficiais contam.</span>
         `;
@@ -20498,7 +20489,6 @@ function abrirBuscarAlunoComMeusDados() {
         document.body.style.overflow = "";
     }
 
-    // Fechar com tecla ESC (instalado uma única vez)
     if (!window._modalExplicacaoDesempenhoEscInstalado) {
         window._modalExplicacaoDesempenhoEscInstalado = true;
         document.addEventListener("keydown", function (e) {
@@ -21267,7 +21257,7 @@ function abrirBuscarAlunoComMeusDados() {
                 if (!arr.length) return `<div class="destaques-prof-bloco ${classe}"><div class="destaques-prof-cabecalho"><span class="icone">${icone}</span> ${titulo}</div><div class="destaques-prof-vazio">Nenhum aluno com mínimo de 3 partidas.</div></div>`;
                 return `<div class="destaques-prof-bloco ${classe}"><div class="destaques-prof-cabecalho"><span class="icone">${icone}</span> ${titulo}</div><ul class="destaques-prof-lista">${arr.map((item, i) => renderLinha(item, i)).join("")}</ul></div>`;
             };
-            const htmlMestres = `<div class="destaques-prof-bloco" style="border-left:4px solid #fbbf24;"><div class="destaques-prof-cabecalho"><span class="icone">🧠</span> Mestres da Tabuada (100% do mapa · Lendária)</div>${mestres.length === 0 ? `<div class="destaques-prof-vazio">Nenhum aluno atingiu 100% do mapa ainda.</div>` : `<ul class="destaques-prof-lista">${mestres.map(m => `<li class="destaques-prof-item pos-1"><span class="destaques-prof-posicao">🎖️</span><span class="destaques-prof-info"><span class="destaques-prof-nome">${escaparHtml(m.nome)}</span><span class="destaques-prof-turma">${escaparHtml(m.turma)}</span></span><span class="destaques-prof-valor">💎</span></li>`).join("")}</ul>`}</div>`;
+            const htmlMestres = `<div class="destaques-prof-bloco" style="border-left:4px solid #fbbf24;"><div class="destaques-prof-cabecalho"><span class="icone">🧠</span> Mestres da Soma (100% do mapa)</div>${mestres.length === 0 ? `<div class="destaques-prof-vazio">Nenhum aluno atingiu 100% do mapa ainda.</div>` : `<ul class="destaques-prof-lista">${mestres.map(m => `<li class="destaques-prof-item pos-1"><span class="destaques-prof-posicao">🎖️</span><span class="destaques-prof-info"><span class="destaques-prof-nome">${escaparHtml(m.nome)}</span><span class="destaques-prof-turma">${escaparHtml(m.turma)}</span></span><span class="destaques-prof-valor">💎</span></li>`).join("")}</ul>`}</div>`;
             const htmlEvolucao = blocoHtml("Quem mais evoluiu", "🚀", "ouro", d.evolucao, (item, i) => `<li class="destaques-prof-item ${i === 0 ? "pos-1" : ""}"><span class="destaques-prof-posicao">${i + 1}º</span><span class="destaques-prof-info"><span class="destaques-prof-nome">${escaparHtml(item.nome)}</span><span class="destaques-prof-turma">${escaparHtml(item.turma)}</span></span><span class="destaques-prof-valor">+${Math.round(item.evolucaoPct)}%</span></li>`);
             const htmlPrecisao = blocoHtml("Melhor precisão", "🎯", "prata", d.precisao, (item, i) => `<li class="destaques-prof-item ${i === 0 ? "pos-1" : ""}"><span class="destaques-prof-posicao">${i + 1}º</span><span class="destaques-prof-info"><span class="destaques-prof-nome">${escaparHtml(item.nome)}</span><span class="destaques-prof-turma">${escaparHtml(item.turma)}</span></span><span class="destaques-prof-valor">${item.precisao.toFixed(1)}%</span></li>`);
             const htmlVolume = blocoHtml("Quem mais jogou", "🎮", "bronze", d.volume, (item, i) => `<li class="destaques-prof-item ${i === 0 ? "pos-1" : ""}"><span class="destaques-prof-posicao">${i + 1}º</span><span class="destaques-prof-info"><span class="destaques-prof-nome">${escaparHtml(item.nome)}</span><span class="destaques-prof-turma">${escaparHtml(item.turma)}</span></span><span class="destaques-prof-valor">${item.totalPartidas} partidas</span></li>`);
@@ -22050,7 +22040,7 @@ function abrirBuscarAlunoComMeusDados() {
     const CAMINHO_MODO_CLASSIFICATORIA = "config/modo_classificatoria";
 
     const MODO_CLASSIFICATORIA_NORMAL = "normal";
-    const MODOS_CLASSIFICATORIA_VALIDOS = ["normal", "2-5", "6-9", "0-10"];
+    const MODOS_CLASSIFICATORIA_VALIDOS = ["normal", "1-10", "11-20", "ate-100"];
 
     let modoEventoAtual = "classificatoria";
     let modoClassificatoriaAtual = MODO_CLASSIFICATORIA_NORMAL;
@@ -22066,10 +22056,10 @@ function abrirBuscarAlunoComMeusDados() {
     function atualizarHeaderModoEvento() {
         const elNome = document.getElementById("header-nome-evento");
         const tituloOriginal = "Copa da Soma CEIB 2026 · Etapa Classificatória";
-        const tituloOlimpiadas = "Olimpíadas da Tabuada CEIB 2026";
+        const tituloOlimpiadas = "Olimpíadas da Soma CEIB 2026";
 
         if (modoEventoAtual === "olimpiadas") {
-            if (elNome) elNome.textContent = "Olimpíadas da Tabuada";
+            if (elNome) elNome.textContent = "Olimpíadas da Soma";
             document.title = tituloOlimpiadas;
         } else {
             if (elNome) elNome.textContent = "Copa da Soma";
@@ -22130,9 +22120,9 @@ function abrirBuscarAlunoComMeusDados() {
 
         let msg = "";
         if (novoModo === "olimpiadas") {
-            msg = "🏟️ MUDAR PARA MODO OLIMPÍADAS\n\nO foco do app será as Corridas de Tabuada. O card 'Minhas Posições' será escondido da Home, o Hall da Fama e o Álbum esconderão as categorias de partidas de 20 perguntas.\n\n⚠️ O Modo Classificatória Única será desativado (volta para 'Normal').\n\nConfirmar?";
+            msg = "🏟️ MUDAR PARA MODO OLIMPÍADAS\n\nO foco do app será as Corridas de Soma. O card 'Minhas Posições' será escondido da Home, o Hall da Fama e o Álbum esconderão as categorias de partidas de 20 perguntas.\n\n⚠️ O Modo Classificatória Única será desativado (volta para 'Normal').\n\nConfirmar?";
         } else if (novoModo === "classificatoria") {
-            msg = "🏆 MUDAR PARA MODO SÓ CLASSIFICATÓRIA\n\nO foco do app voltará a ser as partidas oficiais de 20 perguntas. O menu de Corridas de Tabuada será DESATIVADO.\n\nConfirmar?";
+            msg = "🏆 MUDAR PARA MODO SÓ CLASSIFICATÓRIA\n\nO foco do app voltará a ser as partidas oficiais de 20 perguntas. O menu de Corridas de Soma será DESATIVADO.\n\nConfirmar?";
         }
 
         if (!confirm(msg)) return;
@@ -22180,11 +22170,11 @@ function abrirBuscarAlunoComMeusDados() {
         }
 
         const rotulos = {
-            "normal": "Todas as modalidades (Normal)",
-            "2-5":    "Só Tabuadas 2-5",
-            "6-9":    "Só Tabuadas 6-9",
-            "0-10":   "Só Tabuadas 1-10"
-        };
+    "normal": "Todas as modalidades (Normal)",
+    "1-10":   "Só Somas até 10",
+    "11-20":  "Só Somas até 20",
+    "ate-100": "Só Dezenas até 100"
+};
         const atualTxt = rotulos[modoClassificatoriaAtual] || modoClassificatoriaAtual;
         const novoRotulo = rotulos[novoModo];
 
@@ -22261,11 +22251,11 @@ function abrirBuscarAlunoComMeusDados() {
         // ── Seção 2: Modo Classificatória Única ──
         const bloqueadoPorOlimpiadas = (modoEvento === "olimpiadas");
         const rotulos = {
-            "normal": "Normal (3 modalidades)",
-            "2-5":    "Só 2-5",
-            "6-9":    "Só 6-9",
-            "0-10":   "Só 1-10"
-        };
+    "normal": "Normal (3 modalidades)",
+    "1-10":   "Só 1-10",
+    "11-20":  "Só 11-20",
+    "ate-100": "Só até 100"
+};
 
         const botao = (valor) => {
             const ativo = modoClassif === valor;
@@ -22288,9 +22278,9 @@ function abrirBuscarAlunoComMeusDados() {
                 </p>
                 <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
                     ${botao("normal")}
-                    ${botao("2-5")}
-                    ${botao("6-9")}
-                    ${botao("0-10")}
+                    ${botao("1-10")}
+                    ${botao("11-20")}
+                    ${botao("ate-100")}
                 </div>
                 ${bloqueadoPorOlimpiadas
                     ? `<div style="font-size:11.5px; color:#fde68a; background:rgba(251,191,36,.08); border-left:3px solid #fbbf24; border-radius:8px; padding:8px 12px; line-height:1.5;">
@@ -23156,7 +23146,7 @@ function abrirBuscarAlunoComMeusDados() {
         html += buildCard("Mais Medalhas", "Quem colecionou o maior número de medalhas no Álbum.", "🏅", dados.medalhas, "medalhas");
         html += buildCard("Mais Estrelas", "Quem acumulou mais estrelas — as medalhas raras valem mais.", "⭐", dados.estrelas, "estrelas");
         html += buildCard("Álbum de Elite", "Raridade das medalhas + bônus por seções completas.", "💎", dados.album, "album");
-        html += buildCard("Maior Mapa Verde", "Quem dominou mais operações do mapa (90% de acerto em 5+ tentativas).", "🗺️", dados.mapa, "mapa");
+        html += buildCard("Maior Mapa Verde", "Quem dominou mais operações no mapa de somas (90% de acerto em 5+ tentativas).", "🗺️", dados.mapa, "mapa");
         html += buildCard("Mestre da Velocidade", "Quem acertou 20/20 e deu mais respostas em até 1 segundo.", "🏆", dados.velocidade, "velocidade");
         
         html += buildCard("Presença VIP", "Quem jogou em mais dias diferentes.", "📅", dados.presenca, "presenca");
@@ -23352,9 +23342,9 @@ function abrirBuscarAlunoComMeusDados() {
         if (etapa.inicioEm) html += `<div class="info-secao"><span class="info-icone">📅</span><div class="info-conteudo"><h4 class="info-titulo">Data de Início</h4><p class="info-texto">${formatarDataHoraCurta(etapa.inicioEm)}</p></div></div>`;
         if (etapa.fimPrevistoEm) html += `<div class="info-secao"><span class="info-icone">🏁</span><div class="info-conteudo"><h4 class="info-titulo">Encerramento Previsto</h4><p class="info-texto">${formatarDataHoraCurta(etapa.fimPrevistoEm)}</p></div></div>`;
         
-        html += `<div class="info-secao"><span class="info-icone">📋</span><div class="info-conteudo"><h4 class="info-titulo">Regras da Etapa</h4><ul class="info-lista"><li><strong>20 questões</strong> de multiplicação</li><li>Até <strong>10 segundos</strong> por questão</li><li><strong>Calculadora permitida</strong> para conferência</li><li>Os <strong>4 melhores</strong> de cada turma/modalidade avançam para a Final</li></ul></div></div>`;
+        html += `<div class="info-secao"><span class="info-icone">📋</span><div class="info-conteudo"><h4 class="info-titulo">Regras da Etapa</h4><ul class="info-lista"><li><strong>20 questões</strong> de soma</li>...<li>Até <strong>10 segundos</strong> por questão</li><li><strong>Calculadora permitida</strong> para conferência</li><li>Os <strong>4 melhores</strong> de cada turma/modalidade avançam para a Final</li></ul></div></div>`;
         
-        html += `<div class="info-secao"><span class="info-icone">🎓</span><div class="info-conteudo"><h4 class="info-titulo">Certificados de Maestria</h4><p class="info-texto">Você pode conquistar <strong>3 certificados</strong> por modalidade conforme domina as operações:</p><ul class="info-lista"><li>🥈 <strong>Mestre da Tabuada (Prata)</strong> — 85% do mapa com 5+ tentativas por operação e 80% de acerto recente</li><li>🥇 <strong>Lenda da Tabuada (Ouro)</strong> — 95% do mapa, 8+ tentativas, 90% de acerto e velocidade</li><li>💎 <strong>Maestria Total (Lendária)</strong> — 100% do mapa, 10+ tentativas, 90% + velocidade comprovada</li></ul><div class="info-destaque verde">🏆 O certificado fica salvo para sempre no seu Álbum. Se você cair de rendimento depois, ele <strong>não é perdido</strong> — é uma conquista histórica!</div></div></div>`;
+        html += `<div class="info-secao"><span class="info-icone">🎓</span><div class="info-conteudo"><h4 class="info-titulo">Certificados de Maestria</h4><p class="info-texto">Você pode conquistar <strong>3 certificados</strong> por modalidade conforme domina as operações:</p><ul class="info-lista"><li>🥈 <strong>Mestre da Soma (Prata)</strong> — 85% do mapa com 5+ tentativas por operação e 80% de acerto recente</li><li>🥇 <strong>Lenda da Soma (Ouro)</strong> — 95% do mapa, 8+ tentativas, 90% de acerto e velocidade</li><li>💎 <strong>Maestria Total (Lendária)</strong> — 100% do mapa, 10+ tentativas, 90% + velocidade comprovada</li></ul><div class="info-destaque verde">🏆 O certificado fica salvo para sempre no seu Álbum. Se você cair de rendimento depois, ele <strong>não é perdido</strong> — é uma conquista histórica!</div></div></div>`;
         
         if (fase === ETAPA_FASES.etapa_votacao) {
             const dadosVot = await obterDadosVotacao();
@@ -23514,7 +23504,7 @@ function abrirBuscarAlunoComMeusDados() {
         if (totalGeral === 0) {
             return `<div class="hall-card">
                 <div class="hall-card-titulo"><span class="icone">🗺️</span> Maior Mapa Verde</div>
-                <div class="hall-card-sub">Quem dominou mais operações no mapa de tabuadas.</div>
+                <div class="hall-card-sub">Quem dominou mais operações no mapa de somas.</div>
                 <div class="hall-vazio">Nenhum aluno com operações dominadas ainda.<br>Seja o primeiro a colorir o mapa!</div>
             </div>`;
         }
@@ -23527,7 +23517,7 @@ function abrirBuscarAlunoComMeusDados() {
 
         let html = `<div class="hall-card">
             <div class="hall-card-titulo"><span class="icone">🗺️</span> Maior Mapa Verde</div>
-            <div class="hall-card-sub">Quem dominou mais operações no mapa de tabuadas.</div>`;
+            <div class="hall-card-sub">Quem dominou mais operações no mapa de somas.</div>`;
 
         if (mestresVisiveis.length > 0) {
             const plural = totalMestres === 1 ? "aluno fechou 100%" : "alunos fecharam 100%";
@@ -24285,12 +24275,12 @@ function abrirBuscarAlunoComMeusDados() {
         return null;
     }
 
-    function pctCoberturaPorMod(dados, mod) {
+	function pctCoberturaPorMod(dados, mod) {
         const porTab = (dados && dados.porTabuada) || {};
-        const fatores = MODALIDADES[mod]?.fatores || [];
+        // v1.0.2 · Usa a fonte da verdade para o denominador exato da modalidade (45, 36 ou 90).
+        const total = obterOperacoesDaModalidade(mod).length;
         let dominadas = 0;
-        fatores.forEach(t => { dominadas += (porTab[t]?.dominadas || 0); });
-        const total = fatores.length * (MODALIDADES[mod]?.isDezenas ? 10 : 10); // 10 itens por parcela
+        Object.values(porTab).forEach(d => { dominadas += (d?.dominadas || 0); });
         return total > 0 ? Math.round((dominadas / total) * 100) : 0;
     }
 
@@ -24681,7 +24671,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             <div class="hall-desc-titulo"><span aria-hidden="true">🏆</span> Como funciona o Hall da Fama</div>
 
             <div class="hall-desc-subtitulo">📊 O que é</div>
-            <p>O Hall da Fama é a <strong>vitrine dos maiores destaques</strong> da Copa. São <strong>11 categorias diferentes</strong> — cada uma premia um tipo de feito. Não existe um "campeão geral": cada aluno pode brilhar na categoria em que se destaca mais.</p>
+            <p>O Hall da Fama é a <strong>vitrine dos maiores destaques</strong> da Copa da Soma. São <strong>11 categorias diferentes</strong> — cada uma premia um tipo de feito. Não existe um "campeão geral": cada aluno pode brilhar na categoria em que se destaca mais.</p>
 
             <div class="hall-desc-subtitulo">✅ Como entrar</div>
             <p>Basta ter <strong>pelo menos 1 partida registrada</strong> na Copa. Todas as categorias são calculadas em tempo real a partir do seu histórico. Não precisa se inscrever — se você jogar, aparece.</p>
@@ -24702,7 +24692,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
                 </div>
                 <div class="hall-desc-categoria cat-mapa">
                     <strong><span class="hall-desc-cat-emoji">🗺️</span> Maior Mapa Verde</strong>
-                    Quem dominou mais operações do mapa (≥90% de acerto com 5+ tentativas). Os que fecharam 100% ganham o selo de <strong>Mestre</strong>.
+                    Quem dominou mais operações de soma (≥90% de acerto com 5+ tentativas). Os que fecharam 100% ganham o selo de <strong>Mestre</strong>.
                 </div>
                 <div class="hall-desc-categoria cat-velocidade">
                     <strong><span class="hall-desc-cat-emoji">🏆</span> Mestre da Velocidade</strong>
@@ -24788,17 +24778,12 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     // ▲▲▲ FIM [18.09]
 
     // ▼▼▼ [18.10] Modal "Como funciona · Minhas Posições" ────────────
-    // v10.6.x · Explicação pedagógica do card "Minhas Posições" da
-    // Home. Cobre: o que é, o que cada zona significa, como ler a
-    // barra treinos × oficiais, botões Jogar/Treinar e o atalho do
-    // rodapé. Reutiliza as classes genéricas de modal ([02.73]).
-
     function construirConteudoComoFuncionaMinhasPos() {
         return `
             <div class="home-desc-titulo"><span aria-hidden="true">🏆</span> Como funciona "Minhas Posições"</div>
 
             <div class="home-desc-subtitulo">📊 O que é</div>
-            <p>Este card mostra a sua <strong>situação atual em cada modalidade da Copa</strong>. Ele é atualizado automaticamente conforme você joga. Não precisa fazer nada — é só olhar e agir.</p>
+            <p>Este card mostra a sua <strong>situação atual em cada modalidade da Copa da Soma</strong>. Ele é atualizado automaticamente conforme você joga. Não precisa fazer nada — é só olhar e agir.</p>
 
             <div class="home-desc-subtitulo">📍 O que cada parte significa</div>
             <ul>
@@ -24832,7 +24817,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             <p>Cada linha mostra uma barra com <strong>duas cores</strong>:</p>
             <ul>
                 <li>🔵 <strong>Azul (oficiais)</strong> — partidas oficiais completas. <strong>Contam para o ranking e para a Final.</strong></li>
-                <li>🟣 <strong>Roxo (treinos)</strong> — treinos concluídos. Alimentam seu <strong>mapa de tabuadas</strong> e <strong>certificados</strong>, mas <strong>NÃO contam para a posição</strong>.</li>
+                <li>🟣 <strong>Roxo (treinos)</strong> — treinos concluídos. Alimentam seu <strong>mapa de somas</strong> e <strong>certificados</strong>, mas <strong>NÃO contam para a posição</strong>.</li>
             </ul>
             <p>A barra ajuda você a ver se está <strong>equilibrado</strong> entre treinar e jogar, ou se está pendendo demais para um lado.</p>
 
@@ -24870,7 +24855,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         document.body.style.overflow = "";
     }
 
-    // Fechar com tecla ESC (instalado uma única vez)
     if (!window._modalExplicacaoMinhasPosEscInstalado) {
         window._modalExplicacaoMinhasPosEscInstalado = true;
         document.addEventListener("keydown", function (e) {
@@ -24884,11 +24868,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     // ▲▲▲ FIM [18.10]
 
     // ▼▼▼ [18.11] Modal "Como funciona · Ritmo na Copa" ───────────────
-    // v10.7.1 · Explicação pedagógica do card "Seu Ritmo na Copa".
-    // Cobre: o que é a barra, o que significa cada cor, como
-    // interpretar a proporção treinos × oficiais, e como usar para
-    // equilibrar a rotina. Reutiliza .home-descricao ([02.76]).
-
     function construirConteudoComoFuncionaRitmo() {
         return `
             <div class="home-desc-titulo"><span aria-hidden="true">🎯</span> Como funciona o Ritmo na Copa</div>
@@ -24965,19 +24944,16 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     }
     // ▲▲▲ FIM [18.11]
 
-    // ▼▼▼ [18.12] Motor da Corrida de Tabuada ───────────── INÍCIO ───
-    // v10.10.1 · Suporte para Corrida por Distância (Sprint 10, Meia 20, Ultra 50).
-    // Adicionado o seletor de tipo e a lógica de punição por tempo (+3s).
-
+    // ▼▼▼ [18.12] Motor da Corrida de Soma ───────────── INÍCIO ───
     const CAMINHO_CORRIDAS = "copa_corridas";
 
     const CORRIDA_DISTANCIAS = {
         "100m": {
-            id: "100m", label: "100m Tabuada", icone: "🏃", tipo: "tempo",
+            id: "100m", label: "100m Soma", icone: "🏃", tipo: "tempo",
             duracaoSeg: 60, errosMax: 3, subtitulo: "Sprint · 1 minuto · até 3 erros"
         },
         "200m": {
-            id: "200m", label: "200m Tabuada", icone: "🏃‍♂️", tipo: "tempo",
+            id: "200m", label: "200m Soma", icone: "🏃‍♂️", tipo: "tempo",
             duracaoSeg: 120, errosMax: 6, subtitulo: "Meia distância · 2 minutos · até 6 erros"
         },
         "maratona": {
@@ -25060,7 +25036,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
     function construirConteudoComoFuncionaCorrida() {
         return `
-            <div class="corrida-desc-titulo"><span aria-hidden="true">🏁</span> Como funciona a Corrida de Tabuada</div>
+            <div class="corrida-desc-titulo"><span aria-hidden="true">🏁</span> Como funciona a Corrida de Soma</div>
 
             <div class="corrida-desc-subtitulo">🎯 O que é</div>
             <p>É um modo de jogo focado em <strong>fluência</strong>. Existem duas formas de competir: por <strong>Tempo</strong> ou por <strong>Distância</strong>.</p>
@@ -25086,9 +25062,9 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             <p>As Corridas têm o seu próprio ranking (separado das partidas de 20 perguntas). Só entra no ranking quem terminar a corrida com <strong>no mínimo 80% de precisão</strong>.</p>
 
             <div class="corrida-desc-subtitulo">🎓 Integração</div>
-            <p>As respostas da Corrida alimentam o <strong>Mapa de Tabuadas</strong> e os <strong>Certificados de Maestria</strong> como se fossem respostas de treino. Elas não entram no ranking oficial das 20 perguntas.</p>
+            <p>As respostas da Corrida alimentam o <strong>Mapa de Somas</strong> e os <strong>Certificados de Maestria</strong> como se fossem respostas de treino. Elas não entram no ranking oficial das 20 perguntas.</p>
 
-            <span class="corrida-desc-selo">🏁 Corridas de Tabuada · Tempo e Distância.</span>
+            <span class="corrida-desc-selo">🏁 Corridas de Soma · Tempo e Distância.</span>
         `;
     }
 
@@ -25139,7 +25115,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         } catch(e) { console.warn("[Corrida] Falha ao validar etapa:", e); }
 
         const modBtn = document.querySelector(".corrida-mod-btn.ativa[data-mod]");
-        const modalidade = modBtn && MODALIDADES[modBtn.dataset.mod] ? modBtn.dataset.mod : "0-10";
+        const modalidade = modBtn && MODALIDADES[modBtn.dataset.mod] ? modBtn.dataset.mod : "ate-100";
 
         if (corridaEstado && corridaEstado.timerIntervalId) clearInterval(corridaEstado.timerIntervalId);
 
@@ -25189,9 +25165,25 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     }
 
     function _gerarDeckCorrida(modalidade) {
-        const fatores = MODALIDADES[modalidade]?.fatores || [];
+        const modCfg = MODALIDADES[modalidade];
+        if (!modCfg) return [];
+        
+        const fatores = modCfg.fatores || [];
         const ops = [];
-        fatores.forEach(a => { for (let b = 1; b <= 10; b++) ops.push({ fA: a, fB: b, produto: a * b }); });
+        
+        const maxB = modCfg.isDezenas ? 100 : 10;
+        const stepB = modCfg.isDezenas ? 10 : 1;
+        
+        fatores.forEach(a => {
+            for (let b = stepB; b <= maxB; b += stepB) {
+                const soma = a + b;
+                if (modCfg.maxSoma && soma > modCfg.maxSoma) continue;
+                if (modCfg.minSoma && soma < modCfg.minSoma) continue;
+                
+                ops.push({ fA: a, fB: b, produto: soma }); 
+            }
+        });
+
         for (let i = ops.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [ops[i], ops[j]] = [ops[j], ops[i]];
@@ -25270,7 +25262,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         const contaEl = document.getElementById("corrida-conta");
         if (contaEl) {
-            contaEl.textContent = `${op.fA} × ${op.fB} = ?`;
+            contaEl.textContent = `${op.fA} + ${op.fB} = ?`;
             contaEl.classList.remove("erro-visual");
         }
 
@@ -25293,7 +25285,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         while (arr.length < 4) {
             const delta = (Math.floor(Math.random() * 7) - 3) || 2;
             const v = op.produto + delta;
-            if (v > 0 && v <= 100 && !arr.includes(v)) arr.push(v);
+            if (v > 0 && v <= 200 && !arr.includes(v)) arr.push(v);
         }
         return arr.sort((a, b) => a - b);
     }
@@ -25430,7 +25422,6 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
                 if (typeof verificarCertificadosPosPartida === "function") await verificarCertificadosPosPartida(_nome, _turma, _modalidade);
             } catch(e) {}
             try {
-                // ⚠️ Passa 'true' para indicar que é uma nova partida
                 if (typeof verificarAlbumPosPartida === "function") await verificarAlbumPosPartida(_nome, _turma, true);
             } catch(e) {}
         }, 900);
@@ -25643,7 +25634,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         const itens = corridaEstado.errosDetalhes.slice(0, 12).map(e => `
             <div class="corrida-revisao-item">
-                <span class="corrida-revisao-op">${e.fA} × ${e.fB}</span>
+                <span class="corrida-revisao-op">${e.fA} + ${e.fB}</span>
                 <span class="corrida-revisao-sua">${e.respostaDada}</span>
                 <span class="corrida-revisao-certa">${e.produto}</span>
             </div>
@@ -25659,7 +25650,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
     function novaCorridaResultado() {
         if (corridaEstado && corridaEstado.timerIntervalId) clearInterval(corridaEstado.timerIntervalId);
-        const modAntiga = corridaEstado?.modalidade || "0-10";
+        const modAntiga = corridaEstado?.modalidade || "ate-100";
         const tipoAntigo = corridaEstado?.tipo || "tempo";
         corridaEstado = null;
         document.body.classList.remove("corrida-ativa");
@@ -25669,7 +25660,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     }
 
     function treinarCorridaResultado() {
-        const mod = corridaEstado?.modalidade || "0-10";
+        const mod = corridaEstado?.modalidade || "ate-100";
         if (typeof abrirMenuTreino === "function") abrirMenuTreino(mod);
     }
 
@@ -25687,7 +25678,7 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         if (!modal || !container || !titulo) return;
 
         const modBtn = document.querySelector(".corrida-mod-btn.ativa[data-mod]");
-        const modalidade = modBtn && MODALIDADES[modBtn.dataset.mod] ? modBtn.dataset.mod : "0-10";
+        const modalidade = modBtn && MODALIDADES[modBtn.dataset.mod] ? modBtn.dataset.mod : "ate-100";
         const cfgDist = CORRIDA_DISTANCIAS[distanciaId];
         if (!cfgDist) return;
 
