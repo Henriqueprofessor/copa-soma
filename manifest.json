@@ -1,4 +1,5 @@
 {
+  "id": "/copa-soma/",
   "name": "Copa da Soma CEIB 2026",
   "short_name": "Copa da Soma",
   "description": "Competição de soma — Copa da Soma CEIB 2026",
@@ -11,13 +12,25 @@
       "src": "icon-192.png?v=2",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "icon-512.png?v=2",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
