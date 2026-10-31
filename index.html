@@ -11372,33 +11372,33 @@ const firebaseConfig = {
     // [06] JS-FB · Estado global da aplicação
     // ═══════════════════════════════════════════════════════════════════════
 
-    // ▼▼▼ [06.01] Estado do jogo ───────────────────────────────────────────
-    let alunoAtual="", turmaAtual="", modalidadeAtual="2-5", perguntaAtual=0, pontosAcumulados=0, acertos=0, erros=0, sequenciaAtual=0, maiorSequencia=0;
-    let temposCorretas=[], respostaCorreta, tempoInicio, timerInterval, timerTimeout, perguntaAberta=false, jogoAtivo=false, finalizando=false, modoTreino=false;
-    let treinoAnonimo = false;
-    let desempenhoTabuadas={}, tipoRankingAtual="turma", temposRespostas=[], acertouPrimeira=false, temposRapidos=0;
-    let chutesRapidos = 0;
-    let desempenhoOperacoes = {};
-    let mapaFonteUltima = {};
-    let mapaFonteAgregada = {};
-    let modoVisualizacaoMapa = "agregado";
-    let treinoFocoOperacoes = null;
-    let treinoListaInteligente = null;
-    let treinoFocoAbsoluto = null;
-    let aguardandoFeedbackErro = false;
-    let promocoesRecentes = [];
-    let pilhaDetalhes = [];
-    let perguntasGeradas=[], tabuadaAtualPergunta=null, focoTreinoTabuadas=[], dificuldadesHistoricas={};
-    let alunosData=[], alunosFiltrados=[];
-    let melhorMediaAluno = null, mediaTurma = null;
-    let somAtivo = true, jaToCouSomSuperacao = false;
-    let ultimoMelhorOficial = null, ultimaTentativa = null;
-    let votacaoInicioCache = null;
-    let votacaoTimerInterval = null;
-    let countdownTimerInterval = null;
-    let etapaEstadoCache = null;
-    let tentativasCancelar = 0; // ⚠️ NOVO: Contador anti-exploit
-    // ▲▲▲ FIM [06.01]
+// ▼▼▼ [06.01] Estado do jogo ───────────────────────────────────────────
+let alunoAtual="", turmaAtual="", modalidadeAtual="1-10", perguntaAtual=0, pontosAcumulados=0, acertos=0, erros=0, sequenciaAtual=0, maiorSequencia=0;
+let temposCorretas=[], respostaCorreta, tempoInicio, timerInterval, timerTimeout, perguntaAberta=false, jogoAtivo=false, finalizando=false, modoTreino=false;
+let treinoAnonimo = false;
+let desempenhoTabuadas={}, tipoRankingAtual="turma", temposRespostas=[], acertouPrimeira=false, temposRapidos=0;
+let chutesRapidos = 0;
+let desempenhoOperacoes = {};
+let mapaFonteUltima = {};
+let mapaFonteAgregada = {};
+let modoVisualizacaoMapa = "agregado";
+let treinoFocoOperacoes = null;
+let treinoListaInteligente = null;
+let treinoFocoAbsoluto = null;
+let aguardandoFeedbackErro = false;
+let promocoesRecentes = [];
+let pilhaDetalhes = [];
+let perguntasGeradas=[], tabuadaAtualPergunta=null, focoTreinoTabuadas=[], dificuldadesHistoricas={};
+let alunosData=[], alunosFiltrados=[];
+let melhorMediaAluno = null, mediaTurma = null;
+let somAtivo = true, jaToCouSomSuperacao = false;
+let ultimoMelhorOficial = null, ultimaTentativa = null;
+let votacaoInicioCache = null;
+let votacaoTimerInterval = null;
+let countdownTimerInterval = null;
+let etapaEstadoCache = null;
+let tentativasCancelar = 0; // ⚠️ NOVO: Contador anti-exploit
+// ▲▲▲ FIM [06.01]
 
     // ▼▼▼ [06.02] Estado do desempenho ─────────────────────────────────────
     let desempenhoPartidasCache = [];
@@ -11990,283 +11990,283 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
     // ▲▲▲ FIM [07.08]
 
-    // ▼▼▼ [07.08.bis] Mapa de Tabuadas — Card da Home ───────────
-    let modalMapaMod = "todas";
-    let modalMapaFonteAgregada = {};
-    let modalMapaFonteUltima = {};
-    let modalMapaBackup = null;
+// ▼▼▼ [07.08.bis] Mapa de Tabuadas — Card da Home ───────────
+let modalMapaMod = "todas";
+let modalMapaFonteAgregada = {};
+let modalMapaFonteUltima = {};
+let modalMapaBackup = null;
 
-    const STORAGE_FOCO_MOD = "copa_foco_mod";
-    let _homeMapaCache = null; // { alunoKey, dados }
+const STORAGE_FOCO_MOD = "copa_foco_mod";
+let _homeMapaCache = null; // { alunoKey, dados }
 
-    async function renderizarMapaHome() {
-        const container = document.getElementById("mapa-home-container");
-        if (!container) return;
+async function renderizarMapaHome() {
+    const container = document.getElementById("mapa-home-container");
+    if (!container) return;
 
-        const nome = obterNomeSalvoAluno();
-        const turma = obterTurmaSalvaAluno();
+    const nome = obterNomeSalvoAluno();
+    const turma = obterTurmaSalvaAluno();
 
-        if (!nome || !turma) {
-            container.innerHTML = `<div class="mapa-home-card">
-                <div class="mapa-home-titulo">
-                    🗺️ Seu Mapa de Tabuadas
-                    <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Tabuadas" title="Como funciona?">?</button>
-                </div>
-                <div class="mapa-home-vazio">Jogue uma partida para liberar seu mapa.</div>
-            </div>`;
-            return;
+    if (!nome || !turma) {
+        container.innerHTML = `<div class="mapa-home-card">
+            <div class="mapa-home-titulo">
+                🗺️ Seu Mapa de Somas
+                <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Somas" title="Como funciona?">?</button>
+            </div>
+            <div class="mapa-home-vazio">Jogue uma partida para liberar seu mapa.</div>
+        </div>`;
+        return;
+    }
+
+    try {
+        const todasChaves = [];
+        FATORES_MAPA.forEach(a => FATORES_MAPA.forEach(b => todasChaves.push(`${a}x${b}`)));
+        const totalOps = todasChaves.length;
+        const alunoKey = chaveAlbum(nome, turma);
+
+        // ⚠️ OTIMIZAÇÃO: Verifica se o cache é do aluno atual
+        let mapaGlobal;
+        if (_homeMapaCache && _homeMapaCache.alunoKey === alunoKey) {
+            mapaGlobal = _homeMapaCache.dados;
+        } else {
+            mapaGlobal = await obterDesempenhoOperacoesGlobal(nome, turma);
+            _homeMapaCache = { alunoKey, dados: mapaGlobal };
         }
 
-        try {
-            const todasChaves = [];
-            FATORES_MAPA.forEach(a => FATORES_MAPA.forEach(b => todasChaves.push(`${a}x${b}`)));
-            const totalOps = todasChaves.length;
-            const alunoKey = chaveAlbum(nome, turma);
+        const pendentesPorMod = {};
+        const dominadasPorMod = {};
+        for (const mod of Object.keys(MODALIDADES)) {
+            const ops = obterOperacoesDaModalidade(mod);
+            let dom = 0;
+            ops.forEach(op => {
+                const h = normalizarHistoricoOperacao(mapaGlobal[op]);
+                if (estadoDaOperacao(h) === "verde") dom++;
+            });
+            dominadasPorMod[mod] = dom;
+            pendentesPorMod[mod] = ops.length - dom;
+        }
 
-            // ⚠️ OTIMIZAÇÃO: Verifica se o cache é do aluno atual
-            let mapaGlobal;
-            if (_homeMapaCache && _homeMapaCache.alunoKey === alunoKey) {
-                mapaGlobal = _homeMapaCache.dados;
+        let totalDominadas = 0;
+        todasChaves.forEach(k => {
+            const h = normalizarHistoricoOperacao(mapaGlobal[k]);
+            if (estadoDaOperacao(h) === "verde") totalDominadas++;
+        });
+        const pct = totalOps ? Math.round((totalDominadas / totalOps) * 100) : 0;
+        const totalPendentes = totalOps - totalDominadas;
+
+        const iconesMod  = { "1-10": "➕", "11-20": "🧮", "ate-100": "💯" };
+        const rotulosMod = { "1-10": "1-10", "11-20": "11-20", "ate-100": "até 100" };
+        let chipsHtml = "";
+        for (const mod of Object.keys(MODALIDADES)) {
+            const ops = obterOperacoesDaModalidade(mod);
+            chipsHtml += `<span class="mapa-home-chip"><span class="icone">${iconesMod[mod] || "📖"}</span> ${rotulosMod[mod] || mod}: <strong>${dominadasPorMod[mod]}/${ops.length}</strong></span>`;
+        }
+
+        let modAtiva = localStorage.getItem(STORAGE_FOCO_MOD) || "1-10";
+        if (!MODALIDADES[modAtiva]) modAtiva = "1-10";
+        if (pendentesPorMod[modAtiva] === 0 && totalPendentes > 0) {
+            const comPend = Object.keys(pendentesPorMod)
+                .filter(m => pendentesPorMod[m] > 0)
+                .sort((a, b) => pendentesPorMod[b] - pendentesPorMod[a]);
+            if (comPend.length) modAtiva = comPend[0];
+        }
+
+        let seletorHtml = "";
+        if (totalPendentes > 0) {
+            const botoes = Object.keys(MODALIDADES).map(m => {
+                const ativa = m === modAtiva;
+                const temPend = pendentesPorMod[m] > 0;
+                const rotulo = `${iconesMod[m]} ${rotulosMod[m]}`;
+                const cls = `mapa-home-mod-btn ${ativa ? "ativa" : ""} ${!temPend ? "sem-pend" : ""}`;
+                return `<button class="${cls}" onclick="escolherModFoco('${m}')" aria-pressed="${ativa}">${rotulo} <small>${pendentesPorMod[m]} pend.</small></button>`;
+            }).join("");
+            seletorHtml = `<div class="mapa-home-seletor">
+                <div class="mapa-home-seletor-rotulo">🎯 Foco em qual modalidade?</div>
+                <div class="mapa-home-seletor-btns">${botoes}</div>
+            </div>`;
+        }
+
+        let botaoAcaoHtml = "";
+        const pendNaAtiva = pendentesPorMod[modAtiva] || 0;
+        if (pendNaAtiva > 0) {
+            if (pendNaAtiva <= 5) {
+                const label = `🎯 Foco absoluto: ${pendNaAtiva} ${pendNaAtiva === 1 ? "operação" : "operações"} em ${rotulosMod[modAtiva]}`;
+                botaoAcaoHtml = `<button class="home-btn-link" style="margin-top:2px;border-style:solid;border-color:rgba(251,191,36,.7);color:#fde68a;background:rgba(251,191,36,.10);" onclick="iniciarFocoAbsolutoDaHome('${modAtiva}')">${label}</button>`;
             } else {
-                mapaGlobal = await obterDesempenhoOperacoesGlobal(nome, turma);
-                _homeMapaCache = { alunoKey, dados: mapaGlobal };
+                const label = `🧠 Treinar as ${pendNaAtiva} pendentes em ${rotulosMod[modAtiva]}`;
+                botaoAcaoHtml = `<button class="home-btn-link" style="margin-top:2px;border-style:solid;border-color:rgba(34,211,238,.45);color:var(--neon-cyan);background:rgba(34,211,238,.08);" onclick="iniciarTreinoInteligenteParaMod('${modAtiva}')">${label}</button>`;
             }
-
-            const pendentesPorMod = {};
-            const dominadasPorMod = {};
-            for (const mod of Object.keys(MODALIDADES)) {
-                const ops = obterOperacoesDaModalidade(mod);
-                let dom = 0;
-                ops.forEach(op => {
-                    const h = normalizarHistoricoOperacao(mapaGlobal[op]);
-                    if (estadoDaOperacao(h) === "verde") dom++;
-                });
-                dominadasPorMod[mod] = dom;
-                pendentesPorMod[mod] = ops.length - dom;
-            }
-
-            let totalDominadas = 0;
-            todasChaves.forEach(k => {
-                const h = normalizarHistoricoOperacao(mapaGlobal[k]);
-                if (estadoDaOperacao(h) === "verde") totalDominadas++;
-            });
-            const pct = totalOps ? Math.round((totalDominadas / totalOps) * 100) : 0;
-            const totalPendentes = totalOps - totalDominadas;
-
-            const iconesMod  = { "2-5": "📚", "6-9": "🎯", "0-10": "⭐" };
-            const rotulosMod = { "2-5": "2-5", "6-9": "6-9", "0-10": "1-10" };
-            let chipsHtml = "";
-            for (const mod of Object.keys(MODALIDADES)) {
-                const ops = obterOperacoesDaModalidade(mod);
-                chipsHtml += `<span class="mapa-home-chip"><span class="icone">${iconesMod[mod] || "📖"}</span> ${rotulosMod[mod] || mod}: <strong>${dominadasPorMod[mod]}/${ops.length}</strong></span>`;
-            }
-
-            let modAtiva = localStorage.getItem(STORAGE_FOCO_MOD) || "0-10";
-            if (!MODALIDADES[modAtiva]) modAtiva = "0-10";
-            if (pendentesPorMod[modAtiva] === 0 && totalPendentes > 0) {
-                const comPend = Object.keys(pendentesPorMod)
-                    .filter(m => pendentesPorMod[m] > 0)
-                    .sort((a, b) => pendentesPorMod[b] - pendentesPorMod[a]);
-                if (comPend.length) modAtiva = comPend[0];
-            }
-
-            let seletorHtml = "";
-            if (totalPendentes > 0) {
-                const botoes = Object.keys(MODALIDADES).map(m => {
-                    const ativa = m === modAtiva;
-                    const temPend = pendentesPorMod[m] > 0;
-                    const rotulo = m === "2-5" ? "📚 2-5" : m === "6-9" ? "🎯 6-9" : "⭐ 1-10";
-                    const cls = `mapa-home-mod-btn ${ativa ? "ativa" : ""} ${!temPend ? "sem-pend" : ""}`;
-                    return `<button class="${cls}" onclick="escolherModFoco('${m}')" aria-pressed="${ativa}">${rotulo} <small>${pendentesPorMod[m]} pend.</small></button>`;
-                }).join("");
-                seletorHtml = `<div class="mapa-home-seletor">
-                    <div class="mapa-home-seletor-rotulo">🎯 Foco em qual modalidade?</div>
-                    <div class="mapa-home-seletor-btns">${botoes}</div>
-                </div>`;
-            }
-
-            let botaoAcaoHtml = "";
-            const pendNaAtiva = pendentesPorMod[modAtiva] || 0;
-            if (pendNaAtiva > 0) {
-                if (pendNaAtiva <= 5) {
-                    const label = `🎯 Foco absoluto: ${pendNaAtiva} ${pendNaAtiva === 1 ? "operação" : "operações"} em ${rotulosMod[modAtiva]}`;
-                    botaoAcaoHtml = `<button class="home-btn-link" style="margin-top:2px;border-style:solid;border-color:rgba(251,191,36,.7);color:#fde68a;background:rgba(251,191,36,.10);" onclick="iniciarFocoAbsolutoDaHome('${modAtiva}')">${label}</button>`;
-                } else {
-                    const label = `🧠 Treinar as ${pendNaAtiva} pendentes em ${rotulosMod[modAtiva]}`;
-                    botaoAcaoHtml = `<button class="home-btn-link" style="margin-top:2px;border-style:solid;border-color:rgba(34,211,238,.45);color:var(--neon-cyan);background:rgba(34,211,238,.08);" onclick="iniciarTreinoInteligenteParaMod('${modAtiva}')">${label}</button>`;
-                }
-            } else if (totalPendentes > 0) {
-                botaoAcaoHtml = `<div style="font-size:12px;color:var(--text-muted);text-align:center;padding:6px 0;">✓ Você já domina tudo nesta modalidade. Escolha outra acima.</div>`;
-            }
-
-            container.innerHTML = `
-                <div class="mapa-home-card">
-                    <div class="mapa-home-titulo">
-                        🗺️ Seu Mapa de Tabuadas
-                        <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Tabuadas" title="Como funciona?">?</button>
-                    </div>
-                    <div class="mapa-home-numero">
-                        <span class="pct">${pct}%</span>
-                        <span class="detalhe">dominado · ${totalDominadas}/${totalOps} operações</span>
-                    </div>
-                    <div class="mapa-home-barra">
-                        <div class="mapa-home-barra-fill" data-width="${pct}%" style="width:0%"></div>
-                    </div>
-                    <div class="mapa-home-chips">${chipsHtml}</div>
-                    ${seletorHtml}
-                    ${botaoAcaoHtml}
-                    <button class="home-btn-link" onclick="irParaMapaCompleto()">🗺️ Ver mapa completo →</button>
-                </div>
-            `;
-
-            requestAnimationFrame(() => {
-                const fill = container.querySelector(".mapa-home-barra-fill");
-                if (fill) requestAnimationFrame(() => { fill.style.width = fill.dataset.width || "0%"; });
-            });
-        } catch(e) {
-            console.warn("Falha ao renderizar mapa home:", e);
-            container.innerHTML = `<div class="mapa-home-card">
-                <div class="mapa-home-titulo">
-                    🗺️ Seu Mapa de Tabuadas
-                    <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Tabuadas" title="Como funciona?">?</button>
-                </div>
-                <div class="mapa-home-vazio">Não foi possível carregar agora.</div>
-            </div>`;
+        } else if (totalPendentes > 0) {
+            botaoAcaoHtml = `<div style="font-size:12px;color:var(--text-muted);text-align:center;padding:6px 0;">✓ Você já domina tudo nesta modalidade. Escolha outra acima.</div>`;
         }
+
+        container.innerHTML = `
+            <div class="mapa-home-card">
+                <div class="mapa-home-titulo">
+                    🗺️ Seu Mapa de Somas
+                    <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Somas" title="Como funciona?">?</button>
+                </div>
+                <div class="mapa-home-numero">
+                    <span class="pct">${pct}%</span>
+                    <span class="detalhe">dominado · ${totalDominadas}/${totalOps} operações</span>
+                </div>
+                <div class="mapa-home-barra">
+                    <div class="mapa-home-barra-fill" data-width="${pct}%" style="width:0%"></div>
+                </div>
+                <div class="mapa-home-chips">${chipsHtml}</div>
+                ${seletorHtml}
+                ${botaoAcaoHtml}
+                <button class="home-btn-link" onclick="irParaMapaCompleto()">🗺️ Ver mapa completo →</button>
+            </div>
+        `;
+
+        requestAnimationFrame(() => {
+            const fill = container.querySelector(".mapa-home-barra-fill");
+            if (fill) requestAnimationFrame(() => { fill.style.width = fill.dataset.width || "0%"; });
+        });
+    } catch(e) {
+        console.warn("Falha ao renderizar mapa home:", e);
+        container.innerHTML = `<div class="mapa-home-card">
+            <div class="mapa-home-titulo">
+                🗺️ Seu Mapa de Somas
+                <button type="button" id="btn-como-funciona-mapa-home" class="btn-como-funciona-inline" onclick="abrirModalComoFuncionaMapaHome()" aria-haspopup="dialog" aria-controls="modal-explicacao-mapa-home" aria-label="Como funciona o Mapa de Somas" title="Como funciona?">?</button>
+            </div>
+            <div class="mapa-home-vazio">Não foi possível carregar agora.</div>
+        </div>`;
+    }
+}
+
+function escolherModFoco(mod) {
+    if (!MODALIDADES[mod]) return;
+    localStorage.setItem(STORAGE_FOCO_MOD, mod);
+    renderizarMapaHome();
+}
+
+async function iniciarTreinoInteligenteParaMod(mod) {
+    if (!MODALIDADES[mod]) return;
+    const nome = obterNomeSalvoAluno();
+    const turma = obterTurmaSalvaAluno();
+    if (!nome || !turma) { notificar("Você precisa se identificar.", "aviso"); return; }
+    alunoAtual = nome;
+    turmaAtual = turma;
+    modalidadeAtual = mod;
+    treinoAnonimo = false;
+    treinoFocoOperacoes = null;
+    treinoListaInteligente = null;
+    treinoFocoAbsoluto = null;
+    await carregarFocoTreino(nome, turma, mod);
+    await iniciarTreinoInteligente();
+}
+
+async function abrirMapaCompleto() {
+    const modal = document.getElementById("modal-mapa-completo");
+    const container = document.getElementById("modal-mapa-completo-conteudo");
+    if (!modal || !container) return;
+
+    const nome = obterNomeSalvoAluno();
+    const turma = obterTurmaSalvaAluno();
+
+    if (!nome || !turma) {
+        container.innerHTML = `<div class="mapa-home-vazio" style="padding:28px 12px;">Você ainda não se identificou.<br>Jogue uma partida para liberar o mapa completo.</div>`;
+        modal.classList.remove("hidden");
+        setTimeout(() => document.querySelector("#modal-mapa-completo .modal-close")?.focus(), 80);
+        return;
     }
 
-    function escolherModFoco(mod) {
-        if (!MODALIDADES[mod]) return;
-        localStorage.setItem(STORAGE_FOCO_MOD, mod);
-        renderizarMapaHome();
-    }
+    container.innerHTML = `<div class="desempenho-loading">⏳ Carregando seu mapa…</div>`;
+    modal.classList.remove("hidden");
+    setTimeout(() => document.querySelector("#modal-mapa-completo .modal-close")?.focus(), 80);
 
-    async function iniciarTreinoInteligenteParaMod(mod) {
-        if (!MODALIDADES[mod]) return;
-        const nome = obterNomeSalvoAluno();
-        const turma = obterTurmaSalvaAluno();
-        if (!nome || !turma) { notificar("Você precisa se identificar.", "aviso"); return; }
+    try {
+        modalMapaBackup = { mapaFonteAgregada, mapaFonteUltima, modalidadeAtual, modoVisualizacaoMapa };
+
         alunoAtual = nome;
         turmaAtual = turma;
-        modalidadeAtual = mod;
-        treinoAnonimo = false;
         treinoFocoOperacoes = null;
         treinoListaInteligente = null;
         treinoFocoAbsoluto = null;
-        await carregarFocoTreino(nome, turma, mod);
-        await iniciarTreinoInteligente();
-    }
 
-    async function abrirMapaCompleto() {
-        const modal = document.getElementById("modal-mapa-completo");
-        const container = document.getElementById("modal-mapa-completo-conteudo");
-        if (!modal || !container) return;
-
-        const nome = obterNomeSalvoAluno();
-        const turma = obterTurmaSalvaAluno();
-
-        if (!nome || !turma) {
-            container.innerHTML = `<div class="mapa-home-vazio" style="padding:28px 12px;">Você ainda não se identificou.<br>Jogue uma partida para liberar o mapa completo.</div>`;
-            modal.classList.remove("hidden");
-            setTimeout(() => document.querySelector("#modal-mapa-completo .modal-close")?.focus(), 80);
-            return;
-        }
-
-        container.innerHTML = `<div class="desempenho-loading">⏳ Carregando seu mapa…</div>`;
-        modal.classList.remove("hidden");
-        setTimeout(() => document.querySelector("#modal-mapa-completo .modal-close")?.focus(), 80);
+        modalMapaFonteAgregada = await obterDesempenhoOperacoesGlobal(nome, turma);
 
         try {
-            modalMapaBackup = { mapaFonteAgregada, mapaFonteUltima, modalidadeAtual, modoVisualizacaoMapa };
-
-            alunoAtual = nome;
-            turmaAtual = turma;
-            treinoFocoOperacoes = null;
-            treinoListaInteligente = null;
-            treinoFocoAbsoluto = null;
-
-            modalMapaFonteAgregada = await obterDesempenhoOperacoesGlobal(nome, turma);
-
-            try {
-                const partidas = await obterHistoricoAluno(nome, turma);
-                if (partidas && partidas.length && partidas[0].desempenhoOperacoes) {
-                    modalMapaFonteUltima = partidas[0].desempenhoOperacoes;
-                } else {
-                    modalMapaFonteUltima = {};
-                }
-            } catch(e) {
+            const partidas = await obterHistoricoAluno(nome, turma);
+            if (partidas && partidas.length && partidas[0].desempenhoOperacoes) {
+                modalMapaFonteUltima = partidas[0].desempenhoOperacoes;
+            } else {
                 modalMapaFonteUltima = {};
             }
-
-            trocarModMapaCompleto("todas");
         } catch(e) {
-            console.warn("Falha ao abrir mapa completo:", e);
-            container.innerHTML = `<div class="mapa-home-vazio" style="padding:28px 12px;">Não foi possível carregar seu mapa agora.<br>Tente novamente em instantes.</div>`;
+            modalMapaFonteUltima = {};
         }
+
+        trocarModMapaCompleto("todas");
+    } catch(e) {
+        console.warn("Falha ao abrir mapa completo:", e);
+        container.innerHTML = `<div class="mapa-home-vazio" style="padding:28px 12px;">Não foi possível carregar seu mapa agora.<br>Tente novamente em instantes.</div>`;
     }
+}
 
-    function renderizarModalMapaCompleto() {
-        const container = document.getElementById("modal-mapa-completo-conteudo");
-        if (!container) return;
+function renderizarModalMapaCompleto() {
+    const container = document.getElementById("modal-mapa-completo-conteudo");
+    if (!container) return;
 
-        const abas = [
-            { id: "todas", label: "🌐 Todas", titulo: "Todas as tabuadas (1 a 10)" },
-            { id: "2-5",   label: "📚 2-5",   titulo: "Só as tabuadas 2, 3, 4 e 5" },
-            { id: "6-9",   label: "🎯 6-9",   titulo: "Só as tabuadas 6, 7, 8 e 9" }
-        ];
+    const abas = [
+        { id: "todas", label: "🌐 Todas", titulo: "Todas as somas (1 a 10)" },
+        { id: "2-5",   label: "📚 2-5",   titulo: "Só as parcelas 2, 3, 4 e 5" },
+        { id: "6-9",   label: "🎯 6-9",   titulo: "Só as parcelas 6, 7, 8 e 9" }
+    ];
 
-        const tabsHtml = abas.map(a => {
-            const ativa = modalMapaMod === a.id ? "ativa" : "";
-            return `<button class="mapa-completo-tab ${ativa}" onclick="trocarModMapaCompleto('${a.id}')" aria-pressed="${modalMapaMod === a.id}" title="${escaparHtml(a.titulo)}">${a.label}</button>`;
-        }).join("");
+    const tabsHtml = abas.map(a => {
+        const ativa = modalMapaMod === a.id ? "ativa" : "";
+        return `<button class="mapa-completo-tab ${ativa}" onclick="trocarModMapaCompleto('${a.id}')" aria-pressed="${modalMapaMod === a.id}" title="${escaparHtml(a.titulo)}">${a.label}</button>`;
+    }).join("");
 
-        container.innerHTML = `
-            <div class="mapa-completo-tabs" role="tablist" aria-label="Visão do mapa">${tabsHtml}</div>
-            <div id="modal-mapa-completo-map-area">${renderizarMapa()}</div>
-        `;
+    container.innerHTML = `
+        <div class="mapa-completo-tabs" role="tablist" aria-label="Visão do mapa">${tabsHtml}</div>
+        <div id="modal-mapa-completo-map-area">${renderizarMapa()}</div>
+    `;
+}
+
+function trocarModMapaCompleto(mod) {
+    if (mod !== "todas" && mod !== "2-5" && mod !== "6-9") return;
+    modalMapaMod = mod;
+
+    mapaFonteAgregada = modalMapaFonteAgregada;
+    mapaFonteUltima    = modalMapaFonteUltima;
+
+    modalidadeAtual = mod === "todas" ? "1-10" : mod;
+
+    const area = document.getElementById("modal-mapa-completo-map-area");
+    if (area) {
+        area.innerHTML = renderizarMapa();
+    } else {
+        renderizarModalMapaCompleto();
     }
+}
 
-    function trocarModMapaCompleto(mod) {
-        if (mod !== "todas" && mod !== "2-5" && mod !== "6-9") return;
-        modalMapaMod = mod;
+function fecharMapaCompleto(e) {
+    if (e && e.target && e.target.closest(".mapa-completo-modal-card")) return;
+    const modal = document.getElementById("modal-mapa-completo");
+    if (modal) modal.classList.add("hidden");
 
-        mapaFonteAgregada = modalMapaFonteAgregada;
-        mapaFonteUltima    = modalMapaFonteUltima;
-
-        modalidadeAtual = mod === "todas" ? "0-10" : mod;
-
-        const area = document.getElementById("modal-mapa-completo-map-area");
-        if (area) {
-            area.innerHTML = renderizarMapa();
-        } else {
-            renderizarModalMapaCompleto();
-        }
+    const modalExp = document.getElementById("modal-explicacao-mapa");
+    if (modalExp && !modalExp.classList.contains("hidden")) {
+        modalExp.classList.add("hidden");
     }
+    document.body.style.overflow = "";
 
-    function fecharMapaCompleto(e) {
-        if (e && e.target && e.target.closest(".mapa-completo-modal-card")) return;
-        const modal = document.getElementById("modal-mapa-completo");
-        if (modal) modal.classList.add("hidden");
-
-        const modalExp = document.getElementById("modal-explicacao-mapa");
-        if (modalExp && !modalExp.classList.contains("hidden")) {
-            modalExp.classList.add("hidden");
-        }
-        document.body.style.overflow = "";
-
-        if (modalMapaBackup) {
-            mapaFonteAgregada   = modalMapaBackup.mapaFonteAgregada   ?? {};
-            mapaFonteUltima     = modalMapaBackup.mapaFonteUltima     ?? {};
-            modalidadeAtual     = modalMapaBackup.modalidadeAtual;
-            modoVisualizacaoMapa = modalMapaBackup.modoVisualizacaoMapa || "agregado";
-            modalMapaBackup = null;
-        }
+    if (modalMapaBackup) {
+        mapaFonteAgregada   = modalMapaBackup.mapaFonteAgregada   ?? {};
+        mapaFonteUltima     = modalMapaBackup.mapaFonteUltima     ?? {};
+        modalidadeAtual     = modalMapaBackup.modalidadeAtual;
+        modoVisualizacaoMapa = modalMapaBackup.modoVisualizacaoMapa || "agregado";
+        modalMapaBackup = null;
     }
+}
 
-    function irParaMapaCompleto() {
-        abrirMapaCompleto();
-    }
-    // ▲▲▲ FIM [07.08.bis]
+function irParaMapaCompleto() {
+    abrirMapaCompleto();
+}
+// ▲▲▲ FIM [07.08.bis]
 
     // ▼▼▼ [07.08.ter] Modal "Como funciona · Mapa de Somas" ────────
     function construirConteudoComoFuncionaMapa() {
@@ -12642,53 +12642,65 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     // [09] JS-MAPA · Novo formato com janela deslizante + 5 cores + treino
     // ═══════════════════════════════════════════════════════════════════════
 
-    // ▼▼▼ [09.01] Constantes do mapa + certificados ─────────────────────
-    const MAPA_JANELA_AVALIACAO = 10;   // últimas N respostas consideradas
-    const MAPA_JANELA_MAX       = 15;   // margem de folga no armazenamento
-    const MAPA_MIN_TENT_PADRAO  = 5;    // mínimo de tentativas para "verde"
+// ▼▼▼ [09.01] Constantes do mapa + certificados ─────────────────────
+const MAPA_JANELA_AVALIACAO = 10;   // últimas N respostas consideradas
+const MAPA_JANELA_MAX       = 15;   // margem de folga no armazenamento
+const MAPA_MIN_TENT_PADRAO  = 5;    // mínimo de tentativas para "verde"
 
-    const LIMIAR_DOMINIO = 0.90;
-    const LIMIAR_QUASE   = 0.80;
-    const LIMIAR_DESENV  = 0.60;
+const LIMIAR_DOMINIO = 0.90;
+const LIMIAR_QUASE   = 0.80;
+const LIMIAR_DESENV  = 0.60;
 
-    // Níveis de certificado — por MODALIDADE
-    const CERT_NIVEIS = {
-        prata: {
-            id: "prata", nome: "Mestre da Soma", icone: "🥈",
-            coberturaPct: 85, minTentativas: 5, minTaxa: 0.80,
-            maxTempoMediano: null,
-            medalhaId: "cert_prata", estrelas: 20, raridade: "raro",
-            cor: "prata",
-            descricao: "Você demonstrou domínio consistente da maior parte das somas."
-        },
-        ouro: {
-            id: "ouro", nome: "Lenda da Soma", icone: "🥇",
-            coberturaPct: 95, minTentativas: 8, minTaxa: 0.90,
-            maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
-            medalhaId: "cert_ouro", estrelas: 40, raridade: "epico",
-            cor: "ouro",
-            descricao: "Você atingiu velocidade e precisão de campeão."
-        },
-        lendaria: {
-            id: "lendaria", nome: "Maestria Total", icone: "💎",
-            coberturaPct: 100, minTentativas: 10, minTaxa: 0.90,
-            maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
-            medalhaId: "cert_lendaria", estrelas: 60, raridade: "lendario",
-            cor: "lendaria",
-            descricao: "Domínio absoluto e comprovado de todas as somas."
-        }
-    };
-    const CERT_ORDEM = ["lendaria", "ouro", "prata"]; // do mais alto pro mais baixo
-
-    function obterOperacoesDaModalidade(mod) {
-        const fatores = MODALIDADES[mod]?.fatores || [];
-        const maxB = MODALIDADES[mod]?.isDezenas ? 100 : 10;
-        const stepB = MODALIDADES[mod]?.isDezenas ? 10 : 1;
-        const ops = [];
-        fatores.forEach(a => { for (let b = stepB; b <= maxB; b += stepB) ops.push(`${a}x${b}`); });
-        return ops;
+// Níveis de certificado — por MODALIDADE
+const CERT_NIVEIS = {
+    prata: {
+        id: "prata", nome: "Mestre da Soma", icone: "🥈",
+        coberturaPct: 85, minTentativas: 5, minTaxa: 0.80,
+        maxTempoMediano: null,
+        medalhaId: "cert_prata", estrelas: 20, raridade: "raro",
+        cor: "prata",
+        descricao: "Você demonstrou domínio consistente da maior parte das somas."
+    },
+    ouro: {
+        id: "ouro", nome: "Lenda da Soma", icone: "🥇",
+        coberturaPct: 95, minTentativas: 8, minTaxa: 0.90,
+        maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
+        medalhaId: "cert_ouro", estrelas: 40, raridade: "epico",
+        cor: "ouro",
+        descricao: "Você atingiu velocidade e precisão de campeão."
+    },
+    lendaria: {
+        id: "lendaria", nome: "Maestria Total", icone: "💎",
+        coberturaPct: 100, minTentativas: 10, minTaxa: 0.90,
+        maxTempoMediano: { "1-10": 1.0, "11-20": 1.5, "ate-100": 2.5 },
+        medalhaId: "cert_lendaria", estrelas: 60, raridade: "lendario",
+        cor: "lendaria",
+        descricao: "Domínio absoluto e comprovado de todas as somas."
     }
-    // ▲▲▲ FIM [09.01]
+};
+const CERT_ORDEM = ["lendaria", "ouro", "prata"]; // do mais alto pro mais baixo
+
+function obterOperacoesDaModalidade(mod) {
+    const cfg = MODALIDADES[mod];
+    if (!cfg) return [];
+    
+    const fatores = cfg.fatores || [];
+    const maxB = cfg.isDezenas ? 100 : 10;
+    const stepB = cfg.isDezenas ? 10 : 1;
+    const ops = [];
+    
+    fatores.forEach(a => {
+        for (let b = stepB; b <= maxB; b += stepB) {
+            const soma = a + b;
+            if (cfg.maxSoma && soma > cfg.maxSoma) continue;
+            if (cfg.minSoma && soma < cfg.minSoma) continue;
+            ops.push(`${a}x${b}`);
+        }
+    });
+    
+    return ops;
+}
+// ▲▲▲ FIM [09.01]
 
     // ▼▼▼ [09.02] Helpers de histórico e estado da operação ─────────────
     // v10.5.5 · Schema estendido: cada resposta pode carregar
@@ -12974,106 +12986,113 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
     // ▲▲▲ FIM [09.05]
 
-    // ▼▼▼ [09.06] Renderização do mapa ─────────────────────────────────
-    function renderizarMapa() {
-        const fonte = modoVisualizacaoMapa === "agregado" ? mapaFonteAgregada : mapaFonteUltima;
-        const cont = { verde: 0, azul: 0, amarelo: 0, vermelho: 0, cinza: 0, parcial: 0 };
-        const ops = obterOperacoesDaModalidade(modalidadeAtual);
-        ops.forEach(op => {
-            const est = estadoDaOperacao(normalizarHistoricoOperacao(fonte[op]));
-            const chave = est === "cinza-parcial" ? "parcial" : est;
-            cont[chave]++;
-        });
-        const dominadas = cont.verde;
-        const domPct = ops.length ? Math.round((dominadas / ops.length) * 100) : 0;
+// ▼▼▼ [09.06] Renderização do mapa ─────────────────────────────────
+function renderizarMapa() {
+    const fonte = modoVisualizacaoMapa === "agregado" ? mapaFonteAgregada : mapaFonteUltima;
+    const cont = { verde: 0, azul: 0, amarelo: 0, vermelho: 0, cinza: 0, parcial: 0 };
+    const ops = obterOperacoesDaModalidade(modalidadeAtual);
+    ops.forEach(op => {
+        const est = estadoDaOperacao(normalizarHistoricoOperacao(fonte[op]));
+        const chave = est === "cinza-parcial" ? "parcial" : est;
+        cont[chave]++;
+    });
+    const dominadas = cont.verde;
+    const domPct = ops.length ? Math.round((dominadas / ops.length) * 100) : 0;
 
-        let h = `<div class="mapa-tabuadas-v2">`;
-        h += `<div class="mapa-toggle">
-                <button class="toggle-btn ${modoVisualizacaoMapa === 'agregado' ? 'ativa' : ''}" onclick="mudarVisualizacaoMapa('agregado')">📚 Todas as partidas</button>
-                <button class="toggle-btn ${modoVisualizacaoMapa === 'ultima' ? 'ativa' : ''}" onclick="mudarVisualizacaoMapa('ultima')">🎯 Uma partida</button>
-              </div>`;
-        h += `<p class="mapa-fonte-aviso">${modoVisualizacaoMapa === 'agregado' ? 'Somando o desempenho recente (últimas 10 respostas por operação).' : 'Mostrando apenas uma partida.'}</p>`;
+    let h = `<div class="mapa-tabuadas-v2">`;
+    h += `<div class="mapa-toggle">
+            <button class="toggle-btn ${modoVisualizacaoMapa === 'agregado' ? 'ativa' : ''}" onclick="mudarVisualizacaoMapa('agregado')">📚 Todas as partidas</button>
+            <button class="toggle-btn ${modoVisualizacaoMapa === 'ultima' ? 'ativa' : ''}" onclick="mudarVisualizacaoMapa('ultima')">🎯 Uma partida</button>
+          </div>`;
+    h += `<p class="mapa-fonte-aviso">${modoVisualizacaoMapa === 'agregado' ? 'Somando o desempenho recente (últimas 10 respostas por operação).' : 'Mostrando apenas uma partida.'}</p>`;
 
-        h += `<div class="mapa-resumo">
-                <div class="resumo-titulo">🏆 Domínio: <strong>${domPct}%</strong> <span style="font-size:12px;color:var(--text-muted);">(${dominadas}/${ops.length} operações)</span></div>
-                <div class="resumo-contadores">
-                    <span class="contador verde">🟢 Dominadas: ${cont.verde}</span>
-                    <span class="contador" style="background:#ecfeff;color:#0e7490;border-color:#67e8f9;">🔷 A confirmar: ${cont.parcial}</span>
-                    <span class="contador" style="background:#e0f2fe;color:#075985;border-color:#7dd3fc;">🔵 Quase lá: ${cont.azul}</span>
-                    <span class="contador amarelo">🟡 Em treino: ${cont.amarelo}</span>
-                    <span class="contador vermelho">🔴 Preciso reforçar: ${cont.vermelho}</span>
-                    <span class="contador cinza">⚪ Sem prática: ${cont.cinza}</span>
-                </div>
-              </div>`;
+    h += `<div class="mapa-resumo">
+            <div class="resumo-titulo">🏆 Domínio: <strong>${domPct}%</strong> <span style="font-size:12px;color:var(--text-muted);">(${dominadas}/${ops.length} operações)</span></div>
+            <div class="resumo-contadores">
+                <span class="contador verde">🟢 Dominadas: ${cont.verde}</span>
+                <span class="contador" style="background:#ecfeff;color:#0e7490;border-color:#67e8f9;">🔷 A confirmar: ${cont.parcial}</span>
+                <span class="contador" style="background:#e0f2fe;color:#075985;border-color:#7dd3fc;">🔵 Quase lá: ${cont.azul}</span>
+                <span class="contador amarelo">🟡 Em treino: ${cont.amarelo}</span>
+                <span class="contador vermelho">🔴 Preciso reforçar: ${cont.vermelho}</span>
+                <span class="contador cinza">⚪ Sem prática: ${cont.cinza}</span>
+            </div>
+          </div>`;
 
-        h += renderizarResumoCertificados(fonte, modalidadeAtual);
+    h += renderizarResumoCertificados(fonte, modalidadeAtual);
 
-        const qFracos = cont.vermelho + cont.amarelo + cont.azul + cont.cinza + cont.parcial;
-        if (qFracos >= 3) {
-            h += `<button class="btn-treinar-fracos btn-treinar-fracos-var" onclick="treinarPontosFracosVariacoes()">🔀 Treinar operações pendentes com variações</button>`;
-        }
+    const qFracos = cont.vermelho + cont.amarelo + cont.azul + cont.cinza + cont.parcial;
+    if (qFracos >= 3) {
+        h += `<button class="btn-treinar-fracos btn-treinar-fracos-var" onclick="treinarPontosFracosVariacoes()">🔀 Treinar operações pendentes com variações</button>`;
+    }
 
-        h += `<div class="mapa-legenda">
-                <span class="legenda-item"><span class="legenda-cor verde"></span> Dominada</span>
-                <span class="legenda-item"><span class="legenda-cor parcial"></span> A confirmar</span>
-                <span class="legenda-item"><span class="legenda-cor azul" style="background:#38bdf8;"></span> Quase lá</span>
-                <span class="legenda-item"><span class="legenda-cor amarelo"></span> Em treino</span>
-                <span class="legenda-item"><span class="legenda-cor vermelho"></span> Preciso reforçar</span>
-                <span class="legenda-item"><span class="legenda-cor cinza"></span> Sem prática</span>
-              </div>`;
+    h += `<div class="mapa-legenda">
+            <span class="legenda-item"><span class="legenda-cor verde"></span> Dominada</span>
+            <span class="legenda-item"><span class="legenda-cor parcial"></span> A confirmar</span>
+            <span class="legenda-item"><span class="legenda-cor azul" style="background:#38bdf8;"></span> Quase lá</span>
+            <span class="legenda-item"><span class="legenda-cor amarelo"></span> Em treino</span>
+            <span class="legenda-item"><span class="legenda-cor vermelho"></span> Preciso reforçar</span>
+            <span class="legenda-item"><span class="legenda-cor cinza"></span> Sem prática</span>
+          </div>`;
 
-        const fatores = MODALIDADES[modalidadeAtual]?.fatores || FATORES_MAPA;
-        const maxB = MODALIDADES[modalidadeAtual]?.isDezenas ? 100 : 10;
-        const stepB = MODALIDADES[modalidadeAtual]?.isDezenas ? 10 : 1;
+    const fatores = MODALIDADES[modalidadeAtual]?.fatores || FATORES_MAPA;
+    const maxB = MODALIDADES[modalidadeAtual]?.isDezenas ? 100 : 10;
+    const stepB = MODALIDADES[modalidadeAtual]?.isDezenas ? 10 : 1;
+    const opsValidas = new Set(obterOperacoesDaModalidade(modalidadeAtual));
 
-        h += `<div class="mapa-grid-wrapper"><table class="mapa-grid"><thead><tr><th></th>`;
-        for (let b = stepB; b <= maxB; b += stepB) h += `<th>${b}</th>`;
-        h += `</tr></thead><tbody>`;
-        
-        fatores.forEach(a => {
-            h += `<tr><th>${a}</th>`;
-            for (let b = stepB; b <= maxB; b += stepB) {
-                const k = `${a}x${b}`;
-                const hh = normalizarHistoricoOperacao(fonte[k]);
-                const s = statsDaOperacao(hh);
-                const est = estadoDaOperacao(hh);
-                const classeExtra = est === "cinza-parcial" ? "cinza-parcial" : est;
-                const tentTxt = s.tentativas > 0 ? `<span class="mapa-celula-badge-tent">${s.tentativas}</span>` : "";
-                const titulo = s.tentativas > 0
-                    ? `${a}+${b} · ${s.acertos}/${s.tentativas} acertos (${Math.round(s.taxa*100)}%)`
-                    : `${a}+${b} · ainda não praticada`;
-                h += `<td class="mapa-celula ${classeExtra}" data-op="${k}" title="${titulo}">${a}+${b}${tentTxt}</td>`;
+    h += `<div class="mapa-grid-wrapper"><table class="mapa-grid"><thead><tr><th></th>`;
+    for (let b = stepB; b <= maxB; b += stepB) h += `<th>${b}</th>`;
+    h += `</tr></thead><tbody>`;
+    
+    fatores.forEach(a => {
+        h += `<tr><th>${a}</th>`;
+        for (let b = stepB; b <= maxB; b += stepB) {
+            const k = `${a}x${b}`;
+            
+            if (!opsValidas.has(k)) {
+                h += `<td class="mapa-celula vazia" style="background:transparent;box-shadow:none;cursor:default;color:#475569;" title="Operação não disponível nesta modalidade">—</td>`;
+                continue;
             }
-            h += `</tr>`;
-        });
-        h += `</tbody></table></div></div>`;
-        return h;
-    }
 
-    function renderizarResumoCertificados(fonte, mod) {
-        const niveis = ["prata", "ouro", "lendaria"];
-        let badges = "";
-        niveis.forEach(nv => {
-            const prog = calcularProgressoCertificado(fonte, mod, nv);
-            const cfg = CERT_NIVEIS[nv];
-            const cls = prog.conquistado ? "conquistado" : "";
-            badges += `<div class="mapa-cert-badge ${cls}">
-                <span class="cb-titulo">${cfg.icone} ${cfg.nome}</span>
-                <span class="cb-pct">${prog.coberturaPct.toFixed(0)}%</span>
-                <span class="cb-sub">${prog.dominadas}/${prog.totalOps} ops · min ${cfg.minTentativas}x</span>
-            </div>`;
-        });
-        return `<div class="mapa-certificados-resumo">${badges}</div>`;
-    }
+            const hh = normalizarHistoricoOperacao(fonte[k]);
+            const s = statsDaOperacao(hh);
+            const est = estadoDaOperacao(hh);
+            const classeExtra = est === "cinza-parcial" ? "cinza-parcial" : est;
+            const tentTxt = s.tentativas > 0 ? `<span class="mapa-celula-badge-tent">${s.tentativas}</span>` : "";
+            const titulo = s.tentativas > 0
+                ? `${a}+${b} · ${s.acertos}/${s.tentativas} acertos (${Math.round(s.taxa*100)}%)`
+                : `${a}+${b} · ainda não praticada`;
+            h += `<td class="mapa-celula ${classeExtra}" data-op="${k}" title="${titulo}">${a}+${b}${tentTxt}</td>`;
+        }
+        h += `</tr>`;
+    });
+    h += `</tbody></table></div></div>`;
+    return h;
+}
 
-    function mudarVisualizacaoMapa(m) {
-        modoVisualizacaoMapa = m;
-        ["mapa-tabuadas-container", "perfil-mapa", "modal-mapa-completo-map-area"].forEach(id => {
-            const el = document.getElementById(id);
-            if (el && el.innerHTML.trim()) el.innerHTML = renderizarMapa();
-        });
-    }
-    // ▲▲▲ FIM [09.06]
+function renderizarResumoCertificados(fonte, mod) {
+    const niveis = ["prata", "ouro", "lendaria"];
+    let badges = "";
+    niveis.forEach(nv => {
+        const prog = calcularProgressoCertificado(fonte, mod, nv);
+        const cfg = CERT_NIVEIS[nv];
+        const cls = prog.conquistado ? "conquistado" : "";
+        badges += `<div class="mapa-cert-badge ${cls}">
+            <span class="cb-titulo">${cfg.icone} ${cfg.nome}</span>
+            <span class="cb-pct">${prog.coberturaPct.toFixed(0)}%</span>
+            <span class="cb-sub">${prog.dominadas}/${prog.totalOps} ops · min ${cfg.minTentativas}x</span>
+        </div>`;
+    });
+    return `<div class="mapa-certificados-resumo">${badges}</div>`;
+}
+
+function mudarVisualizacaoMapa(m) {
+    modoVisualizacaoMapa = m;
+    ["mapa-tabuadas-container", "perfil-mapa", "modal-mapa-completo-map-area"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.innerHTML.trim()) el.innerHTML = renderizarMapa();
+    });
+}
+// ▲▲▲ FIM [09.06]
 
     // ▼▼▼ [09.07] Detalhe da operação (modal) ─────────────────────────
     function gerarDicaDecomposicao(fA, fB) {
@@ -16498,7 +16517,7 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
     }
     // ▲▲▲ FIM [13.05]
 
-    // ▼▼▼ [13.06] Renderização do ranking ─────────────────────────────
+// ▼▼▼ [13.06] Renderização do ranking ─────────────────────────────
     
     // NOVO: Função que decide se mostra o nome completo ou abreviado
     function obterNomeExibicaoRanking(r, tipoRanking, turmaAluno) {
@@ -21271,7 +21290,7 @@ function abrirBuscarAlunoComMeusDados() {
     }
     // ▲▲▲ FIM [17.05]
 
-    // ▼▼▼ [17.06] Reset + exportação + gerenciar alunos ─────────────
+// ▼▼▼ [17.06] Reset + exportação + gerenciar alunos ─────────────
     
     function abrirResetTurma() {
         if (!exigirProfessorAutenticado()) return;
@@ -21357,7 +21376,7 @@ function abrirBuscarAlunoComMeusDados() {
             const snapResumo = await database.ref(CAMINHO_RANKING_RESUMO).once("value");
             const resumo = snapResumo.val() || {};
             
-            for (const mod of ["2-5", "6-9", "0-10"]) {
+            for (const mod of ["1-10", "11-20", "ate-100"]) {
                 if (modalidade !== "todas" && modalidade !== mod) continue;
                 if (resumo.best && resumo.best[mod]) {
                     alunosAfetados.forEach(alunoKey => {
