@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1.0.0'; // Mude isso no futuro se trocar ícones
+const CACHE_VERSION = 'v1.0.0';
 
 self.addEventListener('install', (e) => {
   self.skipWaiting();
@@ -9,5 +9,7 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Deixa o navegador fazer o cache padrão
+  // Este handler é obrigatório para o Chrome no Android oferecer a instalação como PWA.
+  // Por enquanto, deixamos o navegador fazer o cache padrão.
+  return;
 });
