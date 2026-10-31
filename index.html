@@ -41,6 +41,11 @@
     <meta name="author" content="Prof. Henrique Angelo da Silva · Colégio Estadual Ismael Branco">
     <meta name="creator" content="Prof. Henrique Angelo da Silva">
     <meta name="publisher" content="Colégio Estadual Ismael Branco (CEIB)">
+    
+    <!-- Arquivos do PWA (Manifest e Ícones) -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <!-- ▲▲▲ FIM [01.02] -->
 
     <!-- ▼ [P35] Preconnect: resolve DNS + TLS dos CDNs antes de precisar baixar -->
@@ -23789,7 +23794,9 @@ function abrirBuscarAlunoComMeusDados() {
             subtitulo = "A etapa classificatória não está aberta agora. Você pode treinar à vontade — o treino alimenta seu mapa e certificados.";
         }
 
-        const icones  = { "1-10": "➕", "11-20": "🧮", "ate-100": "💯" };
+        // ⚠️ AQUI ESTÁ A MUDANÇA: Trocamos os emojis pela imagem do ícone
+        const iconeImg = `<img src="icon-192.png" alt="" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 6px; border-radius: 4px;">`;
+        
         const rotulos = { "1-10": "Somas até 10", "11-20": "Somas até 20", "ate-100": "Dezenas até 100" };
         const modsParaRenderizar = modUnicaAtiva ? [modUnicaAtiva] : ["1-10", "11-20", "ate-100"];
         const modsBloqueadas = modUnicaAtiva ? ["1-10", "11-20", "ate-100"].filter(m => m !== modUnicaAtiva) : [];
@@ -23802,7 +23809,7 @@ function abrirBuscarAlunoComMeusDados() {
             
             linhasBase += `<div class="home-modalidade-linha sem-dados">
                 <div class="home-mod-l1">
-                    <span class="home-mod-nome">${icones[mod]} ${escaparHtml(rotulos[mod])}</span>
+                    <span class="home-mod-nome">${iconeImg} ${escaparHtml(rotulos[mod])}</span>
                     <span class="home-mod-pos" id="home-pos-${mod}">—</span>
                 </div>
                 <div class="home-mod-l2">
@@ -23824,7 +23831,7 @@ function abrirBuscarAlunoComMeusDados() {
         let rodapeOutrasMods = "";
         if (modUnicaAtiva && modsBloqueadas.length > 0) {
             const botoesExtras = modsBloqueadas.map(mod => 
-                `<button class="home-outras-btn" onclick="treinarModalidadeHome('${mod}')">${icones[mod]} Treinar ${rotulos[mod]}</button>`
+                `<button class="home-outras-btn" onclick="treinarModalidadeHome('${mod}')">${iconeImg} Treinar ${rotulos[mod]}</button>`
             ).join("");
             
             rodapeOutrasMods = `<div class="home-outras-modalidades">
@@ -23926,23 +23933,23 @@ function abrirBuscarAlunoComMeusDados() {
     async function _carregarAtalhoModalidadesAsync(nome, turma, rotulos, modUnicaAtiva) {
         const meuToken = _homeModalidadesToken;
         try {
-            let c25, c69, c010;
+            let c110, c1120, cate100;
             if (modUnicaAtiva) {
                 const c = await contarPendentesTreino(nome, turma, modUnicaAtiva).catch(() => ({ pendentes: 0 }));
-                c25  = modUnicaAtiva === "2-5"  ? c : { pendentes: 0 };
-                c69  = modUnicaAtiva === "6-9"  ? c : { pendentes: 0 };
-                c010 = modUnicaAtiva === "0-10" ? c : { pendentes: 0 };
+                c110     = modUnicaAtiva === "1-10"    ? c : { pendentes: 0 };
+                c1120    = modUnicaAtiva === "11-20"   ? c : { pendentes: 0 };
+                cate100  = modUnicaAtiva === "ate-100" ? c : { pendentes: 0 };
             } else {
-                [c25, c69, c010] = await Promise.all([
-                    contarPendentesTreino(nome, turma, "2-5").catch(() => ({ pendentes: 0 })),
-                    contarPendentesTreino(nome, turma, "6-9").catch(() => ({ pendentes: 0 })),
-                    contarPendentesTreino(nome, turma, "0-10").catch(() => ({ pendentes: 0 }))
+                [c110, c1120, cate100] = await Promise.all([
+                    contarPendentesTreino(nome, turma, "1-10").catch(() => ({ pendentes: 0 })),
+                    contarPendentesTreino(nome, turma, "11-20").catch(() => ({ pendentes: 0 })),
+                    contarPendentesTreino(nome, turma, "ate-100").catch(() => ({ pendentes: 0 }))
                 ]);
             }
 
             if (meuToken !== _homeModalidadesToken) return;
 
-            const pend = { "2-5": c25.pendentes || 0, "6-9": c69.pendentes || 0, "0-10": c010.pendentes || 0 };
+            const pend = { "1-10": c110.pendentes || 0, "11-20": c1120.pendentes || 0, "ate-100": cate100.pendentes || 0 };
             const ordenado = Object.keys(pend).sort((a, b) => pend[b] - pend[a]);
 
             const slot = document.getElementById("home-modalidades-atalho-slot");
