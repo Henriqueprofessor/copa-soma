@@ -23883,11 +23883,18 @@ function abrirBuscarAlunoComMeusDados() {
                     const elPts = document.getElementById(`home-pts-${mod}`);
                     const elBarra = document.getElementById(`home-barra-${mod}`);
 
+                    // CORREÇÃO DO BUG DO "nullº"
                     if (jogou) {
-                        if (posicao <= 4) { elLinha.classList.add("zona-top4"); elStatus.textContent = "Zona de classificação"; }
-                        else if (posicao <= 6) { elLinha.classList.add("zona-reserva"); elStatus.textContent = "Zona de reserva"; }
-                        else { elStatus.textContent = "Em disputa"; }
-                        elPos.innerHTML = `${posicao}º <small>de ${ranking.length}</small>`;
+                        if (posicao !== null) {
+                            if (posicao <= 4) { elLinha.classList.add("zona-top4"); elStatus.textContent = "Zona de classificação"; }
+                            else if (posicao <= 6) { elLinha.classList.add("zona-reserva"); elStatus.textContent = "Zona de reserva"; }
+                            else { elStatus.textContent = "Em disputa"; }
+                            elPos.innerHTML = `${posicao}º <small>de ${ranking.length}</small>`;
+                        } else {
+                            // Jogou, mas ainda não caiu no ranking (sincronização)
+                            elStatus.textContent = "Sincronizando...";
+                            elPos.innerHTML = `— <small>de ${ranking.length}</small>`;
+                        }
                         elPts.textContent = `${pontos.toLocaleString("pt-BR")} pts`;
                     } else if (treinos > 0) {
                         elStatus.textContent = "Sem partida oficial";
