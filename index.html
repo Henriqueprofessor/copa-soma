@@ -29133,6 +29133,14 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
     // ▲▲▲ FIM [19.08]
 
     // ▼▼▼ [19.09] Barra de Projeção Dinâmica — funções ─────────── INÍCIO ───
+    // v1.0.4 · BUGFIX: a reta final agora permanece ativa até a Q20.
+    // Antes, ao responder a última pergunta, a condição
+    // `respondidas < totalPerguntas` excluía a reta final e a barra
+    // voltava a mostrar a projeção colorida (roxo/verde) por 250ms,
+    // vazando o resultado antes do splash de bandeirada.
+    //
+    // Agora a reta final vale de RESPOSTAS_PARA_RETA_FINAL (15) até
+    // totalPerguntas (20) INCLUSIVE, com texto de suspense na última.
     const MIN_PERGUNTAS_PROJECAO = 4;
     // 🏁 A partir desta resposta (15ª), a barra entra em "Reta Final" e
     //    esconde as cores de projeção — o jogador só saberá se superou o
@@ -29192,12 +29200,18 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const restantes = totalPerguntas - respondidas;
 
         // ═══════════════════════════════════════════════════════════════
-        // 🏁 MODO RETA FINAL (últimas 5 perguntas — Q16 a Q20)
-        // Esconde a projeção colorida e troca por um aviso neutro
-        // e desafiador. O jogador só descobre o resultado final
-        // (recorde / liderança) na tela de resultado.
+        // 🏁 MODO RETA FINAL (Q16 a Q20 INCLUSIVE)
+        //
+        // v1.0.4 · Removido o `&& respondidas < totalPerguntas`. Antes,
+        // ao responder a Q20 (respondidas = 20), a condição falhava e
+        // a barra voltava ao modo normal, mostrando a projeção colorida
+        // por 250ms e vazando o resultado antes do splash.
+        //
+        // Agora a reta final permanece ativa até o final. Quando a última
+        // pergunta é respondida (restantes <= 0), mostramos texto de
+        // "Linha de chegada" — suspense puro até a bandeirada.
         // ═══════════════════════════════════════════════════════════════
-        if (respondidas >= RESPOSTAS_PARA_RETA_FINAL && respondidas < totalPerguntas) {
+        if (respondidas >= RESPOSTAS_PARA_RETA_FINAL) {
             perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
             perguntaEl.classList.add("brilho-retafinal");
             barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
@@ -29206,7 +29220,9 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
             labelEl.classList.add("fut-retafinal");
 
             let texto;
-            if (restantes === 1) {
+            if (restantes <= 0) {
+                texto = "🏁 LINHA DE CHEGADA! Conferindo resultado...";
+            } else if (restantes === 1) {
                 texto = "🏁 ÚLTIMA PERGUNTA! Dê o seu máximo!";
             } else if (restantes === 2) {
                 texto = "🏁 RETA FINAL: Faltam só 2!";
