@@ -9173,7 +9173,7 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
 
         /* ▼▼▼ [02.91] Barra de Projeção Dinâmica (Unificada) ───── INÍCIO ─── */
         #barra-tempo {
-            margin-bottom: 4px; /* Reduzido para aproximar o texto */
+            margin-bottom: 4px;
             position: relative;
             transition: box-shadow 0.3s ease;
         }
@@ -9186,13 +9186,22 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         #barra-tempo.brilho-amarelo {
             box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
         }
+        /* 🏁 RETA FINAL — modo "bandeirada" ativado na pergunta 16 */
+        #barra-tempo.brilho-retafinal {
+            box-shadow: 0 0 16px rgba(220, 38, 38, 0.55), 0 0 4px rgba(249, 115, 22, 0.4);
+        }
 
         #barra-tempo.brilho-roxo #progresso { background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%); }
         #barra-tempo.brilho-verde #progresso { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
         #barra-tempo.brilho-amarelo #progresso { background: linear-gradient(90deg, #facc15 0%, #fde047 100%); }
         #barra-tempo.brilho-cinza #progresso { background: #198754; }
+        /* 🏁 RETA FINAL — gradiente "linha de chegada" (vermelho → laranja) */
+        #barra-tempo.brilho-retafinal #progresso {
+            background: linear-gradient(90deg, #991b1b 0%, #dc2626 45%, #f97316 100%);
+        }
 
-        /* Alerta de tempo esgotando sobrepõe a cor da projeção */
+        /* Alerta de tempo esgotando sobrepõe a cor da projeção (funciona bem
+           em conjunto com o modo reta final — reforça a tensão) */
         #barra-tempo.tempo-curto #progresso {
             background: #dc3545 !important;
             box-shadow: 0 0 10px rgba(220, 53, 69, 0.6) !important;
@@ -9213,6 +9222,17 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         .projecao-label.fut-verde { color: #4ade80; }
         .projecao-label.fut-amarelo { color: #fde047; }
         .projecao-label.fut-cinza { color: #94a3b8; }
+        /* 🏁 RETA FINAL — texto com pulso dourado (sensação de "bandeirada") */
+        .projecao-label.fut-retafinal {
+            color: #fca5a5;
+            font-weight: 900;
+            letter-spacing: 0.6px;
+            animation: pulseLabelRetaFinal 1.4s ease-in-out infinite;
+        }
+        @keyframes pulseLabelRetaFinal {
+            0%, 100% { text-shadow: 0 0 8px rgba(220, 38, 38, 0.35); }
+            50%      { text-shadow: 0 0 16px rgba(249, 115, 22, 0.85); }
+        }
 
         #pergunta {
             transition: border-color 0.3s ease, box-shadow 0.35s ease, background 0.3s ease;
@@ -9239,6 +9259,12 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             box-shadow: none;
             background: transparent;
         }
+        /* 🏁 RETA FINAL — pergunta em "chamas" (vermelho profundo) */
+        #pergunta.brilho-retafinal {
+            border-color: #dc2626;
+            box-shadow: 0 0 32px rgba(220, 38, 38, 0.5), inset 0 0 18px rgba(220, 38, 38, 0.08);
+            background: rgba(220, 38, 38, 0.05);
+        }
 
         body.modo-treino #barra-tempo,
         body.modo-treino #projecao-label {
@@ -9247,8 +9273,250 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         @media (prefers-reduced-motion: reduce) {
             #barra-tempo, #pergunta, .projecao-label { transition: none !important; }
             #barra-tempo.tempo-curto #progresso { animation: none; }
+            .projecao-label.fut-retafinal { animation: none !important; }
         }
         /* ▲▲▲ FIM [02.91] */
+
+        /* ▼▼▼ [02.92] Cards de comparação pós-partida — Pódio F1 ─── INÍCIO ─── */
+        /* Reflete o resultado da partida no card direito de .cards-comparacao.
+           Complementa o "suspense da reta final" (ver [02.91] e [19.09]).
+
+           Três estados possíveis para o card direito:
+
+             🟣 card-lider           → bateu o recorde da TURMA (novo líder)
+             🟢 card-recorde-pessoal → bateu o próprio recorde
+             🟠 card-recorde-mantido → tentativa não bateu o recorde
+
+           O card esquerdo ("Esta tentativa") permanece neutro — sempre
+           mostrando o número que o jogador acabou de fazer.
+
+           Nota: usamos !important e seletores compostos porque [02.35] e
+           [02.52] aplicam !important em .card-comp-rotulo/.card-comp-valor/
+           .card-comp-unidade como correção de tema escuro. A especificidade
+           composta (.card-compcard.card-lider .card-comp-rotulo) supera a
+           regra genérica e garante o visual correto. */
+
+        /* ─── 🟣 SUPERAÇÃO — novo líder da turma ─── */
+        .card-compcard.card-lider {
+            background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 55%, #a855f7 100%) !important;
+            border-color: #c084fc !important;
+            color: #f5f3ff !important;
+            box-shadow: 0 0 26px rgba(168, 85, 247, 0.55), inset 0 0 24px rgba(192, 132, 252, 0.18);
+            animation: pulseCardLider 2.2s ease-in-out infinite;
+        }
+        @keyframes pulseCardLider {
+            0%, 100% {
+                box-shadow: 0 0 26px rgba(168, 85, 247, 0.55), inset 0 0 24px rgba(192, 132, 252, 0.18);
+            }
+            50% {
+                box-shadow: 0 0 42px rgba(192, 132, 252, 0.9), inset 0 0 28px rgba(192, 132, 252, 0.3);
+            }
+        }
+        .card-compcard.card-lider .card-comp-rotulo {
+            color: #e9d5ff !important;
+        }
+        .card-compcard.card-lider .card-comp-valor {
+            color: #fef3c7 !important;
+            text-shadow: 0 0 14px rgba(251, 191, 36, 0.65);
+        }
+        .card-compcard.card-lider .card-comp-unidade {
+            color: #e9d5ff !important;
+        }
+
+        /* ─── 🟢 NOVO RECORDE PESSOAL — melhor que a última marca ─── */
+        .card-compcard.card-recorde-pessoal {
+            background: linear-gradient(135deg, #14532d 0%, #16a34a 55%, #22c55e 100%) !important;
+            border-color: #4ade80 !important;
+            color: #dcfce7 !important;
+            box-shadow: 0 0 22px rgba(34, 197, 94, 0.45), inset 0 0 22px rgba(74, 222, 128, 0.15);
+        }
+        .card-compcard.card-recorde-pessoal .card-comp-rotulo {
+            color: #bbf7d0 !important;
+        }
+        .card-compcard.card-recorde-pessoal .card-comp-valor {
+            color: #fef9c3 !important;
+            text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+        .card-compcard.card-recorde-pessoal .card-comp-unidade {
+            color: #bbf7d0 !important;
+        }
+
+        /* ─── 🟠 RECORDE MANTIDO — tentativa não superou a marca ─── */
+        .card-compcard.card-recorde-mantido {
+            background: linear-gradient(135deg, #78350f 0%, #b45309 55%, #d97706 100%) !important;
+            border-color: #f59e0b !important;
+            color: #fef3c7 !important;
+            box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+        }
+        .card-compcard.card-recorde-mantido .card-comp-rotulo {
+            color: #fde68a !important;
+        }
+        .card-compcard.card-recorde-mantido .card-comp-valor {
+            color: #fef3c7 !important;
+        }
+        .card-compcard.card-recorde-mantido .card-comp-unidade {
+            color: #fde68a !important;
+        }
+
+        /* ─── Kicker (linha superior tipo "SUPERAÇÃO!") ─── */
+        .card-comp-kicker {
+            display: block;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            color: #cbd5e1;
+        }
+        .card-compcard.card-lider .card-comp-kicker {
+            color: #fde68a !important;
+        }
+        .card-compcard.card-recorde-pessoal .card-comp-kicker {
+            color: #fef9c3 !important;
+        }
+        .card-compcard.card-recorde-mantido .card-comp-kicker {
+            color: #fed7aa !important;
+        }
+
+        /* ─── Linha de diferença (abaixo do valor) ─── */
+        .card-comp-diferenca {
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 6px;
+            letter-spacing: 0.2px;
+            line-height: 1.35;
+            color: #cbd5e1;
+        }
+        .card-compcard.card-lider .card-comp-diferenca {
+            color: #fef3c7 !important;
+        }
+        .card-compcard.card-recorde-pessoal .card-comp-diferenca {
+            color: #fef9c3 !important;
+        }
+        .card-compcard.card-recorde-mantido .card-comp-diferenca {
+            color: #fde68a !important;
+        }
+
+        /* ─── Acessibilidade: sem movimento ─── */
+        @media (prefers-reduced-motion: reduce) {
+            .card-compcard.card-lider {
+                animation: none !important;
+                box-shadow: 0 0 28px rgba(168, 85, 247, 0.65), inset 0 0 24px rgba(192, 132, 252, 0.22);
+            }
+        }
+
+        /* ─── Mobile: ajuste fino dos textos ─── */
+        @media (max-width: 520px) {
+            .card-comp-kicker {
+                font-size: 9.5px;
+                letter-spacing: 0.9px;
+                margin-bottom: 5px;
+            }
+            .card-comp-diferenca {
+                font-size: 10.5px;
+            }
+        }
+        /* ▲▲▲ FIM [02.92] */
+
+        /* ▼▼▼ [02.93] Splash de bandeirada — abertura do reveal ─── INÍCIO ─── */
+        /* Sequência visual que precede a tela de resultado:
+
+           t=0     →  🏁 CRUZANDO A LINHA DE CHEGADA...
+           t=1,5s  →  ⏳ Calculando sua posição... (só se necessário)
+           t=N     →  🎉 Sua posição na turma!
+           t=N+X   →  Resultado com card roxo/verde/laranja
+
+           Adapta o splash existente (mostrarSplashPosicao) sem criar um
+           overlay extra. A tela de "bandeirada" dura exatamente o mínimo
+           necessário para criar tensão e é substituída suavemente pelo
+           conteúdo real quando o salvamento termina. */
+
+        .splash-bandeirada-conteudo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 0 4px;
+            animation: splashBandeiradaFadeIn 0.4s ease;
+        }
+        @keyframes splashBandeiradaFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tapete de bandeira quadriculada deslizando (efeito F1) */
+        .splash-bandeirada-tapete {
+            width: 100%;
+            max-width: 280px;
+            height: 18px;
+            border-radius: 4px;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    #0a0a0a 0 14px,
+                    #f8fafc 14px 28px
+                );
+            background-size: 40px 40px;
+            animation: splashBandeiradaTapete 0.6s linear infinite;
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.22);
+        }
+        @keyframes splashBandeiradaTapete {
+            from { background-position: 0 0; }
+            to   { background-position: 40px 0; }
+        }
+
+        /* Ícone 🏁 balançando */
+        .splash-bandeirada-icone {
+            font-size: 72px;
+            line-height: 1;
+            animation: splashBandeiradaIcone 1s ease-in-out infinite;
+            filter: drop-shadow(0 6px 20px rgba(255, 255, 255, 0.35));
+        }
+        @keyframes splashBandeiradaIcone {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50%      { transform: translateY(-8px) rotate(8deg); }
+        }
+
+        /* Título em dourado com glow */
+        .splash-bandeirada-titulo {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fbbf24;
+            text-shadow: 0 0 16px rgba(251, 191, 36, 0.75);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Subtítulo pulsante (cria o "delay de telemetria") */
+        .splash-bandeirada-sub {
+            font-size: 13px;
+            color: #cbd5e1;
+            text-align: center;
+            line-height: 1.4;
+            animation: splashBandeiradaPulse 1.6s ease-in-out infinite;
+        }
+        @keyframes splashBandeiradaPulse {
+            0%, 100% { opacity: 0.65; }
+            50%      { opacity: 1; }
+        }
+
+        @media (max-width: 520px) {
+            .splash-bandeirada-icone  { font-size: 60px; }
+            .splash-bandeirada-titulo { font-size: 15px; letter-spacing: 1.5px; }
+            .splash-bandeirada-sub    { font-size: 12px; }
+            .splash-bandeirada-tapete { max-width: 240px; height: 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .splash-bandeirada-tapete,
+            .splash-bandeirada-icone,
+            .splash-bandeirada-sub {
+                animation: none !important;
+            }
+        }
+        /* ▲▲▲ FIM [02.93] */
 
     </style>
 </head>
@@ -11631,6 +11899,65 @@ const PERFIL_SYNC_CACHE_MS = 2 * 60 * 1000;   // 2 minutos
             if (Date.now() < fim) requestAnimationFrame(f);
         })();
         confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: ['#198754','#ffc107','#0066cc','#fd7e14'] });
+    }
+
+    // ─── 🟣 Efeito especial: bateu o líder da turma ───
+    // Confete mais denso, cores da "púrpura real" (mesmo tom do card
+    // .card-lider em [02.92]) + chuva dourada extra. É o clímax F1.
+    function dispararConfetesLider() {
+        if (typeof confetti !== 'function') return;
+        const cores = ['#a855f7', '#c084fc', '#e9d5ff', '#fbbf24', '#fde68a', '#ffffff'];
+
+        // 1) Rajadas laterais persistentes por 3s
+        const fim = Date.now() + 3000;
+        (function f() {
+            confetti({ particleCount: 6, angle: 55,  spread: 60, origin: { x: 0, y: 0.65 }, colors: cores });
+            confetti({ particleCount: 6, angle: 125, spread: 60, origin: { x: 1, y: 0.65 }, colors: cores });
+            if (Date.now() < fim) requestAnimationFrame(f);
+        })();
+
+        // 2) Rajada central densa (explosão de "pódio")
+        confetti({
+            particleCount: 130,
+            spread: 120,
+            origin: { y: 0.6 },
+            colors: cores,
+            shapes: ['circle', 'square'],
+            scalar: 1.1
+        });
+
+        // 3) Chuva dourada extra (0,4s depois) — sensação de "troféu caindo"
+        setTimeout(() => {
+            try {
+                confetti({
+                    particleCount: 80,
+                    spread: 100,
+                    origin: { y: 0.5 },
+                    colors: ['#fbbf24', '#fde68a', '#fef3c7'],
+                    gravity: 0.75,
+                    scalar: 0.9
+                });
+            } catch(e) {}
+        }, 420);
+    }
+
+    // ─── 🟣 Fanfarra ascendente: superou o líder ───
+    // Mais dramática que somNovoRecorde(): 4 notas em arpejo ascendente
+    // + acorde final sustentado, remetendo a hino de pódio.
+    function somVitoriaLider() {
+        if (!somAtivo) return;
+        // Arpejo ascendente (Dó → Mi → Sol → Dó alto)
+        [523, 659, 784, 1047].forEach((f, i) => {
+            setTimeout(() => {
+                try { tocarNota(f, 0.24, "sine", 0.16); } catch(e) {}
+            }, i * 95);
+        });
+        // Acorde de pódio sustentado (0,45s depois)
+        setTimeout(() => {
+            [1047, 1319, 1568].forEach(f => {
+                try { tocarNota(f, 0.65, "sine", 0.12); } catch(e) {}
+            });
+        }, 450);
     }
     // ▲▲▲ FIM [07.02]
 
@@ -18691,12 +19018,24 @@ function abrirBuscarAlunoComMeusDados() {
     // ▲▲▲ FIM [14.07]
 
     // ▼▼▼ [14.08] Finalização + Splash de Posição ──────────────────────
+    // v1.0.3 · O splash agora começa com uma "bandeirada de F1" (1,5s),
+    // transita para o spinner apenas se o salvamento demorar mais que isso,
+    // e respeita um tempo mínimo de suspense antes de mostrar o resultado.
+    // Efeito: o aluno vê "🏁 CRUZANDO A LINHA" antes de saber a posição.
     
     // --- Funções do Splash ---
+    const SPLASH_BANDEIRADA_MS = 1500;
+    let _splashBandeiradaTs = 0;
+    let _splashBandeiradaTimerId = null;
+
     function mostrarSplashPosicao() {
         const modal = document.getElementById("modal-revelacao-posicao");
         if (!modal) return;
         const card = modal.querySelector('.posicao-card');
+        
+        // Reset de timers anteriores
+        if (_splashBandeiradaTimerId) { clearTimeout(_splashBandeiradaTimerId); _splashBandeiradaTimerId = null; }
+        _splashBandeiradaTs = Date.now();
         
         modal.classList.remove("hidden");
         modal.style.display = "flex";
@@ -18709,26 +19048,65 @@ function abrirBuscarAlunoComMeusDados() {
         const conteudo = document.getElementById("posicao-conteudo");
         const btn = document.getElementById("btn-ver-resultado");
         
-        if (loader) loader.style.display = "block";
+        // ─── Estado inicial: bandeirada de F1 ───
+        if (loader) {
+            loader.innerHTML = `
+                <div class="splash-bandeirada-conteudo">
+                    <div class="splash-bandeirada-tapete" aria-hidden="true"></div>
+                    <div class="splash-bandeirada-icone" aria-hidden="true">🏁</div>
+                    <div class="splash-bandeirada-titulo">CRUZANDO A LINHA</div>
+                    <div class="splash-bandeirada-sub">Sua pontuação está sendo confirmada...</div>
+                </div>
+            `;
+            loader.style.display = "block";
+            loader.style.animation = "none";
+        }
         if (titulo) {
-            titulo.textContent = "Calculando sua posição...";
+            titulo.textContent = "";
             titulo.style.color = "#fff";
+            titulo.style.display = "none";
         }
         if (conteudo) conteudo.style.display = "none";
         if (btn) btn.style.display = "none";
+        
+        // ─── Após 1,5s, transita para "Calculando posição..." (só se ainda visível) ───
+        _splashBandeiradaTimerId = setTimeout(() => {
+            _splashBandeiradaTimerId = null;
+            const modalAberto = modal && !modal.classList.contains("hidden");
+            if (!modalAberto) return;
+            if (loader) {
+                loader.innerHTML = "⏳";
+                loader.style.animation = "pulse-bloco 1.5s infinite";
+            }
+            if (titulo) {
+                titulo.textContent = "Calculando sua posição...";
+                titulo.style.display = "block";
+            }
+        }, SPLASH_BANDEIRADA_MS);
     }
 
-    function atualizarSplashPosicao(posicao) {
+    async function atualizarSplashPosicao(posicao) {
+        // Respeita o tempo mínimo de bandeirada (suspense F1)
+        const decorrido = Date.now() - _splashBandeiradaTs;
+        const falta = SPLASH_BANDEIRADA_MS - decorrido;
+        if (falta > 0) await new Promise(r => setTimeout(r, falta));
+        
+        if (_splashBandeiradaTimerId) { clearTimeout(_splashBandeiradaTimerId); _splashBandeiradaTimerId = null; }
+        
         const loader = document.getElementById("posicao-loader");
         const titulo = document.getElementById("posicao-titulo");
         const conteudo = document.getElementById("posicao-conteudo");
         const numero = document.getElementById("posicao-numero");
         const btn = document.getElementById("btn-ver-resultado");
 
-        if (loader) loader.style.display = "none";
+        if (loader) {
+            loader.innerHTML = "⏳";
+            loader.style.display = "none";
+        }
         if (titulo) {
             titulo.textContent = "Sua posição na turma!";
             titulo.style.color = "var(--neon-gold)";
+            titulo.style.display = "block";
         }
         
         if (conteudo) conteudo.style.display = "block";
@@ -18751,6 +19129,7 @@ function abrirBuscarAlunoComMeusDados() {
     }
 
     function fecharRevelacaoPosicao() {
+        if (_splashBandeiradaTimerId) { clearTimeout(_splashBandeiradaTimerId); _splashBandeiradaTimerId = null; }
         const modal = document.getElementById("modal-revelacao-posicao");
         if (!modal) return;
         modal.style.opacity = "0";
@@ -18870,7 +19249,7 @@ function abrirBuscarAlunoComMeusDados() {
             if (etapaAtual.fimPrevistoEm && Date.now() > etapaAtual.fimPrevistoEm) foraDoPrazo = true;
         } catch(e) { console.warn("Falha ao validar prazo da etapa:", e); }
 
-        // Chama a tela de splash
+        // Chama a tela de splash (agora com bandeirada de F1)
         mostrarSplashPosicao();
 
         let posicaoFinal = null;
@@ -18918,8 +19297,8 @@ function abrirBuscarAlunoComMeusDados() {
             
             posicaoFinal = await preencherResultado(melhor, resultado, posicaoAntes);
             
-            // Atualiza a tela de splash com a posição
-            atualizarSplashPosicao(posicaoFinal || "—");
+            // ⚠️ await garante que a bandeirada completa antes de trocar para o resultado
+            await atualizarSplashPosicao(posicaoFinal || "—");
 
             mostrarTela("tela-resultado");
             
@@ -18949,16 +19328,71 @@ function abrirBuscarAlunoComMeusDados() {
     // ▲▲▲ FIM [14.08]
 
     // ▼▼▼ [14.09] Preenchimento do resultado ────────────────────────────
+    // v1.0.4 · preencherResultado() agora dispara som/confete especiais
+    // quando o aluno bate o líder da turma. O timing é sincronizado com
+    // a bandeirada de F1 (1,5s) e a revelação da posição:
+    //   t=0ms    → 🏁 bandeirada começa
+    //   t=1500ms → 🎉 posição revelada
+    //   t=1700ms → 🎵 fanfarra de pódio começa
+    //   t=2100ms → ✨ confete roxo/dourado explode
     function gerarCardsComparacao(melhor, tent) {
-        const novo = ehMelhorResultado(tent, melhor) && tent.data === melhor.data;
-        return `<div class="cards-comparacao"><div class="card-compcard"><div class="card-comp-rotulo">Esta tentativa</div><div class="card-comp-valor">${tent.pontos.toLocaleString('pt-BR')}</div><div class="card-comp-unidade">pontos</div></div><div class="card-compcard card-recorde"><div class="card-comp-rotulo">${novo ? "🏆 Novo recorde!" : "Seu recorde oficial"}</div><div class="card-comp-valor">${melhor.pontos.toLocaleString('pt-BR')}</div><div class="card-comp-unidade">pontos</div></div></div>`;
+        const ehNovoOficial = (tent.data === melhor.data);
+        const liderAntigo   = Number(recordeLiderProjecao)   || 0;
+        const pessoalAntigo = Number(recordePessoalProjecao) || 0;
+        const superouLider = liderAntigo > 0 && tent.pontos > liderAntigo;
+
+        let cardClasse, kicker, rotulo, valorPrincipal, diferenca;
+
+        if (superouLider) {
+            const vantagem = tent.pontos - liderAntigo;
+            cardClasse     = "card-lider";
+            kicker         = "🟣 SUPERAÇÃO!";
+            rotulo         = "Maior pontuação da turma";
+            valorPrincipal = tent.pontos;
+            diferenca      = `+${vantagem.toLocaleString("pt-BR")} pts à frente do antigo líder (${liderAntigo.toLocaleString("pt-BR")} pts)`;
+        } else if (ehNovoOficial) {
+            cardClasse     = "card-recorde-pessoal";
+            kicker         = "🟢 NOVO RECORDE PESSOAL";
+            rotulo         = "Seu recorde pessoal";
+            valorPrincipal = melhor.pontos;
+            if (pessoalAntigo > 0) {
+                const ganho = tent.pontos - pessoalAntigo;
+                diferenca = `+${ganho.toLocaleString("pt-BR")} pts acima do recorde anterior (${pessoalAntigo.toLocaleString("pt-BR")} pts)`;
+            } else {
+                diferenca = "Primeira marca registrada nesta modalidade";
+            }
+        } else {
+            const falta = melhor.pontos - tent.pontos;
+            cardClasse     = "card-recorde-mantido";
+            kicker         = "🟠 RECORDE MANTIDO";
+            rotulo         = "Seu recorde oficial";
+            valorPrincipal = melhor.pontos;
+            diferenca      = falta > 0
+                ? `Ficou ${falta.toLocaleString("pt-BR")} pts atrás`
+                : `Empatou com o recorde`;
+        }
+
+        const ariaLabel = `${kicker.replace(/[🟣🟢🟠]\s*/g, "")} — ${valorPrincipal.toLocaleString("pt-BR")} pontos. ${diferenca}`;
+
+        return `<div class="cards-comparacao">
+            <div class="card-compcard">
+                <div class="card-comp-rotulo">Esta tentativa</div>
+                <div class="card-comp-valor">${tent.pontos.toLocaleString('pt-BR')}</div>
+                <div class="card-comp-unidade">pontos</div>
+            </div>
+            <div class="card-compcard ${cardClasse}" role="status" aria-label="${escaparHtml(ariaLabel)}">
+                <span class="card-comp-kicker">${kicker}</span>
+                <div class="card-comp-rotulo">${rotulo}</div>
+                <div class="card-comp-valor">${valorPrincipal.toLocaleString('pt-BR')}</div>
+                <div class="card-comp-unidade">pontos</div>
+                <div class="card-comp-diferenca">${escaparHtml(diferenca)}</div>
+            </div>
+        </div>`;
     }
 
     async function renderizarCardClassificacao(r) {
         if (!r || !r.nome || !r.turma) return "";
         const mods = Object.keys(MODALIDADES);
-
-        // ⚠️ v10.13.0 · P-B4 (Pacote 3) — Modo Classificatória Única
         const modUnicaAtiva = (typeof modalidadeClassificatoriaUnicaAtiva === "function")
             ? modalidadeClassificatoriaUnicaAtiva()
             : null;
@@ -18996,8 +19430,6 @@ function abrirBuscarAlunoComMeusDados() {
             if (!localStorage.getItem(ck)) { setTimeout(() => dispararConfetes(), 300); localStorage.setItem(ck, "1"); }
         }
         const avisoNome = `<div class="aviso-nome-classificado">🚨 <strong>Confira seu nome:</strong> "${escaparHtml(r.nome)}". Ele precisa estar completo e <strong>idêntico à chamada oficial</strong>. Nome abreviado ou fora do padrão pode causar <strong>desclassificação</strong>. Se houver erro, fale com o professor antes do fim da etapa.</div>`;
-
-        // ⚠️ v10.13.0 · P-B4 (Pacote 3) — Aviso quando a flag está setada
         const avisoModUnica = modUnicaAtiva
             ? `<div style="font-size:11.5px; color:#a5f3fc; background:rgba(14,165,233,.08); border-left:3px solid var(--neon-cyan); border-radius:8px; padding:8px 12px; margin-top:10px; line-height:1.5;">
                 🎯 Modo Classificatória Única ativo — a etapa oficial está focada em <strong>${escaparHtml(MODALIDADES[modUnicaAtiva].nome)}</strong>.
@@ -19019,10 +19451,6 @@ function abrirBuscarAlunoComMeusDados() {
         container.innerHTML = "";
         if (!turmaAtual) return;
 
-        // ⚠️ v10.13.0 · P-B4 (Pacote 3) — Modo Classificatória Única:
-        // Se a partida foi numa modalidade que não é a ativa (porque o professor
-        // trocou a flag durante o jogo), esconde o comparativo de turmas.
-        // Não faz sentido mostrar ranking de uma modalidade que não é mais oficial.
         const modUnicaAtiva = (typeof modalidadeClassificatoriaUnicaAtiva === "function")
             ? modalidadeClassificatoriaUnicaAtiva()
             : null;
@@ -19133,7 +19561,21 @@ function abrirBuscarAlunoComMeusDados() {
         verificarCertificadosPosPartida(tent.nome, tent.turma, tent.modalidade);
         await renderizarCardVotacao();
 
-        return pT; // <--- ESSENCIAL PARA A TELA DE REVELAÇÃO DE POSIÇÃO
+        // ═══════════════════════════════════════════════════════════════
+        // 🟣 MOMENTO F1: bateu o líder da turma
+        // Som/confete especiais, sincronizados com a bandeirada (1,5s)
+        // e a revelação da posição (t=1500ms no splash).
+        // ═══════════════════════════════════════════════════════════════
+        const liderAntes = Number(recordeLiderProjecao) || 0;
+        const superouLider = liderAntes > 0 && tent.pontos > liderAntes;
+        if (superouLider) {
+            // t=1700ms — 200ms após a bandeirada terminar, fanfarra começa
+            setTimeout(() => { try { somVitoriaLider(); } catch(e) { console.warn("Falha somVitoriaLider:", e); } }, 1700);
+            // t=2100ms — confete explode 400ms depois da fanfarra (sincroniza com o pico)
+            setTimeout(() => { try { dispararConfetesLider(); } catch(e) { console.warn("Falha dispararConfetesLider:", e); } }, 2100);
+        }
+
+        return pT;
     }
 
     async function preencherResultadoForaDoPrazo(tent) {
@@ -28692,6 +29134,11 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
     // ▼▼▼ [19.09] Barra de Projeção Dinâmica — funções ─────────── INÍCIO ───
     const MIN_PERGUNTAS_PROJECAO = 4;
+    // 🏁 A partir desta resposta (15ª), a barra entra em "Reta Final" e
+    //    esconde as cores de projeção — o jogador só saberá se superou o
+    //    líder ou o recorde pessoal na tela de resultado. Isso cria o
+    //    suspense da "linha de chegada" (inspirado na F1).
+    const RESPOSTAS_PARA_RETA_FINAL = 15;
 
     async function carregarRecordesParaProjecao() {
         recordeLiderProjecao = 0;
@@ -28728,10 +29175,11 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         if (!perguntaEl || !barraTempoEl || !labelEl) return;
 
+        // Modo treino: barra escondida (CSS cuida, mas garantimos por segurança)
         if (modoTreino || treinoAnonimo) {
-            perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
+            perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-retafinal");
             perguntaEl.classList.add("brilho-cinza");
-            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
+            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-retafinal");
             barraTempoEl.classList.add("brilho-cinza");
             labelEl.style.display = "none";
             return;
@@ -28741,19 +29189,50 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
         const respondidas = acertos + erros;
         const totalPerguntas = TOTAL_PERGUNTAS;
+        const restantes = totalPerguntas - respondidas;
 
-        perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
-        barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
-        labelEl.classList.remove("fut-roxo", "fut-verde", "fut-amarelo", "fut-cinza");
+        // ═══════════════════════════════════════════════════════════════
+        // 🏁 MODO RETA FINAL (últimas 5 perguntas — Q16 a Q20)
+        // Esconde a projeção colorida e troca por um aviso neutro
+        // e desafiador. O jogador só descobre o resultado final
+        // (recorde / liderança) na tela de resultado.
+        // ═══════════════════════════════════════════════════════════════
+        if (respondidas >= RESPOSTAS_PARA_RETA_FINAL && respondidas < totalPerguntas) {
+            perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
+            perguntaEl.classList.add("brilho-retafinal");
+            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
+            barraTempoEl.classList.add("brilho-retafinal");
+            labelEl.classList.remove("fut-roxo", "fut-verde", "fut-amarelo", "fut-cinza");
+            labelEl.classList.add("fut-retafinal");
+
+            let texto;
+            if (restantes === 1) {
+                texto = "🏁 ÚLTIMA PERGUNTA! Dê o seu máximo!";
+            } else if (restantes === 2) {
+                texto = "🏁 RETA FINAL: Faltam só 2!";
+            } else if (restantes === 5) {
+                texto = "🏁 RETA FINAL: Últimas 5! Vai com tudo!";
+            } else {
+                texto = `🏁 RETA FINAL: Faltam ${restantes} perguntas!`;
+            }
+            labelEl.textContent = texto;
+            return;
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // MODO NORMAL (Q1 a Q15): projeção colorida baseada em
+        // comparação com líder da turma e recorde pessoal.
+        // ═══════════════════════════════════════════════════════════════
+        perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza", "brilho-retafinal");
+        barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza", "brilho-retafinal");
+        labelEl.classList.remove("fut-roxo", "fut-verde", "fut-amarelo", "fut-cinza", "fut-retafinal");
 
         let cor = "cinza";
-        let projecao = 0;
         let textoLabel = "Projeção: --";
 
         if (respondidas >= MIN_PERGUNTAS_PROJECAO && pontosAcumulados > 0) {
-            projecao = (pontosAcumulados / respondidas) * totalPerguntas;
+            const projecao = (pontosAcumulados / respondidas) * totalPerguntas;
 
-            // Correção: removida a exigência do líder ter > 0. Se o líder for 0, a projeção já supera.
             if (projecao > recordeLiderProjecao && projecao > recordePessoalProjecao) {
                 cor = "roxo";
             } else if (projecao > recordePessoalProjecao) {
@@ -28784,11 +29263,11 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         const labelEl = document.getElementById("projecao-label");
 
         if (perguntaEl) {
-            perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
+            perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-retafinal");
             perguntaEl.classList.add("brilho-cinza");
         }
         if (barraTempoEl) {
-            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "tempo-curto");
+            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-retafinal", "tempo-curto");
             barraTempoEl.classList.add("brilho-cinza");
         }
         if (labelEl) {
