@@ -9171,67 +9171,51 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         }
         /* ▲▲▲ FIM [02.89] */
 
-        /* ▼▼▼ [02.91] Barra de Projeção Dinâmica — Copa da Soma ───── INÍCIO ─── */
-        .barra-projecao-wrap {
-            margin: 10px 0 14px;
-            padding: 0 2px;
-            transition: opacity 0.3s ease;
-        }
-        .barra-projecao-wrap.hidden {
-            display: none !important;
-        }
-        .barra-projecao {
-            width: 100%;
-            height: 10px;
-            background: #e2e8f0;
-            border-radius: 6px;
-            overflow: hidden;
+        /* ▼▼▼ [02.91] Barra de Projeção Dinâmica (Unificada) ───── INÍCIO ─── */
+        #barra-tempo {
+            margin-bottom: 4px; /* Reduzido para aproximar o texto */
             position: relative;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
         }
-        .progresso-projecao {
-            height: 100%;
-            width: 0%;
-            border-radius: 6px;
-            background: #94a3b8;
-            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                        background 0.3s ease,
-                        box-shadow 0.3s ease;
+        #barra-tempo.brilho-roxo {
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
         }
-        .progresso-projecao-roxo {
-            background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
-            box-shadow: 0 0 12px rgba(139, 92, 246, 0.55);
+        #barra-tempo.brilho-verde {
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
         }
-        .progresso-projecao-verde {
-            background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        #barra-tempo.brilho-amarelo {
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
         }
-        .progresso-projecao-amarelo {
-            background: linear-gradient(90deg, #facc15 0%, #fde047 100%);
-            box-shadow: 0 0 10px rgba(250, 204, 21, 0.45);
+
+        #barra-tempo.brilho-roxo #progresso { background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%); }
+        #barra-tempo.brilho-verde #progresso { background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%); }
+        #barra-tempo.brilho-amarelo #progresso { background: linear-gradient(90deg, #facc15 0%, #fde047 100%); }
+        #barra-tempo.brilho-cinza #progresso { background: #198754; }
+
+        /* Alerta de tempo esgotando sobrepõe a cor da projeção */
+        #barra-tempo.tempo-curto #progresso {
+            background: #dc3545 !important;
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.6) !important;
+            animation: pulse-bloco 0.8s ease-in-out infinite;
         }
-        .progresso-projecao-cinza {
-            background: #94a3b8;
-            box-shadow: none;
-        }
+
         .projecao-label {
             display: block;
             text-align: center;
             font-size: 12px;
             font-weight: 800;
             letter-spacing: 0.3px;
-            margin-top: 5px;
+            margin-bottom: 18px; /* Compensa a margem da barra */
             line-height: 1.3;
             transition: color 0.25s ease;
         }
-        .projecao-label.fut-roxo     { color: #7c3aed; }
-        .projecao-label.fut-verde    { color: #15803d; }
-        .projecao-label.fut-amarelo  { color: #a16207; }
-        .projecao-label.fut-cinza    { color: #94a3b8; }
+        .projecao-label.fut-roxo { color: #a78bfa; }
+        .projecao-label.fut-verde { color: #4ade80; }
+        .projecao-label.fut-amarelo { color: #fde047; }
+        .projecao-label.fut-cinza { color: #94a3b8; }
+
         #pergunta {
-            transition: border-color 0.3s ease,
-                        box-shadow 0.35s ease,
-                        background 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.35s ease, background 0.3s ease;
             border: 2px solid transparent;
             border-radius: 12px;
         }
@@ -9255,12 +9239,14 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
             box-shadow: none;
             background: transparent;
         }
-        body.modo-treino .barra-projecao-wrap {
+
+        body.modo-treino #barra-tempo,
+        body.modo-treino #projecao-label {
             display: none !important;
         }
         @media (prefers-reduced-motion: reduce) {
-            .progresso-projecao { transition: none !important; }
-            #pergunta { transition: none !important; }
+            #barra-tempo, #pergunta, .projecao-label { transition: none !important; }
+            #barra-tempo.tempo-curto #progresso { animation: none; }
         }
         /* ▲▲▲ FIM [02.91] */
 
@@ -9567,19 +9553,8 @@ table td { border-bottom-color: rgba(148, 163, 184, 0.15) !important; }
         </div>
         <div class="pergunta-info-destaque" id="info-pergunta-destaque">Pergunta 1 de 20</div>
         <div class="barra-progresso-perguntas" id="barra-progresso-perguntas"></div>
-        <div id="barra-tempo"><div id="progresso"></div></div>
-
-        <!-- ▼▼▼ NOVO — Barra de Projeção Dinâmica ▼▼▼ -->
-        <div class="barra-projecao-wrap" id="barra-projecao-wrap">
-            <div class="barra-projecao" role="progressbar"
-                 aria-label="Projeção de pontuação"
-                 aria-valuemin="0" aria-valuemax="100">
-                <div id="progresso-projecao" class="progresso-projecao"></div>
-            </div>
-            <div id="projecao-label" class="projecao-label fut-cinza">Projeção: --</div>
-        </div>
-        <!-- ▲▲▲ FIM — Barra de Projeção Dinâmica ▲▲▲ -->
-
+        <div id="barra-tempo" class="brilho-cinza"><div id="progresso"></div></div>
+        <div id="projecao-label" class="projecao-label fut-cinza">Projeção: --</div>
         <div id="pergunta">X + Y = ?</div>
         <div class="lista-opcoes">
             <button class="btn-opcao" onclick="verificarResposta(this)"></button>
@@ -18507,7 +18482,11 @@ function abrirBuscarAlunoComMeusDados() {
     function iniciarCronometro() {
         tempoInicio = performance.now();
         const pr = document.getElementById("progresso");
-        if (pr) { pr.style.width = "100%"; pr.style.background = "#198754"; }
+        const barraTempo = document.getElementById("barra-tempo");
+        
+        if (pr) { pr.style.width = "100%"; }
+        if (barraTempo) barraTempo.classList.remove("tempo-curto");
+        
         let t = 10000;
         clearInterval(timerInterval); clearTimeout(timerTimeout);
         timerInterval = setInterval(() => {
@@ -18515,8 +18494,11 @@ function abrirBuscarAlunoComMeusDados() {
             t -= 100;
             const pct = Math.max(t / 10000 * 100, 0);
             if (pr) pr.style.width = pct + "%";
-            if (pct < 40 && pr) pr.style.background = "#dc3545";
-            else if (pr && t > 2000) pr.style.background = "#198754";
+            
+            if (barraTempo) {
+                if (pct < 40) barraTempo.classList.add("tempo-curto");
+                else barraTempo.classList.remove("tempo-curto");
+            }
         }, 100);
         timerTimeout = setTimeout(() => { if (perguntaAberta) processarResposta(0, false, 10); }, 10000);
     }
@@ -28741,31 +28723,27 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
 
     function atualizarProjecao() {
         const perguntaEl = document.getElementById("pergunta");
-        const barraEl = document.getElementById("progresso-projecao");
+        const barraTempoEl = document.getElementById("barra-tempo");
         const labelEl = document.getElementById("projecao-label");
-        const wrapEl = document.getElementById("barra-projecao-wrap");
 
-        if (!perguntaEl || !barraEl || !labelEl) return;
+        if (!perguntaEl || !barraTempoEl || !labelEl) return;
 
         if (modoTreino || treinoAnonimo) {
-            if (wrapEl) wrapEl.classList.add("hidden");
             perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
             perguntaEl.classList.add("brilho-cinza");
+            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
+            barraTempoEl.classList.add("brilho-cinza");
+            labelEl.style.display = "none";
             return;
         }
 
-        if (wrapEl) wrapEl.classList.remove("hidden");
+        labelEl.style.display = "block";
 
         const respondidas = acertos + erros;
         const totalPerguntas = TOTAL_PERGUNTAS;
 
         perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
-        barraEl.classList.remove(
-            "progresso-projecao-roxo",
-            "progresso-projecao-verde",
-            "progresso-projecao-amarelo",
-            "progresso-projecao-cinza"
-        );
+        barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "brilho-cinza");
         labelEl.classList.remove("fut-roxo", "fut-verde", "fut-amarelo", "fut-cinza");
 
         let cor = "cinza";
@@ -28775,19 +28753,18 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         if (respondidas >= MIN_PERGUNTAS_PROJECAO && pontosAcumulados > 0) {
             projecao = (pontosAcumulados / respondidas) * totalPerguntas;
 
-            if (recordeLiderProjecao > 0 && projecao > recordeLiderProjecao) {
+            // Correção: removida a exigência do líder ter > 0. Se o líder for 0, a projeção já supera.
+            if (projecao > recordeLiderProjecao && projecao > recordePessoalProjecao) {
                 cor = "roxo";
-            } else if (recordePessoalProjecao > 0 && projecao > recordePessoalProjecao) {
+            } else if (projecao > recordePessoalProjecao) {
                 cor = "verde";
-            } else if (recordePessoalProjecao > 0) {
-                cor = "amarelo";
             } else {
-                cor = "verde";
+                cor = "amarelo";
             }
 
             const projecaoFmt = Math.round(projecao).toLocaleString("pt-BR");
             if (cor === "roxo") {
-                textoLabel = `🟣 Projeção: ${projecaoFmt} pts · vai superar o líder!`;
+                textoLabel = `🟣 Projeção: ${projecaoFmt} pts · superando o líder!`;
             } else if (cor === "verde") {
                 textoLabel = `🟢 Projeção: ${projecaoFmt} pts · novo recorde pessoal!`;
             } else {
@@ -28796,41 +28773,28 @@ Comece agora com a sua primeira resposta seguindo a estrutura do item 1 das Regr
         }
 
         perguntaEl.classList.add("brilho-" + cor);
-        barraEl.classList.add("progresso-projecao-" + cor);
+        barraTempoEl.classList.add("brilho-" + cor);
         labelEl.classList.add("fut-" + cor);
         labelEl.textContent = textoLabel;
-
-        const referencia = Math.max(recordeLiderProjecao, recordePessoalProjecao, 1000);
-        let pct = referencia > 0 ? Math.min(100, (projecao / referencia) * 100) : 0;
-        if (projecao === 0) pct = 0;
-
-        requestAnimationFrame(() => {
-            barraEl.style.width = pct.toFixed(1) + "%";
-            barraEl.setAttribute("aria-valuenow", pct.toFixed(0));
-        });
     }
 
     function resetarProjecao() {
         const perguntaEl = document.getElementById("pergunta");
-        const barraEl = document.getElementById("progresso-projecao");
+        const barraTempoEl = document.getElementById("barra-tempo");
         const labelEl = document.getElementById("projecao-label");
 
         if (perguntaEl) {
             perguntaEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo");
             perguntaEl.classList.add("brilho-cinza");
         }
-        if (barraEl) {
-            barraEl.classList.remove(
-                "progresso-projecao-roxo",
-                "progresso-projecao-verde",
-                "progresso-projecao-amarelo"
-            );
-            barraEl.classList.add("progresso-projecao-cinza");
-            barraEl.style.width = "0%";
+        if (barraTempoEl) {
+            barraTempoEl.classList.remove("brilho-roxo", "brilho-verde", "brilho-amarelo", "tempo-curto");
+            barraTempoEl.classList.add("brilho-cinza");
         }
         if (labelEl) {
             labelEl.className = "projecao-label fut-cinza";
             labelEl.textContent = "Projeção: --";
+            labelEl.style.display = "block";
         }
     }
     // ▲▲▲ FIM [19.09]
