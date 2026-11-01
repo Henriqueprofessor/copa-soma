@@ -18902,8 +18902,8 @@ function abrirBuscarAlunoComMeusDados() {
             mostrarFeedbackErroTreino(fA, fB, respostaCorreta);
             return;
         }
-
-        setTimeout(() => { if (!finalizando) proximaPergunta(); }, 250);
+        const isUltima = (acertos + erros) >= TOTAL_PERGUNTAS;
+setTimeout(() => { if (!finalizando) proximaPergunta(); }, isUltima ? 500 : 250);
     }
     // ▼▼▼ [14.06.bis] Feedback rico de erro no treino
     function mostrarFeedbackErroTreino(fA, fB, resposta) {
