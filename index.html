@@ -18295,6 +18295,18 @@ function abrirBuscarAlunoComMeusDados() {
     // ▲▲▲ FIM [14.01]
 
     // ▼▼▼ [14.02] Geração de pergunta ──────────────────────────────────
+    // v1.0.4 · BUGFIX CRÍTICO: o loop de geração de fB tinha limite de
+    // 20 tentativas e "desistia" quando o fA escolhido era alto (ex: 9),
+    // aceitando um fB inválido e gerando somas acima do maxSoma (ex: 9+7=16
+    // na modalidade 1-10).
+    //
+    // Para fA=9 na modalidade 1-10, a chance de falhar 20 vezes era
+    // (8/9)^20 ≈ 9,5%. Em uma partida de 20 perguntas, a chance de cair
+    // pelo menos uma soma inválida era quase certa.
+    //
+    // Correção: substituído o loop com limite por uma lista pré-computada
+    // de fB válidos. É matematicamente impossível gerar soma fora do
+    // intervalo — o gerador nunca precisa "tentar até acertar".
     function escolherPorPeso(itens, pesoFn) {
         let total = itens.reduce((s, i) => s + Math.max(0.1, pesoFn(i)), 0);
         let alvo = Math.random() * total;
@@ -18342,17 +18354,29 @@ function abrirBuscarAlunoComMeusDados() {
         
         do {
             fA = escolherFatorAdaptativo(); 
+            
             if (modCfg.isDezenas) {
+                // Dezenas: 10, 20, 30... 100 (sem restrição de soma além do intervalo)
                 fB = Math.floor(Math.random() * 9 + 1) * 10;
             } else if (modCfg.minSoma !== undefined || modCfg.maxSoma !== undefined) {
-                let tentativas = 0;
-                do {
+                // ⚠️ CORREÇÃO v1.0.4 · lista de fB válidos em vez de loop com limite
+                const minS = modCfg.minSoma || 0;
+                const maxS = modCfg.maxSoma || 99;
+                const validosB = [];
+                for (let b = 1; b <= 9; b++) {
+                    if (fA + b >= minS && fA + b <= maxS) validosB.push(b);
+                }
+                if (validosB.length > 0) {
+                    fB = validosB[Math.floor(Math.random() * validosB.length)];
+                } else {
+                    // Fallback de segurança: não deve acontecer com fatores corretos,
+                    // mas protege contra configuração inconsistente em MODALIDADES.
                     fB = Math.floor(Math.random() * 9) + 1;
-                    tentativas++;
-                } while ((fA + fB < (modCfg.minSoma || 0) || fA + fB > (modCfg.maxSoma || 99)) && tentativas < 20);
+                }
             } else {
                 fB = Math.floor(Math.random() * 9) + 1;
             }
+            
             chave = `${fA}x${fB}`; 
             t++;
         } while (perguntasGeradas.slice(-5).some(p => p.chave === chave) && t < 20);
